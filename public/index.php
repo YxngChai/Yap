@@ -1,3 +1,3 @@
 <?php
 
-require __DIR__ . '/../src/models/post.php';
+require __DIR__ . '/../src/controllers/feedController.php';
