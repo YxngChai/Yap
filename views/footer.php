@@ -8,5 +8,9 @@
         </ul>
     </nav>
 </footer>
+<?php if (isset($pageScript)): ?>
+    <script> src="<?= htmlspecialchars($pageScript) ?>"</script>
+<?php endif; ?>    
+
 </body>
 </html>
