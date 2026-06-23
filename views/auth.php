@@ -1,4 +1,5 @@
 <?php 
+$pageTitle = 'Yap - Login';
 $pageScript = '/yap/public/assets/script/auth.js';
 
 require __DIR__ . '/header.php'; ?>
@@ -28,6 +29,8 @@ require __DIR__ . '/header.php'; ?>
             <input type="email" name="email">
             <label>Password</label>
             <input type="password" name="password">
+            <label>Password</label>
+            <input type="password" name="password_verification">
             <input type="hidden" name="action" value="register">
             <button type="submit">Register</button>
         </form>

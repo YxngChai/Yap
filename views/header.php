@@ -4,10 +4,11 @@
     <!-- <link rel="stylesheet" href="../public/assets/style/header.css"> -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yap</title>
     <link rel="stylesheet" href="/yap/public/assets/style/reset.css">
     <link rel="stylesheet" href="/yap/public/assets/style/header.css">
     <link rel="stylesheet" href="/yap/public/assets/style/footer.css">
+    <title><?=  isset($pageTitle)? htmlspecialchars($pageTitle) : 'Yap' ?>
+    </title> 
 </head>
 <body class="body">
 <header class="header">
