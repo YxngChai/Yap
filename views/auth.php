@@ -29,7 +29,7 @@ require __DIR__ . '/header.php'; ?>
             <input type="email" name="email">
             <label>Password</label>
             <input type="password" name="password">
-            <label>Password</label>
+            <label>Verify Password</label>
             <input type="password" name="password_verification">
             <input type="hidden" name="action" value="register">
             <button type="submit">Register</button>
