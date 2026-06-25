@@ -7,7 +7,7 @@ require __DIR__ . '/header.php'; ?>
 
 <main>
     <!-- <h1>Yap</h1><br> -->
-    <section class="auth auth-signin">
+    <section class="auth auth-signin hidden">
         <h2>Sign in</h2>
         <form class="auth-form" method="POST" action="/yap/public/">
             <label>Email</label>

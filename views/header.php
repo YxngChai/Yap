@@ -11,6 +11,7 @@
     <?php if (isset($pageCss)): ?>
         <link rel="stylesheet" href="/yap/public/assets/style/<?= $pageCss ?>">
     <?php endif; ?>
+
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
      <link
   rel="stylesheet"
