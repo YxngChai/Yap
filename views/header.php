@@ -23,14 +23,13 @@
             <li>
                 <h2 class="header__title">Yap</h2>
             </li>
-            <li>
-                <a href="#">My profile</a>
+            <li class="header__profile-section">
                 <?php if (isset($_SESSION['user_id'])): ?>
-
-                <form method="POST" action="/yap/public/">
-                    <input type="hidden" name="action" value="logout">
-                    <button class="header__logout-btn" type="submit">Logout</button>
-                </form>
+                    <a href="#"><img class="header__profile-picture" src="../public/assets/images/profile_anonymous_mini.jpeg"></img></a>
+                    <form method="POST" action="/yap/public/">
+                        <input type="hidden" name="action" value="logout">
+                        <button class="header__profile-logout-btn" type="submit">Logout</button>
+                    </form>
                 <?php endif; ?>
             </li>
         </ul>

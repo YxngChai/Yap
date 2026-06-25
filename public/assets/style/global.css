@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Shrikhand&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Chilanka&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
 :root {
   --primary-color: #af69ee;
@@ -14,4 +14,9 @@ body {
 
 main {
   padding: 20px;
+}
+button {
+  border: 1px solid var(--light-color);
+  box-shadow: 1px 1px 8px rgba(119, 119, 119, 0.47);
+  border-radius: 5px;
 }

@@ -5,12 +5,12 @@ $pageScript = '/yap/public/assets/script/auth.js';
 require __DIR__ . '/header.php'; ?>
 
 <main>
-    <h1>Yap</h1>
+    <!-- <h1>Yap</h1><br> -->
     <section>
         <h2>Login</h2>
         <form method="POST" action="/yap/public/">
             <label>Email</label>
-            <input type="email" name="email" required>
+            <input type="email" name="email" required><br>
             <label>Password</label>
             <input type="password" name="password" required>
             <input type="hidden" name="action" value="login">
@@ -20,7 +20,7 @@ require __DIR__ . '/header.php'; ?>
     <p><?= htmlspecialchars($error) ?></p>
 <?php endif; ?>
     </section>
-    <section>
+    <!-- <section>
         <h2>Register</h2>
         <form method="POST" action="/yap/public/">
             <label>Name</label>
@@ -34,7 +34,7 @@ require __DIR__ . '/header.php'; ?>
             <input type="hidden" name="action" value="register">
             <button type="submit">Register</button>
         </form>
-    </section>
+    </section> -->
 </main>
 
 <?php require __DIR__ . '/footer.php'; ?>
