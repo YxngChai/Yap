@@ -43,3 +43,22 @@ main {
   border-radius: 50%;
   box-shadow: 2px 2px 8px rgba(128, 128, 128, 0.333);
 }
+.header__auth-btn {
+  width: 80px;
+  text-align: center;
+  padding: 3px 0;
+  color: black;
+}
+.header__auth-section {
+  display: flex;
+  gap: 20px;
+}
+.header__auth-btn--in {
+  background-color: white;
+}
+
+.header__auth-btn--up {
+  background-color: var(--tertiary-color);
+  border: 1px solid black;
+  color: white;
+}

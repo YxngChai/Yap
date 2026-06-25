@@ -19,4 +19,5 @@ button {
   border: 1px solid var(--light-color);
   box-shadow: 1px 1px 8px rgba(119, 119, 119, 0.47);
   border-radius: 5px;
+  cursor: pointer;
 }

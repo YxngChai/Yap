@@ -1,0 +1,24 @@
+.auth {
+  max-width: 200px;
+  margin-bottom: 10px;
+}
+.auth-form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.auth-signin {
+}
+.auth-signin.hidden,
+.auth-signout.hidden {
+  display: none;
+}
+
+.auth__btn {
+  margin-top: 10px;
+  width: 100px;
+  text-align: center;
+  padding: 4px 0;
+}
