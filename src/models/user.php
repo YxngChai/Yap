@@ -19,4 +19,16 @@ class User{
 
     return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+    public static function findByUsername(PDO $pdo, string $username) {
+
+    $sql = 'SELECT * FROM  users WHERE username = :username';
+
+    $stmt = $pdo->prepare($sql);
+
+    $stmt->execute(['username' => $username]);
+
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+
 }

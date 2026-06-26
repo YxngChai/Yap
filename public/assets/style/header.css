@@ -26,7 +26,7 @@ main {
   font-weight: 600;
   font-family: "Chilanka";
   margin-top: 5px;
-  text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.47);
+  text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.27);
 }
 .header__profile-section {
   display: flex;
@@ -50,6 +50,7 @@ main {
   padding: 3px 0;
   color: black;
   font-weight: 600;
+  font-size: 0.9em;
 }
 .header__auth-section {
   display: flex;

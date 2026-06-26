@@ -14,7 +14,7 @@ require __DIR__ . '/header.php'; ?>
             <input type="email" name="email" required>
             <label>Password</label>
             <input type="password" name="password" required>
-            <input type="hidden" name="action" value="login">
+            <input type="hidden" name="action" value="signin">
             <button class="auth__btn" type="submit">Login</button>
         </form>
         <?php if (!empty($error)): ?>
@@ -24,17 +24,26 @@ require __DIR__ . '/header.php'; ?>
     <section class="auth auth-signout">
         <h2>Sign up</h2>
         <form  class="auth-form" method="POST" action="/yap/public/">
+            <label>Username</label>
+            <input type="text" name="username" minlength="4" maxlength="50"  value="<?= htmlspecialchars($old['username'] ?? '') ?>" required>
             <label>Name</label>
-            <input type="text" name="name" required>
+            <input type="text" name="name"  minlength="2" maxlength="50" autocomplete="name"  value="<?= htmlspecialchars($old['name'] ?? '') ?>" required>
+            <label>Surname</label>
+            <input type="text" name="surname" minlength="2" maxlength="100"  autocomplete="surname"  value="<?= htmlspecialchars($old['surname'] ?? '') ?>" required>
+            <label>Birth date</label>
+            <input type="date" name="birth_date" max="<?= date('Y-m-d', strtotime('-16 years')) ?>" min="1900-01-01" autocomplete="birthdate"  value="<?= htmlspecialchars($old['birth_date'] ?? '') ?>" required >
             <label>Email</label>
-            <input type="email" name="email" required>
+            <input type="email" name="email"  maxlength="100" autocomplete="email"  value="<?= htmlspecialchars($old['email'] ?? '') ?>" required>
             <label>Password</label>
-            <input type="password" name="password" required>
+            <input type="password" name="password" minlength="8" maxlength="72"  autocomplete="password" required>
             <label>Verify Password</label>
-            <input type="password" name="password_verification" required>
-            <input type="hidden" name="action" value="register">
+            <input type="password" name="password_verification" minlength="8" maxlength="72"  autocomplete="password" required>
+            <input type="hidden" name="action" value="signup">
             <button class="auth__btn" type="submit">Register</button>
         </form>
+                <?php if (!empty($error)): ?>
+    <p class="auth__error"><?= htmlspecialchars($error) ?></p>
+<?php endif; ?>
     </section>
 </main>
 
