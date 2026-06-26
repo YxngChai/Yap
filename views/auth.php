@@ -5,7 +5,7 @@ $pageCss = 'auth.css';
 
 require __DIR__ . '/header.php'; ?>
 
-<main>
+<main class="main">
     <!-- <h1>Yap</h1><br> -->
     <section class="auth auth-signin hidden">
         <h2>Sign in</h2>
@@ -25,13 +25,13 @@ require __DIR__ . '/header.php'; ?>
         <h2>Sign up</h2>
         <form  class="auth-form" method="POST" action="/yap/public/">
             <label>Name</label>
-            <input type="text" name="name">
+            <input type="text" name="name" required>
             <label>Email</label>
-            <input type="email" name="email">
+            <input type="email" name="email" required>
             <label>Password</label>
-            <input type="password" name="password">
+            <input type="password" name="password" required>
             <label>Verify Password</label>
-            <input type="password" name="password_verification">
+            <input type="password" name="password_verification" required>
             <input type="hidden" name="action" value="register">
             <button class="auth__btn" type="submit">Register</button>
         </form>

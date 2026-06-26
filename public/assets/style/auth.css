@@ -1,6 +1,15 @@
+@import "global.css";
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .auth {
-  max-width: 200px;
+  width: 350px;
   margin-bottom: 10px;
+  border: 1px solid rgb(205, 205, 205);
+  padding: 30px;
+  background-color: var(--pale-color);
 }
 .auth-form {
   margin-top: 20px;
@@ -9,16 +18,21 @@
   gap: 10px;
 }
 
-.auth-signin {
-}
 .auth-signin.hidden,
 .auth-signout.hidden {
   display: none;
 }
 
 .auth__btn {
+  background-color: white;
   margin-top: 10px;
   width: 100px;
   text-align: center;
   padding: 4px 0;
+}
+
+@media (max-width: 400px) {
+  .auth {
+    width: 250px;
+  }
 }
