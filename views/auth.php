@@ -34,7 +34,7 @@ require __DIR__ . '/header.php'; ?>
             <input type="date" name="birth_date" max="<?= date('Y-m-d', strtotime('-16 years')) ?>" min="1900-01-01" autocomplete="birthdate"  value="<?= htmlspecialchars($old['birth_date'] ?? '') ?>" required >
             <label>Email</label>
             <input type="email" name="email"  maxlength="100" autocomplete="email"  value="<?= htmlspecialchars($old['email'] ?? '') ?>" required>
-            <label>Password</label>
+            <label class="auth__password">Password <span class="help-icon" title="Must be at least 8 characters">?</span></label>
             <input type="password" name="password" minlength="8" maxlength="72"  autocomplete="password" required>
             <label>Verify Password</label>
             <input type="password" name="password_verification" minlength="8" maxlength="72"  autocomplete="password" required>

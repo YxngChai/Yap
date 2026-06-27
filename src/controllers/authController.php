@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../config/db.php';
 require_once __DIR__ . '/../models/user.php';
+require_once __DIR__ . '/../validators/validator.php';
 
 $error = null;
 $old = $_POST;
@@ -37,26 +38,24 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             break; 
             
         case 'signup':
-            //check fields are filled
-            $required = ['username','name','surname','birth_date','email','password','password_verification'];
-            $missing = [];
 
-            foreach($required as $field){
-                if(!isset($_POST[$field]) || trim($_POST[$field]) == '') {
-                    $missing[] = $field;
-                }
-            }
-            if (!empty($missing)){
-                $error = "Missing fields: ". implode(", ", $missing);
+            //verify attributes are respected
+            $rules = [
+                'username' => ['required' => true, 'min' => 4, 'max' => 50],
+                'name' => ['required' => true, 'min' => 2, 'max' => 50],
+                'surname' => ['required' => true, 'min' => 2, 'max' => 100],
+                'email' => ['required' => true, 'max' => 100, 'email' => true],
+                'password' => ['required' => true, 'min' => 8, 'max' => 72],
+            ];
+            $errors = Validator::validate($_POST, $rules);
+            if (!empty($errors)){
+                $error = implode(", ", $errors);
                 break;
             }
 
             $email = $_POST['email'];
             $username = $_POST['username'];
-            if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-                $error = "Invalid email address";
-                break;
-            }
+
             // check in db if username or email are already present
             $userEmail = User::findByEmail($pdo, $email);
             $userUsername = User::findByUsername($pdo, $username);
@@ -68,10 +67,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $error = 'Username already in use';
                 break;
             }
-            //check length is ok
+ 
 
             //check passwords are identical
-
+            if($_POST['password'] !== $_POST['password_verification']) {
+                $error = "passwords are not matching";
+                break;
+            }
             // register in database
             break;
         case 'logout':
