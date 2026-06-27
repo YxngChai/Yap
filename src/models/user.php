@@ -2,10 +2,12 @@
 
 
 class User{
-    public static function create(PDO $pdo, array $userData): void {
+    public static function create(PDO $pdo, array $userData): int {
     $sql = 'INSERT INTO users(username, name, surname, birth_date, email, password_hash) VALUES(:username, :name, :surname, :birth_date, :email, :password_hash)';
     $stmt = $pdo->prepare($sql);
     $stmt->execute($userData);
+
+    return $pdo->lastInsertId();
     }
 
     public static function findByEmail(PDO $pdo, string $email) {

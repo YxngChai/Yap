@@ -7,7 +7,7 @@ require __DIR__ . '/header.php'; ?>
 
 <main class="main">
     <!-- <h1>Yap</h1><br> -->
-    <section class="auth auth-signin hidden">
+    <section class="auth auth-signin">
         <h2>Sign in</h2>
         <form class="auth-form" method="POST" action="/yap/public/">
             <label>Email</label>
@@ -21,7 +21,7 @@ require __DIR__ . '/header.php'; ?>
     <p><?= htmlspecialchars($error) ?></p>
 <?php endif; ?>
     </section>
-    <section class="auth auth-signout">
+    <section class="auth auth-signout hidden">
         <h2>Sign up</h2>
         <form  class="auth-form" method="POST" action="/yap/public/">
             <label>Username</label>

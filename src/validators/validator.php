@@ -16,7 +16,7 @@ class Validator {
         }
 
         //check valid email not empty
-        if(!empty($ruleSet['mail']) && !filter_var($value, FILTER_VALIDATE_EMAIL)){
+        if(!empty($ruleSet['email']) && !filter_var($value, FILTER_VALIDATE_EMAIL)){
             $errors[] = "$field must be valid email";
         }
 
