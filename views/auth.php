@@ -7,7 +7,7 @@ require __DIR__ . '/header.php'; ?>
 
 <main class="main">
     <!-- <h1>Yap</h1><br> -->
-    <section class="auth auth-signin">
+    <section class="auth auth-signin <?= ($form ?? 'signin') === 'signup' ? 'hidden' : '' ?>">
         <h2>Sign in</h2>
         <form class="auth-form" method="POST" action="/yap/public/">
             <label>Email</label>
@@ -17,11 +17,11 @@ require __DIR__ . '/header.php'; ?>
             <input type="hidden" name="action" value="signin">
             <button class="auth__btn" type="submit">Login</button>
         </form>
-        <?php if (!empty($error)): ?>
-    <p><?= htmlspecialchars($error) ?></p>
+        <?php if (!empty($signInError)): ?>
+    <p class="auth__error"><?= htmlspecialchars($signInError) ?></p>
 <?php endif; ?>
     </section>
-    <section class="auth auth-signout hidden">
+    <section class="auth auth-signout <?= ($form ?? 'signin') === 'signup' ? '' : 'hidden' ?>">
         <h2>Sign up</h2>
         <form  class="auth-form" method="POST" action="/yap/public/">
             <label>Username</label>
@@ -41,8 +41,8 @@ require __DIR__ . '/header.php'; ?>
             <input type="hidden" name="action" value="signup">
             <button class="auth__btn" type="submit">Register</button>
         </form>
-                <?php if (!empty($error)): ?>
-    <p class="auth__error"><?= htmlspecialchars($error) ?></p>
+                <?php if (!empty($signUpError)): ?>
+    <p class="auth__error"><?= htmlspecialchars($signUpError) ?></p>
 <?php endif; ?>
     </section>
 </main>

@@ -4,24 +4,28 @@ require_once __DIR__ . '/../config/db.php';
 require_once __DIR__ . '/../models/user.php';
 require_once __DIR__ . '/../validators/validator.php';
 
-$error = null;
+$signInError = null;
+$signUpError = null;
 $old = $_POST;
 $data = $_POST;
+$form = 'signin';
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+
     switch ($_POST['action'])  {
         case 'signin':
+            $form = 'signin';
             //check fields are filled
             if (empty($data['email']) || empty($data['password'])) {
-            $error = "All fields are required";
+            $signInError = "All fields are required";
             break;
             } 
             // trim email
             $email = trim($data['email']);
             //check email format is valid
             if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-                $error = "Invalid email address";
+                $signInError = "Invalid email address";
                 break;
             }
             //check with db for user
@@ -34,10 +38,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                 exit;
             }
             //if incorrect credentials
-            $error = "Incorrect login details";
+            $signInError = "Incorrect login details";
             break; 
             
         case 'signup':
+            $form = 'signup';
             //verify attributes are respected
             $rules = [
                 'username' => ['required' => true, 'min' => 4, 'max' => 50],
@@ -49,7 +54,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             ];
             $errors = Validator::validate($data, $rules);
             if (!empty($errors)){
-                $error = implode(", ", $errors);
+                $signUpError = implode(", ", $errors);
                 break;
             }
             // check in db if username or email are already present
@@ -59,16 +64,16 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $userEmail = User::findByEmail($pdo, $email);
             $userUsername = User::findByUsername($pdo, $username);
             if ($userEmail) {
-                $error = 'Email already in use';
+                $signUpError = 'Email already in use';
                 break;
             }
             if ($userUsername) {
-                $error = 'Username already in use';
+                $signUpError = 'Username already in use';
                 break;
             }
             //check passwords are identical
             if($data['password'] !== $data['password_verification']) {
-                $error = "passwords do not matching";
+                $signUpError = "passwords do not match";
                 break;
             }
             // register in database
