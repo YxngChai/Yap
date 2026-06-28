@@ -4,6 +4,8 @@ require_once __DIR__ . '/../config/db.php';
 require_once __DIR__ . '/../models/user.php';
 require_once __DIR__ . '/../validators/validator.php';
 
+$pdo = Database::getConnection();
+
 $signInError = null;
 $signUpError = null;
 $old = $_POST;
@@ -37,6 +39,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 header('Location: /yap/public/');
                 exit;
+                break;
             }
             //if incorrect credentials
             $signInError = "Incorrect login details";
@@ -97,6 +100,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             header('Location: /yap/public/');
             exit;
+            break;
         case 'logout':
             //logout
             session_unset();
