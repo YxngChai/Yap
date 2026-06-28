@@ -32,7 +32,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $user = User::findByEmail($pdo, $email);
             //assign to session if correct credentials
             if ($user && password_verify($data['password'], $user['password_hash'])){
-                $_SESSION['user_id'] = $user['id'];
+                unset($user['password_hash']);
+                $_SESSION['user'] = $user;
 
                 header('Location: /yap/public/');
                 exit;
@@ -85,7 +86,15 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'email' => $email,
                 'password_hash' => password_hash($data['password'], PASSWORD_DEFAULT),
             ]);
-            $_SESSION['user_id'] = $userId;
+            $_SESSION['user'] = [
+                'id' => $userId,
+                'username' => $username,
+                'name' => $data['name'],
+                'surname' => $data['surname'],
+                'email' => $email,
+                'birth_date' => $data['birth_date'],
+            ];
+            
             header('Location: /yap/public/');
             exit;
         case 'logout':

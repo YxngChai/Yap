@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 }
 
-if(!isset($_SESSION['user_id'])){
+if(!isset($_SESSION['user'])){
     require __DIR__ . '/../src/controllers/authController.php';
     exit;
     }
