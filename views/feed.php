@@ -11,14 +11,15 @@ $pageCss = 'feed.css';
 
 
 <section class="feed">
-    <section>
-        <form action="/yap/public/" method="POST" class="post__form">
+    <section class="post__create">
+        <form action="/yap/public/" method="POST" class="post__form" >
             <label class="post__form-title">Create Post</label>
-            <textarea class="post__form-input" name="post_content" type="textarea" minlength="1" maxlength="1000" placeholder="Write something"></textarea>
+            <textarea class="post__form-textarea" name="post_content" type="textarea" minlength="1" maxlength="1000" placeholder="Write something"></textarea>
             <input type="hidden" name="action" value="create_post">
             <button class="post__form-btn" type="submit">Post</button>
         </form>
     </section>
+
     <article class="post">
         <header class="post__header">
             <h2 class="post__title">Author name</h2>
