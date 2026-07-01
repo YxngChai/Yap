@@ -15,5 +15,16 @@ class Post{
 
     return $stmt->rowCount() > 0;
     }
+    public static function update(PDO $pdo, array $postData): void {
+    $sql = 'UPDATE posts SET content = :content, `image_path` = :image_path WHERE id = :id AND user_id = :user_id';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute($postData);
+    }
+    public static function removeImage(PDO $pdo,  int $postId, int $postUserId): void {
+    $sql = 'UPDATE posts SET  image_path = NULL WHERE id = :id AND user_id = :user_id';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['id' => $postId, 'user_id' => $postUserId]);
+    }
+
 
 }
