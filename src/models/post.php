@@ -25,6 +25,23 @@ class Post{
     $stmt = $pdo->prepare($sql);
     $stmt->execute(['id' => $postId, 'user_id' => $postUserId]);
     }
-
+    public static function findById(PDO $pdo, int $id): array| false {
+    $sql = 'SELECT * FROM posts WHERE id = :id';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['id' => $id]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    public static function findUserPosts(PDO $pdo, int $userId): array {
+    $sql = 'SELECT * FROM posts WHERE user_id = :user_id ORDER BY created_at DESC';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['user_id' => $userId]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public static function findAll(PDO $pdo): array {
+    $sql = 'SELECT * FROM posts ORDER BY created_at DESC';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
 }
