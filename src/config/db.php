@@ -1,5 +1,6 @@
 <?php
 
+if (!class_exists('Database')) {
 class Database 
 {
     private static ?PDO $pdo = null;
@@ -11,4 +12,5 @@ class Database
         }
         return self::$pdo;
    }
+}
 }

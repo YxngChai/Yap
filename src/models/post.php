@@ -1,6 +1,4 @@
 <?php
-require __DIR__ . '/../config/db.php';
-
 
 class Post{
     public static function create(PDO $pdo, array $postData): void {

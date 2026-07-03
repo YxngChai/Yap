@@ -1,6 +1,5 @@
 <?php
 
-require_once __DIR__ . '/../config/db.php';
 require_once __DIR__ . '/../models/user.php';
 require_once __DIR__ . '/../validators/validator.php';
 
