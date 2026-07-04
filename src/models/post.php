@@ -36,7 +36,16 @@ class Post{
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     public static function findAll(PDO $pdo): array {
-    $sql = 'SELECT * FROM posts ORDER BY created_at DESC';
+    $sql = 'SELECT 
+        p.id AS id, 
+        p.content AS content, 
+        p.image_path AS image_path,
+        p.created_at AS created_at,
+        u.username AS username
+        FROM posts AS p 
+        JOIN users AS u 
+        ON p.user_id = u.id
+        ORDER BY p.created_at DESC';
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -25,7 +25,7 @@ $pageCss = 'feed.css';
     <?php foreach($posts as $post): ?>
     <article class="post">
         <header class="post__header">
-            <h2 class="post__title"><?= $post["user_id"] ?></h2>
+            <h2 class="post__username"><?= $post["username"] ?></h2>
             <time class="post__time"><?= $post["created_at"] ?></time>
             <button class="post__btn" type="button" aria-label="Delete post">...</button>
         </header>
@@ -33,7 +33,7 @@ $pageCss = 'feed.css';
     </article>
      <?php endforeach; ?>
     <?php endif; ?>
-    
+
     <h2>Me at the cinema</h2>
     <img src="https://img.pastemagazine.com/wp-content/uploads/2022/06/21005745/baby-yoda-snacks-main.jpg" alt=""><br>
     <h2>Me and my friends</h2>
