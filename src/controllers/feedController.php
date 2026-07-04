@@ -28,6 +28,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         
     }
 }
+$posts = Post::findAll($pdo);
+
 
 
 require __DIR__ . "/../../views/feed.php";

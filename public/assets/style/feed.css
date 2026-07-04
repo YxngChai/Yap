@@ -5,6 +5,9 @@
     flex-direction: column;
     align-items: center;
 }
+.feed__title{
+    margin: 20px;
+}
 /* posts */
 .post{
     border: 1px solid #ecc2fd72;
@@ -12,6 +15,7 @@
     border-radius: 15px;
     background-color: rgba(242, 242, 242, 0.548);
     padding: 10px;
+    width: 100%;
     max-width: 700px;
     margin: 15px 0;
 }
@@ -21,12 +25,16 @@
  position: relative;
  padding: 10px;
 }
+
 .post__btn{
     position: absolute;
     top: 5px;
     right: 10px;
     border: none;
     box-shadow: none;
+}
+.post__time{
+    font-size: 0.8em;
 }
 .post__content{
     padding: 10px;

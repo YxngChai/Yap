@@ -20,24 +20,20 @@ $pageCss = 'feed.css';
         </form>
     </section>
 
+    <?php if(!empty($posts)): ?>
+
+    <?php foreach($posts as $post): ?>
     <article class="post">
         <header class="post__header">
-            <h2 class="post__title">Author name</h2>
-            <time class="post__time">date created</time>
+            <h2 class="post__title"><?= $post["user_id"] ?></h2>
+            <time class="post__time"><?= $post["created_at"] ?></time>
             <button class="post__btn" type="button" aria-label="Delete post">...</button>
         </header>
-        <p class="post__content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus, quas perspiciatis sit ullam dicta et voluptas sunt repellendus aut molestias soluta. Expedita laborum consectetur nam officia quasi veniam quis nesciunt.</p>
+        <p class="post__content"><?= $post["content"] ?></p>
     </article>
-    <article class="post">
-        <header class="post__header">
-            <h2 class="post__title">Author name</h2>
-            <time class="post__time">date created</time>
-            <button class="post__btn" type="button" aria-label="Delete post">...</button>
-        </header>
-        <p class="post__content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus, quas perspiciatis sit ullam dicta et voluptas sunt repellendus aut molestias soluta. Expedita laborum consectetur nam officia quasi veniam quis nesciunt.</p>
-    </article>
-
-
+     <?php endforeach; ?>
+    <?php endif; ?>
+    
     <h2>Me at the cinema</h2>
     <img src="https://img.pastemagazine.com/wp-content/uploads/2022/06/21005745/baby-yoda-snacks-main.jpg" alt=""><br>
     <h2>Me and my friends</h2>
