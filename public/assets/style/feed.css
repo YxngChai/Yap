@@ -22,7 +22,6 @@
 }
 .post__header {
     background-color: rgba(242, 242, 242, 0.548);
-    border-radius: 10px;
     position: relative;
     padding: 10px;
 }
@@ -42,8 +41,9 @@
     font-size: 0.8em;
 }
 .post__content{
+    z-index: 10;
     padding: 20px 10px;
-   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+   box-shadow: rgba(234, 28, 224, 0.074) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
 
 .post__footer{
