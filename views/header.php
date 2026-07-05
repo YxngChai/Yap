@@ -11,12 +11,6 @@
     <?php if (isset($pageCss)): ?>
         <link rel="stylesheet" href="/yap/public/assets/style/<?= $pageCss ?>">
     <?php endif; ?>
-
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
-     <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
-> -->
     <title><?=  isset($pageTitle)? htmlspecialchars($pageTitle) : 'Yap' ?>
     </title> 
 </head>
@@ -30,7 +24,7 @@
             <li >
                 <?php if (isset($_SESSION['user'])): ?>
                     <div class="header__profile-section">
-                        <a href="#"><img class="header__profile-picture" src="../public/assets/images/profile_anonymous_mini.jpeg"></img></a>
+                        <a href="/yap/public/profile/<?= htmlspecialchars((string) $_SESSION['user']['id'])?>"><img class="header__profile-picture" src="../public/assets/images/profile_anonymous_mini.jpeg"></a>
                         <h3><?=$_SESSION['user']['username'] ?></h3>
                         <form method="POST" action="/yap/public/">
                             <input type="hidden" name="action" value="logout">
