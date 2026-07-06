@@ -30,7 +30,17 @@ class Post{
     return $stmt->fetch(PDO::FETCH_ASSOC);
     }
     public static function findUserPosts(PDO $pdo, int $userId): array {
-    $sql = 'SELECT * FROM posts WHERE user_id = :user_id ORDER BY created_at DESC';
+    $sql = 'SELECT 
+        p.id AS id, 
+        p.content AS content, 
+        p.image_path AS image_path,
+        p.created_at AS created_at,
+        u.username AS username
+        FROM posts AS p 
+        JOIN users AS u 
+        ON p.user_id = u.id
+        WHERE p.user_id = :user_id
+        ORDER BY p.created_at DESC';
     $stmt = $pdo->prepare($sql);
     $stmt->execute(['user_id' => $userId]);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
