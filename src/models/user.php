@@ -21,6 +21,12 @@ class User{
     $stmt->execute(['username' => $username]);
     return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+    public static function findById(PDO $pdo, int $userId) {
+    $sql = 'SELECT * FROM  users WHERE id = :userId';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['userId' => $userId]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 
 
 }

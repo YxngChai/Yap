@@ -1,5 +1,6 @@
 <?php
 $pageCss = 'profile.css';
+/** @var array $user */
 ?>
 
 
@@ -21,7 +22,7 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
                 <img class="user-header__profile" src="/yap/public/assets/images/profile_anonymous.jpeg">
             </div>
         </div>
-        <h1  class="user-header__username"><?= htmlspecialchars((string) $_SESSION['user']['username'])?></h1>
+        <h1  class="user-header__username"><?= htmlspecialchars((string) $user['username'])?></h1>
     </section>
     <section class="feed">
         <section class="post__create">
@@ -59,6 +60,5 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
 </div>
 </main>
 
-<!-- Feed content from pdo request -->
 <?php require __DIR__ . '/footer.php'; ?>
 
