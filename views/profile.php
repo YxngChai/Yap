@@ -20,6 +20,7 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
             <label class="post__form-title">Create Post</label>
             <textarea class="post__form-textarea" name="post_content" type="textarea" minlength="1" maxlength="1000" placeholder="Write something"></textarea>
             <input type="hidden" name="action" value="create_post">
+            <input type="hidden" name="redirect" value="<?= $_SERVER['REQUEST_URI'] ?>">
             <button class="post__form-btn" type="submit">Post</button>
         </form>
     </section>

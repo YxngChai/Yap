@@ -44,16 +44,19 @@ if ($method === 'GET') {
 
 if ($method === 'POST') {
 
-
+var_dump($action);
     if (in_array($action, ['signin', 'signup', 'logout'])) {
         require __DIR__ . '/../src/controllers/authController.php';
         exit;
     }
 
+
     if (in_array($action, ['create_post', 'delete_post'])) {
-        require __DIR__ . '/../src/controllers/feedController.php';
+        require __DIR__ . '/../src/controllers/postController.php';
         exit;
+
     }
+
 
     if (in_array($action, ['create_comment', 'delete_comment'])) {
         require __DIR__ . '/../src/controllers/commentController.php';
