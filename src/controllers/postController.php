@@ -12,6 +12,13 @@ switch ($_POST['action']) {
             'user_id' => $_SESSION['user']['id'],
         ]);
         header('Location: ' . ($_POST['redirect'] ?? '/yap/public/'));
+    case 'delete_post':
+            // header('Location: /yap/public/');
+        exit;
+    case 'remove picture':
+        break;
+    case 'update_post':
+        exit;
         exit;
 
 }

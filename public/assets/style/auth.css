@@ -29,6 +29,9 @@
   width: 100px;
   text-align: center;
   padding: 4px 0;
+  border: 1px solid var(--light-color);
+  box-shadow: 1px 1px 8px rgba(119, 119, 119, 0.47);
+  border-radius: 8px;
 }
 .auth__error {
   color: red;

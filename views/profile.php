@@ -1,5 +1,5 @@
 <?php
-$pageCss = 'feed.css';
+$pageCss = 'profile.css';
 ?>
 
 
@@ -11,43 +11,52 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
 ?>
 
 <main>
-    <h1 class="feed__title">My Profile</h1>
-
-
-<section class="feed">
-    <section class="post__create">
-        <form action="/yap/public/" method="POST" class="post__form" >
-            <label class="post__form-title">Create Post</label>
-            <textarea class="post__form-textarea" name="post_content" type="textarea" minlength="1" maxlength="1000" placeholder="Write something"></textarea>
-            <input type="hidden" name="action" value="create_post">
-            <input type="hidden" name="redirect" value="<?= $_SERVER['REQUEST_URI'] ?>">
-            <button class="post__form-btn" type="submit">Post</button>
-        </form>
+<div class="profile">
+    <section  class="user-header">
+        <div class="user-header__images">
+            <div class="user-header__wallpaper-container">
+                <img class="user-header__wallpaper" src="/yap/public/assets/images/default-wallpaper.jpg">
+            </div>
+            <div class="user-header__profile-container">
+                <img class="user-header__profile" src="/yap/public/assets/images/profile_anonymous.jpeg">
+            </div>
+        </div>
+        <h1  class="user-header__username"><?= htmlspecialchars((string) $_SESSION['user']['username'])?></h1>
     </section>
+    <section class="feed">
+        <section class="post__create">
+            <form action="/yap/public/" method="POST" class="post__form" >
+                <textarea class="post__form-textarea" name="post_content" type="textarea" minlength="1" maxlength="1000" placeholder="Write something"></textarea>
+                <input type="hidden" name="action" value="create_post">
+                <input type="hidden" name="redirect" value="<?= $_SERVER['REQUEST_URI'] ?>">
+                <button class="post__form-btn" type="submit">Post</button>
+            </form>
+        </section>
 
-    <?php if(!empty($posts)): ?>
+        <?php if(!empty($posts)): ?>
 
-    <?php foreach($posts as $post): ?>
-    <article class="post">
-        <header class="post__header">
-            <h2 class="post__username"><?= $post["username"] ?></h2>
-            <time class="post__time"><?= $post["created_at"] ?></time>
-            <button class="post__btn" type="button" aria-label="Delete post">...</button>
-        </header>
-        <p class="post__content"><?= $post["content"] ?></p>
-        <footer class="post__footer">
-            <button class="post__like">
-                <?= $likeIcon ?>
-            </button><span>12</span>
-            <button class="post__comment">
-                <?= $commentIcon ?>
-            </button><span>3</span>
-        </footer>
-    </article>
-     <?php endforeach; ?>
-    <?php endif; ?>
+        <?php foreach($posts as $post): ?>
+        <article class="post">
+            <header class="post__header">
+                <h2 class="post__username"><?= $post["username"] ?></h2>
+                <time class="post__time"><?= $post["created_at"] ?></time>
+                <button class="post__btn" type="button" aria-label="Delete post">...</button>
+            </header>
+            <p class="post__content"><?= $post["content"] ?></p>
+            <footer class="post__footer">
+                <button class="post__like">
+                    <?= $likeIcon ?>
+                </button><span>12</span>
+                <button class="post__comment">
+                    <?= $commentIcon ?>
+                </button><span>3</span>
+            </footer>
+        </article>
+        <?php endforeach; ?>
+        <?php endif; ?>
 
-</section>
+    </section>
+</div>
 </main>
 
 <!-- Feed content from pdo request -->

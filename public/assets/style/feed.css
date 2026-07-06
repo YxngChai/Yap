@@ -1,99 +1,102 @@
 @import "global.css";
 
 .feed {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
 }
-.feed__title{
-    margin: 20px;
+.feed__title {
+  margin: 20px;
 }
-/* posts */
-.post{
-    border: 1px solid #ecc2fd72;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-    border-radius: 15px;
-    background-color: #fcfcfc;
-    /* padding: 10px; */
-    width: 100%;
-    max-width: 700px;
-    margin: 15px 0;
-    overflow: hidden;
+/* posts card */
+.post {
+  border: 1px solid #ecc2fd72;
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  border-radius: 15px;
+  background-color: #fcfcfc;
+  width: 100%;
+  max-width: 700px;
+  margin: 15px 0;
+  overflow: hidden;
 }
 .post__header {
-    background-color: rgba(242, 242, 242, 0.548);
-    position: relative;
-    padding: 10px;
+  background-color: rgba(242, 242, 242, 0.548);
+  position: relative;
+  padding: 10px;
 }
 
-.post__btn{
-    position: absolute;
-    top: 5px;
-    right: 10px;
-    border: none;
-    box-shadow: none;
+.post__btn {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  border: none;
+  box-shadow: none;
 }
-.post__username{
-    font-size: 1.4em;
-    margin-bottom: 10px;
+.post__username {
+  font-size: 1.4em;
+  margin-bottom: 10px;
 }
-.post__time{
-    font-size: 0.8em;
+.post__time {
+  font-size: 0.8em;
 }
-.post__content{
-    z-index: 10;
-    padding: 20px 10px;
-   box-shadow: rgba(234, 28, 224, 0.074) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+.post__content {
+  z-index: 10;
+  padding: 20px 10px;
+  box-shadow:
+    rgba(234, 28, 224, 0.074) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
 
-.post__footer{
-   padding: 5px 0;
-   display: flex;
-   align-items: center;
+.post__footer {
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
 }
-.post__like, .post__comment{
-    width: 20px;
-    padding:  5px 10px;
-
+.post__like,
+.post__comment {
+  width: 20px;
+  padding: 5px 10px;
 }
 /* create a post form */
-.post__create{
-    border: 1px solid #ecc2fd72;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    border-radius: 15px;
-    background-color: rgba(242, 242, 242, 0.548);
-    padding: 10px;
-    width: 100%;
-    max-width: 700px;
-    margin: 15px 0;
+.post__create {
+  border: 1px solid #ecc2fd72;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  background-color: rgba(242, 242, 242, 0.548);
+  padding: 10px;
+  width: 100%;
+  max-width: 700px;
+  margin: 15px 0;
 }
-.post__form{
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    
+.post__form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
 }
-.post__form-title{
-    padding:  0 0 10px 2px;
-    font-weight: 700;
-    font-size: 1.2em;
+.post__form-title {
+  padding: 0 0 10px 2px;
+  font-weight: 700;
+  font-size: 1.2em;
 }
-.post__form-textarea{
-    margin: 10px 0;
-    border-radius: 15px;
-    padding: 10px;
-      min-height: 120px;
-    resize: vertical;
+.post__form-textarea {
+  margin: 10px 0;
+  border-radius: 15px;
+  padding: 10px;
+  min-height: 100px;
+  resize: none;
 }
-.post__form-btn{
-    border-radius: 8px;
-    color: var(--pale-color);
-    text-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
-    font-weight: 700;
-    margin: 10px 0 0 0;
-    padding: 8px;
-    text-align: center;
-    border: 1px solid #ecc2fd72;
-    background-color: #d97ffd;
-    box-shadow: 0 0 15px rgba(116, 116, 116, 0.322);
+.post__form-btn {
+  border-radius: 8px;
+  color: var(--pale-color);
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+  font-weight: 700;
+  margin: 10px 0 0 0;
+  padding: 8px;
+  text-align: center;
+  border: 1px solid #ecc2fd72;
+  background-color: #d97ffd;
+  box-shadow: 0 0 15px rgba(116, 116, 116, 0.322);
 }
