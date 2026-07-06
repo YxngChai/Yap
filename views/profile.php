@@ -1,6 +1,7 @@
 <?php
 $pageCss = 'profile.css';
 /** @var array $user */
+/** @var bool $isOwnProfile */
 ?>
 
 
@@ -25,6 +26,7 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
         <h1  class="user-header__username"><?= htmlspecialchars((string) $user['username'])?></h1>
     </section>
     <section class="feed">
+        <?php if($isOwnProfile): ?>
         <section class="post__create">
             <form action="/yap/public/" method="POST" class="post__form" >
                 <textarea class="post__form-textarea" name="post_content" type="textarea" minlength="1" maxlength="1000" placeholder="Write something"></textarea>
@@ -33,7 +35,7 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
                 <button class="post__form-btn" type="submit">Post</button>
             </form>
         </section>
-
+        <?php endif; ?>
         <?php if(!empty($posts)): ?>
 
         <?php foreach($posts as $post): ?>
