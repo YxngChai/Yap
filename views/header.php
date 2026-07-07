@@ -29,6 +29,10 @@
                         <h3><?=$_SESSION['user']['username'] ?></h3>
                         <form method="POST" action="/yap/public/">
                             <input type="hidden" name="action" value="logout">
+                            <input
+                            type="hidden"
+                            name="csrf_token"
+                            value="<?= htmlspecialchars(csrfToken()) ?>">
                             <button class="header__profile-logout-btn" type="submit">Logout</button>
                         </form>
                     </div>

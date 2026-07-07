@@ -2,6 +2,11 @@
 
 
 session_start();
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
+require_once __DIR__ . '/../src/helpers/csrf.php';
 
 
 ini_set('display_errors', 1);
@@ -44,7 +49,8 @@ if ($method === 'GET') {
 
 if ($method === 'POST') {
 
-var_dump($action);
+// var_dump($action);
+
     if (in_array($action, ['signin', 'signup', 'logout'])) {
         require __DIR__ . '/../src/controllers/authController.php';
         exit;

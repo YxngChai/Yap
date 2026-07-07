@@ -32,6 +32,10 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
                 <textarea class="post__form-textarea" name="post_content" type="textarea" minlength="1" maxlength="1000" placeholder="Write something"></textarea>
                 <input type="hidden" name="action" value="create_post">
                 <input type="hidden" name="redirect" value="<?= $_SERVER['REQUEST_URI'] ?>">
+                <input
+                type="hidden"
+                name="csrf_token"
+                value="<?= htmlspecialchars(csrfToken()) ?>">
                 <button class="post__form-btn" type="submit">Post</button>
             </form>
         </section>

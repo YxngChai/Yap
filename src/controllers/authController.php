@@ -12,7 +12,7 @@ $data = $_POST;
 $form = 'signin';
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
-
+    verifyCsrf();
 
     switch ($_POST['action'])  {
         case 'signin':

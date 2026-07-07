@@ -4,6 +4,8 @@ require_once __DIR__ . '/../models/post.php';
 
 $pdo = Database::getConnection();
 
+verifyCsrf();
+
 switch ($_POST['action']) {
     case 'create_post':
         Post::create($pdo, [

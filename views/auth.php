@@ -15,6 +15,11 @@ require __DIR__ . '/header.php'; ?>
             <label>Password</label>
             <input type="password" name="password" required>
             <input type="hidden" name="action" value="signin">
+            <input
+    type="hidden"
+    name="csrf_token"
+    value="<?= htmlspecialchars(csrfToken()) ?>"
+>
             <button class="auth__btn" type="submit">Login</button>
         </form>
         <?php if (!empty($signInError)): ?>
@@ -39,6 +44,10 @@ require __DIR__ . '/header.php'; ?>
             <label>Verify Password</label>
             <input type="password" name="password_verification" minlength="8" maxlength="72"  autocomplete="password" required>
             <input type="hidden" name="action" value="signup">
+            <input
+            type="hidden"
+            name="csrf_token"
+            value="<?= htmlspecialchars(csrfToken()) ?>">
             <button class="auth__btn" type="submit">Register</button>
         </form>
                 <?php if (!empty($signUpError)): ?>
