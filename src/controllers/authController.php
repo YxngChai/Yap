@@ -51,6 +51,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'username' => ['required' => true, 'min' => 4, 'max' => 50],
                 'name' => ['required' => true, 'min' => 2, 'max' => 50],
                 'surname' => ['required' => true, 'min' => 2, 'max' => 100],
+                'birth_date' => ['required' => true, 'date' => true],
                 'email' => ['required' => true, 'max' => 100, 'email' => true],
                 'password' => ['required' => true, 'min' => 8, 'max' => 72],
                 'password_verification' => ['required' => true],
