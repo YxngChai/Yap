@@ -1,5 +1,3 @@
-// src/helpers/csrf.php
-
 <?php
 
 function csrfToken(): string

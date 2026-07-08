@@ -31,6 +31,16 @@ class Validator {
                 $errors[] = "$field must be at most {$ruleSet['max']} characters";
             }
         }
+        if (!empty($ruleSet['username'])) {
+            if (!preg_match('/^[a-zA-Z0-9_]+$/', $value)) {
+                $errors[] = "$field contains invalid characters";
+            }
+        }
+        if (!empty($ruleSet['name'])) {
+            if (!preg_match("/^[\p{L}' -]+$/u", $value)) {
+                $errors[] = "$field contains invalid characters";
+            }
+        }
         if(!empty($ruleSet['date'])) {
             $date = DateTime::createFromFormat('Y-m-d', $value);
 

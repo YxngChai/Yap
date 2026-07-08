@@ -48,9 +48,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $form = 'signup';
             //verify attributes are respected
             $rules = [
-                'username' => ['required' => true, 'min' => 4, 'max' => 50],
-                'name' => ['required' => true, 'min' => 2, 'max' => 50],
-                'surname' => ['required' => true, 'min' => 2, 'max' => 100],
+                'username' => ['required' => true, 'min' => 4, 'max' => 50, 'username' => true],
+                'name' => ['required' => true, 'min' => 2, 'max' => 50, 'name' => true],
+                'surname' => ['required' => true, 'min' => 2, 'max' => 100, 'name' => true],
                 'birth_date' => ['required' => true, 'date' => true],
                 'email' => ['required' => true, 'max' => 100, 'email' => true],
                 'password' => ['required' => true, 'min' => 8, 'max' => 72],

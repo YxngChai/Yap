@@ -63,14 +63,20 @@
 /* create a post form */
 .post__create {
   border: 1px solid #ecc2fd72;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   border-radius: 15px;
-  background-color: rgba(242, 242, 242, 0.548);
+  background-color: #fcfcfc;
   padding: 10px;
   width: 100%;
   max-width: 700px;
   margin: 15px 0;
 }
+.post__create:focus-within {
+  background-color: var(--pale-color);
+}
+
 .post__form {
   display: flex;
   flex-direction: column;
@@ -87,6 +93,11 @@
   padding: 10px;
   min-height: 100px;
   resize: none;
+}
+.post__form-textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(242, 0, 255, 0.344);
 }
 .post__form-btn {
   border-radius: 8px;
