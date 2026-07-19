@@ -29,14 +29,14 @@ if(!isset($_SESSION['user'])){
     }
 
 if ($method === 'GET') { 
-        if (preg_match('#^/yap/public/profile/(\d+)$#', $uri, $matches)) {
+        if (preg_match('#^/yap/public/user/(\d+)$#', $uri, $matches)) {
         // for other user's profile
         $_GET['user_id'] = (int) $matches[1];
         require __DIR__ . '/../src/controllers/profileController.php';
         exit;
         }
         // for own profile
-        if (preg_match('#^/yap/public/profile/?$#', $uri)) {
+        if (preg_match('#^/yap/public/user/?$#', $uri)) {
         $_GET['user_id'] = $_SESSION['user']['id'];
         require __DIR__ . '/../src/controllers/profileController.php';
         exit;
