@@ -50,9 +50,9 @@ require __DIR__ . '/header.php'; ?>
             value="<?= htmlspecialchars(csrfToken()) ?>">
             <button class="auth__btn" type="submit">Register</button>
         </form>
-                <?php if (!empty($signUpError)): ?>
-    <p class="auth__error"><?= htmlspecialchars($signUpError) ?></p>
-<?php endif; ?>
+        <?php if (!empty($signUpError)): ?>
+            <p class="auth__error"><?= htmlspecialchars($signUpError) ?></p>
+        <?php endif; ?>
     </section>
 </main>
 

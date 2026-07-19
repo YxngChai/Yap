@@ -111,3 +111,9 @@
   background-color: #d97ffd;
   box-shadow: 0 0 15px rgba(116, 116, 116, 0.322);
 }
+
+/* errors */
+
+.post__error {
+  color: var(--primary-color);
+}

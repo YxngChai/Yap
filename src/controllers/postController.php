@@ -10,16 +10,19 @@ $pdo = Database::getConnection();
 verifyCsrf();
 
 $data = $_POST;
+$_SESSION['old_post_content'] = $data['post_content'];
 
 switch ($_POST['action']) {
     case 'create_post':
 
         $rules = [
-            'post_content' => ['min' => 1, 'max' => 1000],
+            'post_content' => ['min' => 1, 'max' => 2000],
         ];
         $errors = Validator::validatePost($data, $rules);
         if(!empty($errors)){
-            $signUpError = implode(", ", $errors);
+            $_SESSION['errors'] = $errors;
+            echo "empty";
+            header('Location: ' . ($_POST['redirect'] ?? '/yap/public/'));
             var_dump($signUpError);
             break;
             
@@ -31,6 +34,7 @@ switch ($_POST['action']) {
             'user_id' => $_SESSION['user']['id'],
         ]);
         header('Location: ' . ($_POST['redirect'] ?? '/yap/public/'));
+        exit;
     case 'delete_post':
             // header('Location: /yap/public/');
         exit;

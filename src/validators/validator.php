@@ -75,17 +75,16 @@ class Validator {
 
         if (isset($ruleSet['min'])){
             if (strlen(trim($value)) < $ruleSet['min']) {
-                $errors[] = "$field must be at least {$ruleSet['min']} characters";
+                $errors[] = "Must be at least {$ruleSet['min']} characters!";
             }
         }
         if (isset($ruleSet['max'])){
             if (strlen(trim($value)) > $ruleSet['max']) {
-                $errors[] = "$field cannot exceed {$ruleSet['max']} characters";
+                $errors[] = "Cannot exceed {$ruleSet['max']} characters!";
             }
         }
         }
         return $errors;
-        // text is not empty
-        // text is not too long
+
     }
 }
