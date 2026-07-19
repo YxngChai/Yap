@@ -2,7 +2,7 @@
 
 class Validator {
 
-    public static function validate(array $data ,array $rules) {
+    public static function validateNewUser(array $data ,array $rules) {
         $errors = [];
 
         foreach($rules as $field => $ruleSet) {
@@ -66,5 +66,26 @@ class Validator {
 
         }
         return $errors;
+    }
+    public static function validatePost(array $data ,array $rules) {
+        $errors = [];
+        foreach($rules as $field => $ruleSet) {
+
+        $value = trim((string)($data[$field] ?? ''));
+
+        if (isset($ruleSet['min'])){
+            if (strlen(trim($value)) < $ruleSet['min']) {
+                $errors[] = "$field must be at least {$ruleSet['min']} characters";
+            }
+        }
+        if (isset($ruleSet['max'])){
+            if (strlen(trim($value)) > $ruleSet['max']) {
+                $errors[] = "$field cannot exceed {$ruleSet['max']} characters";
+            }
+        }
+        }
+        return $errors;
+        // text is not empty
+        // text is not too long
     }
 }

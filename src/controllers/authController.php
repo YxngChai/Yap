@@ -58,7 +58,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'password' => ['required' => true, 'min' => 8, 'max' => 72],
                 'password_verification' => ['required' => true],
             ];
-            $errors = Validator::validate($data, $rules);
+            $errors = Validator::validateNewUser($data, $rules);
             if (!empty($errors)){
                 $signUpError = implode(", ", $errors);
                 break;
