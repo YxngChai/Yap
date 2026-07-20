@@ -25,16 +25,20 @@
             <li >
                 <?php if (isset($_SESSION['user'])): ?>
                     <div class="header__profile-section">
-                        <a href="/yap/public/user/<?= htmlspecialchars((string) $_SESSION['user']['id'])?>"><img class="header__profile-picture" src="/yap/public/assets/images/profile_anonymous_mini.jpeg"></a>
-                        <h3><?=$_SESSION['user']['username'] ?></h3>
-                        <form method="POST" action="/yap/public/">
-                            <input type="hidden" name="action" value="logout">
-                            <input
-                            type="hidden"
-                            name="csrf_token"
-                            value="<?= htmlspecialchars(csrfToken()) ?>">
-                            <button class="header__profile-logout-btn" type="submit">Logout</button>
-                        </form>
+                        <button popovertarget="profile-menu">
+                            <img class="header__profile-picture" src="/yap/public/assets/images/profile_anonymous_mini.jpeg">
+                        </button>
+                        <div id="profile-menu" popover>
+                            <a href="/yap/public/user/<?= htmlspecialchars((string) $_SESSION['user']['id'])?>"><h3><?=$_SESSION['user']['username'] ?></h3></a>
+                            <form method="POST" action="/yap/public/">
+                                <input type="hidden" name="action" value="logout">
+                                <input
+                                type="hidden"
+                                name="csrf_token"
+                                value="<?= htmlspecialchars(csrfToken()) ?>">
+                                <button class="header__profile-logout-btn" type="submit">Logout</button>
+                            </form>
+                        </div>
                     </div>
                 <?php else: ?>
                     <div class="header__auth-section">
