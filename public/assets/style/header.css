@@ -15,6 +15,9 @@ main {
   padding: 15px;
   box-shadow: 0 0 8px black;
   z-index: 10;
+  position: sticky;
+  width: 100%;
+  top: 0;
 }
 .header__items {
   margin: 0 20px;
@@ -30,10 +33,9 @@ main {
   text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.27);
 }
 .header__profile-section {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  /* display: inline-block; */
   gap: 20px;
+  position: relative;
 }
 .header__profile-logout-btn {
   border: 1px solid var(--light-color);
@@ -72,6 +74,31 @@ main {
   border: 1px solid black;
   color: white;
 }
+/* Popover */
+.profile-btn {
+  anchor-name: --profile-button;
+}
+
+.header__popover{
+  margin-top: 40px;
+  background-color: var(--pale-color);
+  border-radius: 15px 0 0 15px;
+  inset: 0;
+  padding: 15px;
+  border: none;
+  box-shadow: 2px -2px 15px rgba(0, 0, 0, 0.467);
+
+  position: absolute;
+  position-anchor: --profile-button;
+  position-area: bottom;
+}
+.header__popover:popover-open{
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 15px;
+}
+
 
 @media (max-width: 400px) {
   .header__auth-btn {
