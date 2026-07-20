@@ -9,10 +9,11 @@ $pdo = Database::getConnection();
 
 
 $userId = $_GET['user_id'];
-$isOwnProfile = $userId === $_SESSION['user']['id'];
+$username = $_GET['username'];
 
 $user = User::findById($pdo, $userId);
 
+$isOwnProfile = $user['id'] === $_SESSION['user']['id'];
 
 
 if (!$user) {

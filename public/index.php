@@ -29,6 +29,12 @@ if(!isset($_SESSION['user'])){
     }
 
 if ($method === 'GET') { 
+        if (preg_match('#^/yap/public/user/([a-zA-Z0-9_]+)$#', $uri, $matches)) {
+        // for other user's profile
+        $_GET['username'] = (string) $matches[1];
+        require __DIR__ . '/../src/controllers/profileController.php';
+        exit;
+        }
         if (preg_match('#^/yap/public/user/(\d+)$#', $uri, $matches)) {
         // for other user's profile
         $_GET['user_id'] = (int) $matches[1];
