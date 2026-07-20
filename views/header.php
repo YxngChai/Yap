@@ -29,7 +29,7 @@
                             <img class="header__profile-picture" src="/yap/public/assets/images/profile_anonymous_mini.jpeg">
                         </button>
                         <div id="profile-menu" popover>
-                            <a href="/yap/public/user/<?= htmlspecialchars((string) $_SESSION['user']['id'])?>"><h3><?=$_SESSION['user']['username'] ?></h3></a>
+                            <a href="/yap/public/user/<?= htmlspecialchars((string) $_SESSION['user']['username'])?>"><h3><?=$_SESSION['user']['username'] ?></h3></a>
                             <form method="POST" action="/yap/public/">
                                 <input type="hidden" name="action" value="logout">
                                 <input
