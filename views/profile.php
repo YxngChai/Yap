@@ -53,7 +53,7 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
         <?php foreach($posts as $post): ?>
         <article class="post">
             <header class="post__header">
-                <h2 class="post__username"><?= $post["username"] ?></h2>
+                <a href="/yap/public/user/<?= htmlspecialchars((string) $post["username"]) ?>"><h2 class="post__username"><?= $post["username"] ?></h2></a>
                 <time class="post__time"><?= $post["created_at"] ?></time>
                 <button class="post__btn" type="button" aria-label="Delete post">...</button>
             </header>
