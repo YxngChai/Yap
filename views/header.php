@@ -29,15 +29,20 @@
                             <img class="header__profile-picture" src="/yap/public/assets/images/profile_anonymous_mini.jpeg">
                         </button>
                         <div id="profile-menu" class="header__popover" popover>
-                            <a href="/yap/public/user/<?= htmlspecialchars((string) $_SESSION['user']['username'])?>"><h3><?=$_SESSION['user']['username'] ?></h3></a>
-                            <form method="POST" action="/yap/public/">
-                                <input type="hidden" name="action" value="logout">
-                                <input
-                                type="hidden"
-                                name="csrf_token"
-                                value="<?= htmlspecialchars(csrfToken()) ?>">
-                                <button class="header__profile-logout-btn" type="submit">Logout</button>
-                            </form>
+                            <nav>
+                                <ul class="popover__ul">
+                                    <li class="popover_li "><a href="/yap/public/user/<?= htmlspecialchars((string) $_SESSION['user']['username'])?>"><h3 class="popover__item popover__username"><?=$_SESSION['user']['username'] ?></h3></a></li>
+                                    <li class="popover_li"><h3 class="popover__item">Settings</h3></li>
+                                    <li class="popover_li"><form method="POST" action="/yap/public/">
+                                        <input type="hidden" name="action" value="logout">
+                                        <input
+                                        type="hidden"
+                                        name="csrf_token"
+                                        value="<?= htmlspecialchars(csrfToken()) ?>">
+                                        <button class="popover__item" type="submit">Logout</button>
+                                    </form></li>
+                                </ul>
+                            <nav>
                         </div>
                     </div>
                 <?php else: ?>

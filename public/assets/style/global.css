@@ -2,7 +2,7 @@
 
 :root {
   --primary-color: #af69ee;
-  --secondary-color: #a088b1;
+  --secondary-color: #d97ffd;
   --tertiary-color: #e03761;
   --light-color: #d5cabd;
   --pale-color: #fff6ff;
@@ -10,6 +10,9 @@
 
 body {
   font-family: "Inter";
+}
+main {
+  padding: 0 15px;
 }
 
 /* main {
