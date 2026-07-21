@@ -11,9 +11,6 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
 ?>
 
 <main>
-    <h1 class="feed__title">home</h1>
-
-
 <section class="feed">
     <section class="post__create">
         <form action="/yap/public/" method="POST" class="post__form" >

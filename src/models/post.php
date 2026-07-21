@@ -60,6 +60,23 @@ class Post{
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    // public static function findAllProgressiveLoading(PDO $pdo, int $offset): array {
+    // $sql = 'SELECT 
+    //     p.id AS id, 
+    //     p.content AS content, 
+    //     p.image_path AS image_path,
+    //     p.created_at AS created_at,
+    //     u.username AS username
+    //     FROM posts AS p 
+    //     JOIN users AS u 
+    //     ON p.user_id = u.id
+    //     ORDER BY p.created_at DESC
+    //     LIMIT 20 OFFSET :offset';
+    // $stmt = $pdo->prepare($sql);
+    // $stmt->execute(['offset' => $offset]);
+    // return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // }
+
 
 
 }

@@ -12,20 +12,20 @@ main {
 .header {
   background-color: var(--primary-color);
   color: var(--pale-color);
-  padding: 15px;
-  /* box-shadow: 0 0 8px black; */
+  height: 70px;
   z-index: 10;
   position: sticky;
   width: 100%;
   top: 0;
 }
 .header__items {
-  margin: 0 20px;
+  height: 100%;
+  margin: 0 35px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
 }
+
 .header__title {
   font-size: 2em;
   font-weight: 600;
@@ -33,16 +33,18 @@ main {
   margin-top: 5px;
   text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.27);
 }
-.header__profile-section {
-  gap: 20px;
+.header__profile-picture-container {
   position: relative;
-    line-height: 0;
+  line-height: 0;
+  margin-left: 15px;
+
 }
 
 .header__profile-picture {
   border-radius: 50%;
   box-shadow: 2px 2px 8px rgba(128, 128, 128, 0.333);
   width: 50px;
+  border:  1px solid var(--pale-color);
 }
 .header__auth-btn {
   width: 80px;
@@ -51,7 +53,7 @@ main {
   color: black;
   font-weight: 600;
   font-size: 0.9em;
-  border: 1px solid var(--light-color);
+  border: 1px solid white;
   box-shadow: 1px 1px 8px rgba(119, 119, 119, 0.47);
   border-radius: 8px;
 }
@@ -68,25 +70,45 @@ main {
   border: 1px solid black;
   color: white;
 }
+
+.header__nav{
+  display: flex;
+  align-items: center;
+  /* gap: 10px; */
+}
+.header__nav-container{
+   padding: 15px;
+}
+.header__nav-container:hover{
+  background-color: var(--secondary-color);
+}
+.header__nav-container.active{
+  background-color: var(--secondary-color);
+}
+.header__icon {
+  width: 40px;
+   fill: var(--pale-color);
+   /* padding: 70px 20px; */
+}
+
 /* Popover */
 .profile-btn {
   anchor-name: --profile-button;
 }
 
 .header__popover{
-  margin: 14px -1px 0 0;
-  background-color: var(--primary-color);
+  margin: 10px -1px 0 0;
+  background-color: var(--secondary-color);
   border-radius: 0 0 0 15px;
   inset: 0;
-  padding: 10px;
+  padding: 15px 10px;
   border: 1px solid var(--primary-color);
+  border-top: 1px solid var(--secondary-color);
 
 
   position: absolute;
   position-anchor: --profile-button;
   position-area: bottom;
-}
-.header__popover:popover-open{
 }
 .popover__ul{
   display: flex;
@@ -99,17 +121,17 @@ main {
   font-size: 1em;
   padding: 8px;
 }
-.popover_li{
-  min-width: 140px;
+.popover__li{
+  min-width: 160px;
   text-align: end;
   padding: 10px;
-  background-color: white;
+  background-color: var(--pale-color);
   border-radius: 10px;
 
 }
-.popover_li:hover{
-    background-color: #d97ffd;
-    color: var(--pale-color);
+.popover__li:hover{
+    background-color: rgba(249, 223, 253, 0.985);
+    /* color: var(--pale-color); */
 }
 .popover__username{
   font-weight: 700;

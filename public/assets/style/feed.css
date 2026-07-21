@@ -1,6 +1,7 @@
 @import "global.css";
 
 .feed {
+  padding-top: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
