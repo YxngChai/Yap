@@ -17,7 +17,7 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
     <section  class="user-header">
         <div class="user-header__images">
             <div class="user-header__wallpaper-container">
-                <img class="user-header__wallpaper" src="/yap/public/assets/images/default-wallpaper.jpg">
+                <img class="user-header__wallpaper" src="/yap/public/assets/images/anzellans.jpg">
             </div>
             <div class="user-header__profile-container">
                 <img class="user-header__profile" src="/yap/public/assets/images/babyyoda-profile.jpg">

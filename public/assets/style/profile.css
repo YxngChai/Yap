@@ -7,7 +7,7 @@
 }
 .user-header__images {
   position: relative;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .user-header__wallpaper-container {
@@ -45,8 +45,8 @@
   margin-bottom: 20px;
 }
 .user-header__username {
-  margin-bottom: 10px;
-
+  font-size: 1.8em;
+  margin-bottom: 5px;
 }
 .user-header__names{
   font-weight: 400;
