@@ -24,6 +24,7 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
 }
 .header__title {
   font-size: 2em;
@@ -33,14 +34,15 @@ main {
   text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.27);
 }
 .header__profile-section {
-  /* display: inline-block; */
   gap: 20px;
   position: relative;
+    line-height: 0;
 }
 
 .header__profile-picture {
   border-radius: 50%;
   box-shadow: 2px 2px 8px rgba(128, 128, 128, 0.333);
+  width: 50px;
 }
 .header__auth-btn {
   width: 80px;
@@ -72,7 +74,7 @@ main {
 }
 
 .header__popover{
-  margin: 18px -1px 0 0;
+  margin: 14px -1px 0 0;
   background-color: var(--primary-color);
   border-radius: 0 0 0 15px;
   inset: 0;
@@ -95,7 +97,7 @@ main {
 .popover__item{
   font-weight: 600;
   font-size: 1em;
-  padding: 0 8px 0 0;
+  padding: 8px;
 }
 .popover_li{
   min-width: 140px;

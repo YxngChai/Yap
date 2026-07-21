@@ -26,7 +26,7 @@
                 <?php if (isset($_SESSION['user'])): ?>
                     <div class="header__profile-section">
                         <button popovertarget="profile-menu" class="profile-btn">
-                            <img class="header__profile-picture" src="/yap/public/assets/images/profile_anonymous_mini.jpeg">
+                            <img class="header__profile-picture" src="/yap/public/assets/images/babyyoda-profile.jpg">
                         </button>
                         <div id="profile-menu" class="header__popover" popover>
                             <nav>

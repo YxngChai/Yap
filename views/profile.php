@@ -20,10 +20,13 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
                 <img class="user-header__wallpaper" src="/yap/public/assets/images/default-wallpaper.jpg">
             </div>
             <div class="user-header__profile-container">
-                <img class="user-header__profile" src="/yap/public/assets/images/profile_anonymous.jpeg">
+                <img class="user-header__profile" src="/yap/public/assets/images/babyyoda-profile.jpg">
             </div>
         </div>
-        <h1  class="user-header__username"><?= htmlspecialchars((string) $user['username'])?></h1>
+        <div class="user-header__infos">
+            <h1 class="user-header__username"><?= htmlspecialchars((string) $user['username'])?></h1>
+            <h2 class="user-header__names"><?= htmlspecialchars((string) $user['name'])?> <?= htmlspecialchars((string) $user['surname'])?></h2>
+        </div>
     </section>
     <section class="feed">
         <?php if($isOwnProfile): ?>
