@@ -1,7 +1,11 @@
 <?php
-$pageCss = 'profile.css';
 /** @var array $user */
 /** @var bool $isOwnProfile */
+
+$pageTitle = 'Yap - '. htmlspecialchars((string) $user['username']);
+$pageScript = 'post.js';
+$pageCss = 'profile.css';
+
 ?>
 
 

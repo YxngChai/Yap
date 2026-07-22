@@ -1,4 +1,6 @@
 <?php
+$pageTitle = 'Yap - Home';
+$pageScript = 'post.js';
 $pageCss = 'feed.css';
 ?>
 

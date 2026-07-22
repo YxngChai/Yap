@@ -9,7 +9,7 @@
     </nav>
 </footer>
     <?php if (isset($pageScript)): ?>
-    <script src="<?= htmlspecialchars($pageScript) ?>"></script>
+    <script src="/yap/public/assets/script/<?= htmlspecialchars($pageScript)?>"></script>
 <?php endif; ?>    
 
 </body>

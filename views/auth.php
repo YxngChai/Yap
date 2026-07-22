@@ -1,6 +1,6 @@
 <?php 
 $pageTitle = 'Yap - Login';
-$pageScript = '/yap/public/assets/script/auth.js';
+$pageScript = 'auth.js';
 $pageCss = 'auth.css';
 
 require __DIR__ . '/header.php'; ?>
