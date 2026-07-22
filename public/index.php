@@ -1,5 +1,11 @@
 <?php
-
+session_set_cookie_params([
+    'lifetime' => 0,
+    'path' => '/',
+    'httponly' => true,
+    'secure' => !empty($_SERVER['HTTPS']),
+    'samesite' => 'Lax'
+]);
 
 session_start();
 if (empty($_SESSION['csrf_token'])) {
