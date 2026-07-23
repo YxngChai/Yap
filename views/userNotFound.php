@@ -1,6 +1,8 @@
 <?php
-$pageCss = 'profile.css';
 /** @var array $user */
+$pageTitle = 'Yap - User Not Found';
+$pageCss = 'profile.css';
+
 ?>
 
 

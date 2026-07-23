@@ -33,6 +33,7 @@ switch ($_POST['action']) {
             'image_path' => null,
             'user_id' => $_SESSION['user']['id'],
         ]);
+        unset($_SESSION['old_post_content']);
         header('Location: ' . ($_POST['redirect'] ?? '/yap/public/'));
         exit;
     case 'delete_post':

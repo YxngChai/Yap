@@ -113,6 +113,11 @@
   box-shadow: 0 0 15px rgba(116, 116, 116, 0.322);
 }
 
+.post__form-btn:disabled{
+  background-color: var(--secondary-color-light);
+  cursor: not-allowed;
+}
+
 /* errors */
 
 .post__error {

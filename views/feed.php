@@ -31,7 +31,7 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
                 </div>
                 <?php unset($_SESSION['errors']); ?>
             <?php endif; ?>
-            <button class="post__form-btn" type="submit">Post</button>
+            <button class="post__form-btn" type="submit" disabled>Post</button>
         </form>
     </section>
 
