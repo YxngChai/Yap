@@ -34,11 +34,12 @@
   top: 5px;
   right: 10px;
   border: none;
-  box-shadow: none;
+  padding: 15px;
 }
 .post__username {
   font-size: 1.4em;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+  display: inline-block;
 }
 .post__time {
   font-size: 0.8em;
@@ -118,7 +119,34 @@
   cursor: not-allowed;
 }
 
+/* Edit / Modify post */
+.post__btn{
+  anchor-name: --actions-button;
+}
+.post__actions-popover{
+  /* inset: 0; */
+   border: 1px solid #ecc2fd72;
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  border-radius: 15px;
+  background-color: #fcfcfc;
+
+  position: absolute;
+  position-anchor: --actions-button;
+  position-area: bottom;
+}
+.post__action{
+  padding: 5px 10px;
+  width: 100%;
+}
+.post__action:hover{
+ background-color: var(--pale-color);
+}
+
+
 /* errors */
+
 
 .post__error {
   color: var(--primary-color);

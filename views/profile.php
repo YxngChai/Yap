@@ -60,18 +60,26 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
         <?php foreach($posts as $post): ?>
         <article class="post">
             <header class="post__header">
-                <a href="/yap/public/user/<?= htmlspecialchars((string) $post["username"]) ?>"><h2 class="post__username"><?= $post["username"] ?></h2></a>
-                <time class="post__time"><?= $post["created_at"] ?></time>
-                <button class="post__btn" type="button" aria-label="Delete post">...</button>
-            </header>
-            <p class="post__content"><?= $post["content"] ?></p>
-            <footer class="post__footer">
-                <button class="post__like">
-                    <?= $likeIcon ?>
-                </button><span>12</span>
-                <button class="post__comment">
-                    <?= $commentIcon ?>
-                </button><span>3</span>
+            <a href="/yap/public/user/<?= htmlspecialchars((string) $post["username"]) ?>"><h2 class="post__username"><?= $post["username"] ?></h2></a><br>
+            <time class="post__time"><?= $post["created_at"] ?></time>
+            <?php if (isset($_SESSION['user']) && $post['username'] === $_SESSION['user']['username']): ?>
+            <button class="post__btn" style="anchor-name: --actions-<?= $post['id'] ?>;" popovertarget="post__actions_<?= $post['id']?>">...</button>
+            <div id="post__actions_<?= $post['id']?>" class="post__actions-popover"  style="position-anchor: --actions-<?= $post['id'] ?>;" popover>
+                <ul>
+                    <li><button class="post__action post__action-edit">Edit</button></li>
+                    <li><button class="post__action post__action-delete">Delete</button></li>
+                </ul>
+            </div>
+            <?php endif; ?>
+        </header>
+        <p class="post__content"><?= $post["content"] ?></p>
+        <footer class="post__footer">
+            <button class="post__like">
+                <?= $likeIcon ?>
+            </button><span>12</span>
+            <button class="post__comment">
+                <?= $commentIcon ?>
+            </button><span>3</span>
             </footer>
         </article>
         <?php endforeach; ?>
