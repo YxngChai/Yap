@@ -20,10 +20,8 @@ switch ($_POST['action']) {
         $errors = Validator::validatePost($data, $rules);
         if(!empty($errors)){
             $_SESSION['errors'] = $errors;
-            echo "empty";
             header('Location: ' . ($_POST['redirect'] ?? '/yap/public/'));
-            var_dump($signUpError);
-            break;
+            exit;
             
         }
 
@@ -51,10 +49,8 @@ switch ($_POST['action']) {
         $errors = Validator::validatePost($data, $rules);
         if(!empty($errors)){
             $_SESSION['errors'] = $errors;
-            echo "empty";
             header('Location: ' . ($_POST['redirect'] ?? '/yap/public/'));
-            var_dump($signUpError);
-            break;
+            exit;
         }
         Post::update($pdo, [
             'content' => $_POST['post_content'],
@@ -65,9 +61,7 @@ switch ($_POST['action']) {
 
         unset($_SESSION['old_post_content']);
         header('Location: ' . ($_POST['redirect'] ?? '/yap/public/'));
-
-
         exit;
-        case 'remove picture':
+    case 'remove picture':
         break;
 }
