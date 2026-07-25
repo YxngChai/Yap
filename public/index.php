@@ -63,7 +63,7 @@ if ($method === 'POST') {
     }
 
 
-    if (in_array($action, ['create_post', 'delete_post'])) {
+    if (in_array($action, ['create_post', 'delete_post', 'update_post'])) {
         require __DIR__ . '/../src/controllers/postController.php';
         exit;
 

@@ -1,11 +1,19 @@
 const textArea = document.querySelector(".post__form-textarea");
-const postBtn = document.querySelector(".post__form-btn");
+document.querySelectorAll(".post__form").forEach((form) => {
+  const textArea = form.querySelector(".post__form-textarea");
+  const postBtn = form.querySelector(".post__form-btn");
 
-textArea.addEventListener("input", () => {
-  postBtn.disabled = textArea.value.trim() === "";
+  if (!textArea || !postBtn) return;
+
+  const updateButtonState = () => {
+    postBtn.disabled = textArea.value.trim() === "";
+  };
+
+  updateButtonState();
+  textArea.addEventListener("input", updateButtonState);
 });
 
-document.querySelectorAll(".post__action-delete").forEach((button) => {
+document.querySelectorAll(".post__action").forEach((button) => {
   button.addEventListener("click", () => {
     const dialog = document.getElementById(button.dataset.dialog);
     dialog.showModal();

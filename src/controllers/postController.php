@@ -44,8 +44,30 @@ switch ($_POST['action']) {
         Post::delete($pdo, $postId, $_SESSION['user']['id']);
         header('Location: ' . ($_POST['redirect'] ?? '/yap/public/'));
         exit;
-    case 'remove picture':
-        break;
     case 'update_post':
+        $rules = [
+            'post_content' => ['min' => 1, 'max' => 2000],
+        ];
+        $errors = Validator::validatePost($data, $rules);
+        if(!empty($errors)){
+            $_SESSION['errors'] = $errors;
+            echo "empty";
+            header('Location: ' . ($_POST['redirect'] ?? '/yap/public/'));
+            var_dump($signUpError);
+            break;
+        }
+        Post::update($pdo, [
+            'content' => $_POST['post_content'],
+            'image_path' => null,
+            'id' => $_POST['postId'],
+            'user_id' => $_SESSION['user']['id'],
+        ]);
+
+        unset($_SESSION['old_post_content']);
+        header('Location: ' . ($_POST['redirect'] ?? '/yap/public/'));
+
+
         exit;
+        case 'remove picture':
+        break;
 }

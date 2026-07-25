@@ -46,11 +46,38 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
                 <button class="post__btn" style="anchor-name: --actions-<?= $post['id'] ?>;" popovertarget="post__actions_<?= $post['id']?>">...</button>
                 <div id="post__actions_<?= $post['id']?>" class="post__actions-popover"  style="position-anchor: --actions-<?= $post['id'] ?>;" popover>
                     <ul>
-                        <li><button class="post__action post__action-edit">Edit</button></li>
+                        <li><button data-dialog="updateDialog-<?= $post['id'] ?>" class="post__action post__action-update">Edit</button></li>
                         <li><button data-dialog="deleteDialog-<?= $post['id'] ?>" class="post__action post__action-delete">Delete</button></li>
 
                     </ul>
                 </div>
+
+                <dialog id="updateDialog-<?= $post['id']?>">
+                    <form method="dialog">
+                        <button value="cancel">X</button>
+                    </form>
+                    <form action="/yap/public/" method="POST" class="post__form" >
+                        <label class="post__form-title">Update Post</label>
+                        <textarea class="post__form-textarea" name="post_content" type="textarea" minlength="1" maxlength="2000" placeholder="Write something"><?= $post["content"] ?></textarea>
+                        <input type="hidden" name="action" value="update_post">
+                        <input type="hidden" value="<?= htmlspecialchars($post['id']) ?>" name="postId">
+                        <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
+                        <input
+                        type="hidden"
+                        name="csrf_token"
+                        value="<?= htmlspecialchars(csrfToken()) ?>">
+                        <?php if (!empty($_SESSION['errors'])): ?>
+                            <div class="errors">
+                                <?php foreach ($_SESSION['errors'] as $error): ?>
+                                    <p class="post__error"><?= htmlspecialchars($error) ?></p>
+                                <?php endforeach; ?>
+                            </div>
+                            <?php unset($_SESSION['errors']); ?>
+                        <?php endif; ?>
+                        <button class="post__form-btn" type="submit">Post</button>
+                    </form>
+                </dialog>
+
                 <dialog id="deleteDialog-<?= $post['id'] ?>">
                     <p>Are you sure you want to delete this post?</p>
                     <form method="dialog">
@@ -59,7 +86,7 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
                     <form action="/yap/public/" method="POST">
                         <input type="hidden" value="<?= htmlspecialchars($post['id']) ?>" name="postId">
                         <input type="hidden" name="action" value="delete_post">
-                                <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
+                        <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
                         <input
                         type="hidden"
                         name="csrf_token"
