@@ -47,9 +47,17 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
             <div id="post__actions_<?= $post['id']?>" class="post__actions-popover"  style="position-anchor: --actions-<?= $post['id'] ?>;" popover>
                 <ul>
                     <li><button class="post__action post__action-edit">Edit</button></li>
-                    <li><button class="post__action post__action-delete">Delete</button></li>
+                    <li><button data-dialog="deleteDialog-<?= $post['id'] ?>" class="post__action post__action-delete">Delete</button></li>
+
                 </ul>
             </div>
+            <dialog id="deleteDialog-<?= $post['id'] ?>">
+                <p>Are you sure you want to delete this post?</p>
+                <form method="dialog">
+                    <button value="cancel">Cancel</button>
+                    <button value="confirm">Delete</button>
+                </form>
+            </dialog>
             <?php endif; ?>
         </header>
         <p class="post__content"><?= $post["content"] ?></p>
