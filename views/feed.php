@@ -43,21 +43,30 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
             <a href="/yap/public/user/<?= htmlspecialchars((string) $post["username"]) ?>"><h2 class="post__username"><?= $post["username"] ?></h2></a><br>
             <time class="post__time"><?= $post["created_at"] ?></time>
             <?php if (isset($_SESSION['user']) && $post['username'] === $_SESSION['user']['username']): ?>
-            <button class="post__btn" style="anchor-name: --actions-<?= $post['id'] ?>;" popovertarget="post__actions_<?= $post['id']?>">...</button>
-            <div id="post__actions_<?= $post['id']?>" class="post__actions-popover"  style="position-anchor: --actions-<?= $post['id'] ?>;" popover>
-                <ul>
-                    <li><button class="post__action post__action-edit">Edit</button></li>
-                    <li><button data-dialog="deleteDialog-<?= $post['id'] ?>" class="post__action post__action-delete">Delete</button></li>
+                <button class="post__btn" style="anchor-name: --actions-<?= $post['id'] ?>;" popovertarget="post__actions_<?= $post['id']?>">...</button>
+                <div id="post__actions_<?= $post['id']?>" class="post__actions-popover"  style="position-anchor: --actions-<?= $post['id'] ?>;" popover>
+                    <ul>
+                        <li><button class="post__action post__action-edit">Edit</button></li>
+                        <li><button data-dialog="deleteDialog-<?= $post['id'] ?>" class="post__action post__action-delete">Delete</button></li>
 
-                </ul>
-            </div>
-            <dialog id="deleteDialog-<?= $post['id'] ?>">
-                <p>Are you sure you want to delete this post?</p>
-                <form method="dialog">
-                    <button value="cancel">Cancel</button>
-                    <button value="confirm">Delete</button>
-                </form>
-            </dialog>
+                    </ul>
+                </div>
+                <dialog id="deleteDialog-<?= $post['id'] ?>">
+                    <p>Are you sure you want to delete this post?</p>
+                    <form method="dialog">
+                        <button value="cancel">Cancel</button>
+                    </form>
+                    <form action="/yap/public/" method="POST">
+                        <input type="hidden" value="<?= htmlspecialchars($post['id']) ?>" name="postId">
+                        <input type="hidden" name="action" value="delete_post">
+                                <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
+                        <input
+                        type="hidden"
+                        name="csrf_token"
+                        value="<?= htmlspecialchars(csrfToken()) ?>">
+                        <button type="submit" value="confirm">Delete</button>
+                    </form>
+                </dialog>
             <?php endif; ?>
         </header>
         <p class="post__content"><?= $post["content"] ?></p>

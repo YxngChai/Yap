@@ -1,6 +1,5 @@
 <?php
 
-use Soap\Url;
 
 require_once __DIR__ . '/../models/post.php';
 require_once __DIR__ . '/../validators/validator.php';
@@ -10,7 +9,7 @@ $pdo = Database::getConnection();
 verifyCsrf();
 
 $data = $_POST;
-$_SESSION['old_post_content'] = $data['post_content'];
+$_SESSION['old_post_content'] = $data['post_content'] ?? '';
 
 switch ($_POST['action']) {
     case 'create_post':
@@ -37,7 +36,13 @@ switch ($_POST['action']) {
         header('Location: ' . ($_POST['redirect'] ?? '/yap/public/'));
         exit;
     case 'delete_post':
-            // header('Location: /yap/public/');
+        $postId = filter_input(INPUT_POST, 'postId', FILTER_VALIDATE_INT);
+        if ($postId === false || $postId < 1) {
+        header('Location: /yap/public/');
+        exit;
+        }
+        Post::delete($pdo, $postId, $_SESSION['user']['id']);
+        header('Location: ' . ($_POST['redirect'] ?? '/yap/public/'));
         exit;
     case 'remove picture':
         break;
