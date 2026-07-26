@@ -151,3 +151,64 @@
 .post__error {
   color: var(--primary-color);
 }
+
+/* Modals */
+
+dialog::backdrop {
+  background-color: #39004f97;
+}
+dialog {
+  border: 1px solid #ecc2fd72;
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  border-radius: 15px;
+  background-color: #fcfcfc;
+  /* width: 100%;
+  max-width: 700px;
+  margin: 15px;
+  overflow: hidden; */
+}
+.dialog__options {
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  margin-top: 15px;
+  gap: 15px;
+
+}
+.dialog__option{
+  width: 100%;
+display: flex;
+justify-content: center;
+padding: 15px;
+border-radius: 15px;
+}
+.dialog__option--cancel{
+  background-color: var(--secondary-color);
+}
+
+.dialog__option:hover{
+  background-color: var(--secondary-color-light);
+}
+.dialog__action{
+  width: 100%;
+  text-align: center;
+}
+.dialog__edit{
+  position: relative;
+  max-width: 600px;
+  width: 100%;
+}
+.dialog__close-btn{
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  padding: 7px  12px;
+  /* border: 1px solid black; */
+  background-color: var(--pale-color);
+  border-radius: 50%;
+}
+.dialog__close-btn:hover{
+  background-color: var(--secondary-color-light);
+}

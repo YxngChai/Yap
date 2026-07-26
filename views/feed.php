@@ -52,9 +52,9 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
                     </ul>
                 </div>
 
-                <dialog id="updateDialog-<?= $post['id']?>">
+                <dialog id="updateDialog-<?= $post['id']?>" class="dialog__edit">
                     <form method="dialog">
-                        <button value="cancel">X</button>
+                        <button value="cancel" class="dialog__close-btn">X</button>
                     </form>
                     <form action="/yap/public/" method="POST" class="post__form" >
                         <label class="post__form-title">Update Post</label>
@@ -80,10 +80,11 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
 
                 <dialog id="deleteDialog-<?= $post['id'] ?>">
                     <p>Are you sure you want to delete this post?</p>
-                    <form method="dialog">
-                        <button value="cancel">Cancel</button>
+                    <div class="dialog__options">
+                    <form method="dialog" class="dialog__option dialog__option--cancel">
+                        <button value="cancel" class="dialog__action">Cancel</button>
                     </form>
-                    <form action="/yap/public/" method="POST">
+                    <form action="/yap/public/" method="POST" class="dialog__option dialog__option--delete">
                         <input type="hidden" value="<?= htmlspecialchars($post['id']) ?>" name="postId">
                         <input type="hidden" name="action" value="delete_post">
                         <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
@@ -91,8 +92,9 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
                         type="hidden"
                         name="csrf_token"
                         value="<?= htmlspecialchars(csrfToken()) ?>">
-                        <button type="submit" value="confirm">Delete</button>
+                        <button type="submit" value="confirm" class="dialog__action">Delete</button>
                     </form>
+                    </div>
                 </dialog>
             <?php endif; ?>
         </header>
