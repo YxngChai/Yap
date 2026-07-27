@@ -38,13 +38,13 @@
                             <ul class="popover__ul">
                                 <li class="popover__li "><a href="/yap/public/user/<?= htmlspecialchars((string) $_SESSION['user']['username'])?>"><h3 class="popover__item popover__username"><?=$_SESSION['user']['username'] ?></h3></a></li>
                                 <li class="popover__li"><h3 class="popover__item">Settings</h3></li>
-                                <li class="popover__li"><form method="POST" action="/yap/public/">
+                                <li class="popover__li"><form method="POST" action="/yap/public/" class="popover__item">
                                     <input type="hidden" name="action" value="logout">
                                     <input
                                     type="hidden"
                                     name="csrf_token"
                                     value="<?= htmlspecialchars(csrfToken()) ?>">
-                                    <button class="popover__item" type="submit">Logout</button>
+                                    <button  type="submit">Logout</button>
                                 </form></li>
                             </ul>
                         <nav>

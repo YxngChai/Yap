@@ -114,18 +114,18 @@
   box-shadow: 0 0 15px rgba(116, 116, 116, 0.322);
 }
 
-.post__form-btn:disabled{
+.post__form-btn:disabled {
   background-color: var(--secondary-color-light);
   cursor: not-allowed;
 }
 
 /* Edit / Modify post */
-.post__btn{
+.post__btn {
   anchor-name: --actions-button;
 }
-.post__actions-popover{
+.post__actions-popover {
   /* inset: 0; */
-   border: 1px solid #ecc2fd72;
+  border: 1px solid #ecc2fd72;
   box-shadow:
     rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
@@ -136,17 +136,15 @@
   position-anchor: --actions-button;
   position-area: bottom;
 }
-.post__action{
+.post__action {
   padding: 5px 10px;
   width: 100%;
 }
-.post__action:hover{
- background-color: var(--pale-color);
+.post__action:hover {
+  background-color: var(--pale-color);
 }
 
-
 /* errors */
-
 
 .post__error {
   color: var(--primary-color);
@@ -164,10 +162,7 @@ dialog {
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   border-radius: 15px;
   background-color: #fcfcfc;
-  /* width: 100%;
-  max-width: 700px;
-  margin: 15px;
-  overflow: hidden; */
+  padding-top: 20px;
 }
 .dialog__options {
   display: flex;
@@ -175,40 +170,43 @@ dialog {
   justify-content: center;
   margin-top: 15px;
   gap: 15px;
-
 }
-.dialog__option{
+.dialog__option {
   width: 100%;
-display: flex;
-justify-content: center;
-padding: 15px;
-border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+  border-radius: 15px;
 }
-.dialog__option--cancel{
+.dialog__option--cancel {
   background-color: var(--secondary-color);
+  color: white;
+}
+.dialog__option--delete {
+  border: 1px solid var(--secondary-color-light);
 }
 
-.dialog__option:hover{
+.dialog__option:hover {
   background-color: var(--secondary-color-light);
 }
-.dialog__action{
+.dialog__action {
   width: 100%;
   text-align: center;
 }
-.dialog__edit{
+.dialog__edit {
   position: relative;
   max-width: 600px;
   width: 100%;
 }
-.dialog__close-btn{
+.dialog__close-btn {
   position: absolute;
   right: 20px;
   top: 20px;
-  padding: 7px  12px;
+  padding: 7px 12px;
   /* border: 1px solid black; */
   background-color: var(--pale-color);
   border-radius: 50%;
 }
-.dialog__close-btn:hover{
+.dialog__close-btn:hover {
   background-color: var(--secondary-color-light);
 }

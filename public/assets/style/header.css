@@ -37,14 +37,13 @@ main {
   position: relative;
   line-height: 0;
   margin-left: 15px;
-
 }
 
 .header__profile-picture {
   border-radius: 50%;
   box-shadow: 2px 2px 8px rgba(128, 128, 128, 0.333);
   width: 50px;
-  border:  1px solid var(--pale-color);
+  border: 1px solid var(--pale-color);
 }
 .header__auth-btn {
   width: 80px;
@@ -71,24 +70,23 @@ main {
   color: white;
 }
 
-.header__nav{
+.header__nav {
   display: flex;
   align-items: center;
   /* gap: 10px; */
 }
-.header__nav-container{
-   padding: 15px;
+.header__nav-container {
+  padding: 15px;
 }
-.header__nav-container:hover{
+.header__nav-container:hover {
   background-color: var(--secondary-color);
 }
-.header__nav-container.active{
+.header__nav-container.active {
   background-color: var(--secondary-color);
 }
 .header__icon {
   width: 40px;
-   fill: var(--pale-color);
-   /* padding: 70px 20px; */
+  fill: var(--pale-color);
 }
 
 /* Popover */
@@ -96,7 +94,7 @@ main {
   anchor-name: --profile-button;
 }
 
-.header__popover{
+.header__popover {
   margin: 10px -1px 0 0;
   background-color: var(--secondary-color);
   border-radius: 0 0 0 15px;
@@ -105,39 +103,42 @@ main {
   border: 1px solid var(--primary-color);
   border-top: 1px solid var(--secondary-color);
 
-
   position: absolute;
   position-anchor: --profile-button;
   position-area: bottom;
 }
-.popover__ul{
+.popover__ul {
   display: flex;
   flex-direction: column;
   align-items: end;
   gap: 15px;
 }
-.popover__item{
-  font-weight: 600;
-  font-size: 1em;
-  padding: 8px;
-}
-.popover__li{
+
+.popover__li {
   min-width: 160px;
-  text-align: end;
-  padding: 10px;
   background-color: var(--pale-color);
   border-radius: 10px;
-
 }
-.popover__li:hover{
-    background-color: rgba(249, 223, 253, 0.985);
-    /* color: var(--pale-color); */
+.popover__li:hover {
+  background-color: rgba(249, 223, 253, 0.985);
+  /* color: var(--pale-color); */
 }
-.popover__username{
+.popover__item {
+  margin-right: 15px;
+  width: 100%;
+  text-align: end;
+  font-weight: 600;
+  font-size: 1em;
+  padding: 25px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: block;
+}
+.popover__username {
   font-weight: 700;
   font-size: 1.1em;
 }
-
 
 @media (max-width: 400px) {
   .header__auth-btn {
