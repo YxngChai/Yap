@@ -32,7 +32,9 @@
                 <div class="header__profile-picture-container">
                     <button popovertarget="profile-menu" class="profile-btn">
                         <img class="header__profile-picture" src="/yap/public/assets/images/babyyoda-profile.jpg">
+                        <div class="header__profile-expand"><span class="header__profile-expand-btn">v</span></div>
                     </button>
+                   
                     <div id="profile-menu" class="header__popover" popover>
                         <nav>
                             <ul class="popover__ul">

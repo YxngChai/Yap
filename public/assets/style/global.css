@@ -7,6 +7,9 @@
   --secondary-color-light: #e7b2fc;
   --light-color: #d5cabd;
   --pale-color: #fff6ff;
+  --light-grey: #f2f2f28c;
+  --light-grey-background: #f7f7f7;
+  --border-color: #ecc2fd72;
 }
 
 body {
@@ -16,9 +19,6 @@ main {
   padding: 0 15px;
 }
 
-/* main {
-  padding: 20px;
-} */
 button {
   cursor: pointer;
 }

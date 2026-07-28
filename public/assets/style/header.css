@@ -45,6 +45,24 @@ main {
   width: 50px;
   border: 1px solid var(--pale-color);
 }
+.header__profile-expand {
+  width: 15px;
+  height: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--pale-color);
+  border: 1px solid black;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.header__profile-expand-btn {
+  color: black;
+  line-height: 0;
+  font-size: 0.8em;
+}
 .header__auth-btn {
   width: 80px;
   text-align: center;
@@ -96,13 +114,14 @@ main {
 
 .header__popover {
   margin: 10px -1px 0 0;
-  background-color: var(--secondary-color);
+  background-color: var(--light-grey-background);
   border-radius: 0 0 0 15px;
   inset: 0;
   padding: 15px 10px;
-  border: 1px solid var(--primary-color);
-  border-top: 1px solid var(--secondary-color);
-
+  border-left: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  border-top: none;
+  border-right: none;
   position: absolute;
   position-anchor: --profile-button;
   position-area: bottom;
@@ -111,17 +130,18 @@ main {
   display: flex;
   flex-direction: column;
   align-items: end;
-  gap: 15px;
+  /* gap: 15px; */
 }
 
 .popover__li {
   min-width: 160px;
-  background-color: var(--pale-color);
+  background-color: #fcfcfc;
+  border: 1px solid var(--border-color);
   border-radius: 10px;
+  margin: 8px;
 }
 .popover__li:hover {
   background-color: rgba(249, 223, 253, 0.985);
-  /* color: var(--pale-color); */
 }
 .popover__item {
   margin-right: 15px;

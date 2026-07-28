@@ -12,7 +12,7 @@
 }
 /* posts card */
 .post {
-  border: 1px solid #ecc2fd72;
+  border: 1px solid var(--border-color);
   box-shadow:
     rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
@@ -24,7 +24,7 @@
   overflow: hidden;
 }
 .post__header {
-  background-color: rgba(242, 242, 242, 0.548);
+  background-color: var(--light-grey);
   position: relative;
   padding: 10px;
 }
@@ -64,7 +64,7 @@
 }
 /* create a post form */
 .post__create {
-  border: 1px solid #ecc2fd72;
+  border: 1px solid var(--border-color);
   box-shadow:
     rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
@@ -109,7 +109,7 @@
   margin: 10px 0 0 0;
   padding: 8px;
   text-align: center;
-  border: 1px solid #ecc2fd72;
+  border: 1px solid var(--border-color);
   background-color: #d97ffd;
   box-shadow: 0 0 15px rgba(116, 116, 116, 0.322);
 }
@@ -125,7 +125,7 @@
 }
 .post__actions-popover {
   /* inset: 0; */
-  border: 1px solid #ecc2fd72;
+  border: 1px solid var(--border-color);
   box-shadow:
     rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
@@ -156,7 +156,7 @@ dialog::backdrop {
   background-color: #39004f97;
 }
 dialog {
-  border: 1px solid #ecc2fd72;
+  border: 1px solid var(--border-color);
   box-shadow:
     rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
