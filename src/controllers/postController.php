@@ -19,7 +19,7 @@ switch ($_POST['action']) {
         ];
         $errors = Validator::validatePost($data, $rules);
         if(!empty($errors)){
-            $_SESSION['errors'] = $errors;
+            $_SESSION['create_errors'] = $errors;
             header('Location: ' . ($_POST['redirect'] ?? '/yap/public/'));
             exit;
             
@@ -48,7 +48,7 @@ switch ($_POST['action']) {
         ];
         $errors = Validator::validatePost($data, $rules);
         if(!empty($errors)){
-            $_SESSION['errors'] = $errors;
+            $_SESSION['update_errors'] = $errors;
             header('Location: ' . ($_POST['redirect'] ?? '/yap/public/'));
             exit;
         }

@@ -43,13 +43,13 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
                 type="hidden"
                 name="csrf_token"
                 value="<?= htmlspecialchars(csrfToken()) ?>">
-                <?php if (!empty($_SESSION['errors'])): ?>
+                <?php if (!empty($_SESSION['create_errors'])): ?>
                     <div class="errors">
-                        <?php foreach ($_SESSION['errors'] as $error): ?>
+                        <?php foreach ($_SESSION['create_errors'] as $error): ?>
                             <p class="post__error"><?= htmlspecialchars($error) ?></p>
                         <?php endforeach; ?>
                     </div>
-                    <?php unset($_SESSION['errors']); ?>
+                    <?php unset($_SESSION['create_errors']); ?>
                 <?php endif; ?>
                 <button class="post__form-btn" type="submit" disabled>Post</button>
             </form>
@@ -86,13 +86,13 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
                         type="hidden"
                         name="csrf_token"
                         value="<?= htmlspecialchars(csrfToken()) ?>">
-                        <?php if (!empty($_SESSION['errors'])): ?>
+                        <?php if (!empty($_SESSION['update_errors'])): ?>
                             <div class="errors">
-                                <?php foreach ($_SESSION['errors'] as $error): ?>
+                                <?php foreach ($_SESSION['update_errors'] as $error): ?>
                                     <p class="post__error"><?= htmlspecialchars($error) ?></p>
                                 <?php endforeach; ?>
                             </div>
-                            <?php unset($_SESSION['errors']); ?>
+                            <?php unset($_SESSION['update_errors']); ?>
                         <?php endif; ?>
                         <button class="post__form-btn" type="submit">Post</button>
                     </form>

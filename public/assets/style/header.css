@@ -118,8 +118,8 @@ main {
   border-radius: 0 0 0 15px;
   inset: 0;
   padding: 15px 10px;
-  border-left: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
+  border-left: 3px solid var(--border-color);
+  border-bottom: 3px solid var(--border-color);
   border-top: none;
   border-right: none;
   position: absolute;
