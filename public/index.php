@@ -62,11 +62,13 @@ if ($method === 'POST') {
         exit;
     }
 
-
     if (in_array($action, ['create_post', 'delete_post', 'update_post'])) {
         require __DIR__ . '/../src/controllers/postController.php';
         exit;
+    }
 
+    if (in_array($action, ['like_post', 'like_comment'])){
+        require __DIR__ . '/../src/controllers/likeController.php';
     }
 
 

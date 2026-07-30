@@ -100,7 +100,7 @@ class Post{
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function findAll(PDO $pdo, int $user_id): array {
+    public static function findAll(PDO $pdo, int $userId): array {
     $sql = 'SELECT
     p.id,
     p.content,
@@ -134,8 +134,20 @@ class Post{
     
     ORDER BY p.created_at DESC';
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(['user_id' => $user_id]);
+    $stmt->execute(['user_id' => $userId]);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public static function likePost(PDO $pdo, int $userId, int $postId): void {
+    $sql = 'INSERT INTO posts_likes(user_id, post_id) VALUES(:user_id,:post_id)';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['user_id' => $userId, 'post_id' => $postId]);
+    }
+    public static function unlikePost(PDO $pdo, int $userId, int $postId): void {
+    $sql = 'DELETE FROM posts_likes
+    WHERE user_id = :user_id
+    AND post_id = :post_id';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['user_id' => $userId, 'post_id' => $postId]);
     }
 
     // public static function findAllProgressiveLoading(PDO $pdo, int $offset): array {
