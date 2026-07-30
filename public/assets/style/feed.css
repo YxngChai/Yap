@@ -62,6 +62,9 @@
   width: 20px;
   padding: 5px 10px;
 }
+.post__like-icon {
+  fill: var(--primary-color);
+}
 /* create a post form */
 .post__create {
   border: 1px solid var(--border-color);

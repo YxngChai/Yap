@@ -23,43 +23,121 @@ class Post{
     $stmt = $pdo->prepare($sql);
     $stmt->execute(['id' => $postId, 'user_id' => $postUserId]);
     }
-    public static function findById(PDO $pdo, int $id): array| false {
-    $sql = 'SELECT * FROM posts WHERE id = :id';
+    public static function findById(PDO $pdo, int $postId, int $userId): array| false {
+        $sql = 'SELECT
+        p.id,
+        p.content,
+        p.image_path,
+        p.created_at,
+        u.username,
+        
+        COUNT(l.post_id) AS like_count,
+        
+        EXISTS (
+        SELECT 1
+        FROM posts_likes ul
+        WHERE ul.post_id = p.id
+        AND ul.user_id = :user_id
+        ) AS liked
+        
+        FROM posts p
+        
+        JOIN users u
+        ON p.user_id = u.id
+        
+        LEFT JOIN posts_likes l
+        ON l.post_id = p.id
+
+        WHERE p.id = :post_id
+        
+        GROUP BY 
+        p.id,
+        p.content,
+        p.image_path,
+        p.created_at,
+        u.username';
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(['id' => $id]);
+    $stmt->execute(['post_id' => $postId, 'user_id' => $userId]);
     return $stmt->fetch(PDO::FETCH_ASSOC);
     }
     public static function findUserPosts(PDO $pdo, int $userId): array {
-    $sql = 'SELECT 
-        p.id AS id, 
-        p.content AS content, 
-        p.image_path AS image_path,
-        p.created_at AS created_at,
-        u.username AS username
-        FROM posts AS p 
-        JOIN users AS u 
+    $sql = 'SELECT
+        p.id,
+        p.content,
+        p.image_path,
+        p.created_at,
+        u.username,
+        
+        COUNT(l.post_id) AS like_count,
+        
+        EXISTS (
+        SELECT 1
+        FROM posts_likes ul
+        WHERE ul.post_id = p.id
+        AND ul.user_id = :user_id
+        ) AS liked
+        
+        FROM posts p
+        
+        JOIN users u
         ON p.user_id = u.id
+        
+        LEFT JOIN posts_likes l
+        ON l.post_id = p.id
+
         WHERE p.user_id = :user_id
+        
+        GROUP BY 
+        p.id,
+        p.content,
+        p.image_path,
+        p.created_at,
+        u.username
+        
         ORDER BY p.created_at DESC';
     $stmt = $pdo->prepare($sql);
     $stmt->execute(['user_id' => $userId]);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    public static function findAll(PDO $pdo): array {
-    $sql = 'SELECT 
-        p.id AS id, 
-        p.content AS content, 
-        p.image_path AS image_path,
-        p.created_at AS created_at,
-        u.username AS username
-        FROM posts AS p 
-        JOIN users AS u 
-        ON p.user_id = u.id
-        ORDER BY p.created_at DESC';
+
+    public static function findAll(PDO $pdo, int $user_id): array {
+    $sql = 'SELECT
+    p.id,
+    p.content,
+    p.image_path,
+    p.created_at,
+    u.username,
+    
+    COUNT(l.post_id) AS like_count,
+    
+    EXISTS (
+    SELECT 1
+    FROM posts_likes ul
+    WHERE ul.post_id = p.id
+    AND ul.user_id = :user_id
+    ) AS liked
+    
+    FROM posts p
+    
+    JOIN users u
+    ON p.user_id = u.id
+    
+    LEFT JOIN posts_likes l
+    ON l.post_id = p.id
+    
+    GROUP BY 
+    p.id,
+    p.content,
+    p.image_path,
+    p.created_at,
+    u.username
+    
+    ORDER BY p.created_at DESC';
     $stmt = $pdo->prepare($sql);
-    $stmt->execute();
+    $stmt->execute(['user_id' => $user_id]);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
     // public static function findAllProgressiveLoading(PDO $pdo, int $offset): array {
     // $sql = 'SELECT 
     //     p.id AS id, 

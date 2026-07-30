@@ -25,4 +25,5 @@ $isOwnProfile = $user['id'] === $_SESSION['user']['id'];
 
 $posts = Post::findUserPosts($pdo, $user['id']);
 
+
 require __DIR__ . "/../../views/profile.php";
