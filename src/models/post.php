@@ -137,17 +137,17 @@ class Post{
     $stmt->execute(['user_id' => $userId]);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    public static function likePost(PDO $pdo, int $userId, int $postId): void {
+    public static function likePost(PDO $pdo, int $postId, int $userId): void {
     $sql = 'INSERT INTO posts_likes(user_id, post_id) VALUES(:user_id,:post_id)';
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(['user_id' => $userId, 'post_id' => $postId]);
+    $stmt->execute(['post_id' => $postId, 'user_id' => $userId]);
     }
-    public static function unlikePost(PDO $pdo, int $userId, int $postId): void {
+    public static function unlikePost(PDO $pdo, int $postId, int $userId): void {
     $sql = 'DELETE FROM posts_likes
     WHERE user_id = :user_id
     AND post_id = :post_id';
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(['user_id' => $userId, 'post_id' => $postId]);
+    $stmt->execute([ 'post_id' => $postId,'user_id' => $userId]);
     }
 
     // public static function findAllProgressiveLoading(PDO $pdo, int $offset): array {
