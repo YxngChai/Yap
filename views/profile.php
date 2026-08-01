@@ -121,9 +121,19 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
         </header>
         <p class="post__content"><?= $post["content"] ?></p>
         <footer class="post__footer">
-             <button class="post__like">
+            <form action="/yap/public/" method="POST">
+                <input type="hidden" value="<?= htmlspecialchars($post['id']) ?>" name="postId">
+                <input type="hidden" name="action" value="like_post">
+                <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
+                <input
+                type="hidden"
+                name="csrf_token"
+                value="<?= htmlspecialchars(csrfToken()) ?>">
+                <button class="post__like" type="submit">
                 <?= $post["liked"] ? $likedIcon : $likeIcon ?>
-            </button><span><?= $post['like_count'] ?></span>
+                </button>
+            </form>
+            <span><?= $post['like_count'] ?></span>
             <button class="post__comment">
                 <?= $commentIcon ?>
             </button><span>3</span>
