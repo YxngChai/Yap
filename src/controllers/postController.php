@@ -12,6 +12,7 @@ $data = $_POST;
 $_SESSION['old_post_content'] = $data['post_content'] ?? '';
 
 switch ($_POST['action']) {
+
     case 'create_post':
 
         $rules = [
@@ -20,9 +21,7 @@ switch ($_POST['action']) {
         $errors = Validator::validatePost($data, $rules);
         if(!empty($errors)){
             $_SESSION['create_errors'] = $errors;
-            header('Location: ' . ($_POST['redirect'] ?? '/yap/public/'));
-            exit;
-            
+            redirectBack();
         }
 
         Post::create($pdo, [
@@ -31,8 +30,9 @@ switch ($_POST['action']) {
             'user_id' => $_SESSION['user']['id'],
         ]);
         unset($_SESSION['old_post_content']);
-        header('Location: ' . ($_POST['redirect'] ?? '/yap/public/'));
-        exit;
+            redirectBack();
+
+
     case 'delete_post':
         $postId = filter_input(INPUT_POST, 'postId', FILTER_VALIDATE_INT);
         if ($postId === false || $postId < 1) {
@@ -40,8 +40,9 @@ switch ($_POST['action']) {
         exit;
         }
         Post::delete($pdo, $postId, $_SESSION['user']['id']);
-        header('Location: ' . ($_POST['redirect'] ?? '/yap/public/'));
-        exit;
+            redirectBack();
+
+
     case 'update_post':
         $rules = [
             'post_content' => ['min' => 1, 'max' => 2000],
@@ -49,8 +50,7 @@ switch ($_POST['action']) {
         $errors = Validator::validatePost($data, $rules);
         if(!empty($errors)){
             $_SESSION['update_errors'] = $errors;
-            header('Location: ' . ($_POST['redirect'] ?? '/yap/public/'));
-            exit;
+            redirectBack();
         }
         Post::update($pdo, [
             'content' => $_POST['post_content'],
@@ -60,8 +60,9 @@ switch ($_POST['action']) {
         ]);
 
         unset($_SESSION['old_post_content']);
-        header('Location: ' . ($_POST['redirect'] ?? '/yap/public/'));
-        exit;
+        redirectBack();
+
+        
     case 'remove picture':
         break;
 }

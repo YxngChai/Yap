@@ -8,6 +8,7 @@ verifyCsrf();
 $pdo = Database::getConnection();
 
 switch($_POST['action']) {
+    
     case 'like_post':
         $postId = filter_input(INPUT_POST, 'postId', FILTER_VALIDATE_INT);
         if ($postId === false || $postId < 1) {
@@ -26,12 +27,9 @@ switch($_POST['action']) {
         } else {
             Post::likePost($pdo, $post['id'] ,  $_SESSION['user']['id']);
         }
-        $redirect = $_POST['redirect'] ?? '/yap/public/';
-        if (!str_starts_with($redirect, '/')) {
-            $redirect = '/yap/public/';
-        }
-        header("Location: $redirect");
-        exit;
+        redirectBack();
+
+
     case 'like_comment':
         exit;
 }

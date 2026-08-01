@@ -13,6 +13,7 @@ if (empty($_SESSION['csrf_token'])) {
 }
 
 require_once __DIR__ . '/../src/helpers/csrf.php';
+require_once __DIR__ . '/../src/helpers/redirect.php';
 
 
 ini_set('display_errors', 1);
