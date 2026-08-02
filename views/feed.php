@@ -101,7 +101,7 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
         </header>
         <p class="post__content"><?= $post["content"] ?></p>
         <footer class="post__footer">
-            <form action="/yap/public/" method="POST">
+            <form action="/yap/public/" method="POST" class="js-like-form">
                 <input type="hidden" value="<?= htmlspecialchars($post['id']) ?>" name="postId">
                 <input type="hidden" name="action" value="like_post">
                 <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">

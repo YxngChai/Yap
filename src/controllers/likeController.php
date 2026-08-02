@@ -15,7 +15,7 @@ switch($_POST['action']) {
             http_response_code(400);
             exit('Invalid post ID.');
         }
-        $post = Post::findById($pdo, $_POST['postId'], $_SESSION['user']['id']);
+        $post = Post::findById($pdo, $postId, $_SESSION['user']['id']);
 
         if (!$post) {
             http_response_code(404);
@@ -23,12 +23,19 @@ switch($_POST['action']) {
         }
 
         if ($post['liked']) {
-            Post::unlikePost($pdo, $post['id'] , $_SESSION['user']['id']);
+            Post::unlikePost($pdo, $postId , $_SESSION['user']['id']);
         } else {
-            Post::likePost($pdo, $post['id'] ,  $_SESSION['user']['id']);
+            Post::likePost($pdo, $postId ,  $_SESSION['user']['id']);
         }
-        redirectBack();
 
+        $postUpdated = Post::findById($pdo,  $postId, $_SESSION['user']['id']);
+        header('Content-Type: application/json');
+
+        echo json_encode([
+            'liked' => $postUpdated['liked'],
+            'likeCount' =>  $postUpdated['like_count'],
+        ]);
+        exit;
 
     case 'like_comment':
         exit;

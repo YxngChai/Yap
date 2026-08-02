@@ -125,6 +125,7 @@ main {
   position: absolute;
   position-anchor: --profile-button;
   position-area: bottom;
+  box-shadow: -6px 6px 12px rgba(0, 0, 0, 0.15);
 }
 .popover__ul {
   display: flex;
@@ -134,7 +135,7 @@ main {
 }
 
 .popover__li {
-  min-width: 160px;
+  width: 160px;
   background-color: #fcfcfc;
   border: 1px solid var(--border-color);
   border-radius: 10px;
