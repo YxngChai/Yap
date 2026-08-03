@@ -35,6 +35,8 @@ document.querySelectorAll("dialog").forEach((dialog) => {
 
 
 
+// Like system
+
 const likeForms = document.querySelectorAll(".js-like-form");
 
 likeForms.forEach((form) => {
@@ -73,3 +75,34 @@ likeForms.forEach((form) => {
   })
 })
 
+// create post system
+
+const createPostForm = document.querySelector(".js-create-post-form");
+
+createPostForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  try {
+
+    const response = await fetch(createPostForm.action, {
+      method: createPostForm.method,
+      body: new FormData(createPostForm),
+    });
+
+    if(!response.ok) {
+        throw new Error('Server error');
+    }
+
+    const data = await response.json();
+
+    // update dom
+
+    const feed = document.querySelector(".feed");
+    feed.insertAdjacentElement("afterbegin", data.html);
+  
+    createPostForm.reset();
+
+  } catch (error ){
+    console.log(error);
+  }
+});

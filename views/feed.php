@@ -16,7 +16,7 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
 <main>
 <section class="feed">
     <section class="post__create">
-        <form action="/yap/public/" method="POST" class="post__form" >
+        <form action="/yap/public/" method="POST" class="post__form js-create-post-form">
             <label class="post__form-title">Create Post</label>
             <textarea class="post__form-textarea" name="post_content" type="textarea" minlength="1" maxlength="2000" placeholder="Write something"><?=$_SESSION['old_post_content']  ?? ''   ?></textarea>
             <input type="hidden" name="action" value="create_post">

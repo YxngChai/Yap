@@ -24,14 +24,34 @@ switch ($_POST['action']) {
             redirectBack();
         }
 
-        Post::create($pdo, [
+        $postId = Post::create($pdo, [
             'content' => $_POST['post_content'],
             'image_path' => null,
             'user_id' => $_SESSION['user']['id'],
         ]);
         unset($_SESSION['old_post_content']);
-            redirectBack();
+            // redirectBack();
+        $post = Post::findById($pdo, $postId, $_SESSION['user']['id']);
+        
+        header('Content-Type: application/json');
 
+        echo json_encode([
+            'success' => true,
+            'post' => [
+                'id' => $post['id'],
+                'username' => $_SESSION['user']['username'],
+                'content' => $post['content'],
+                'created_at' => 'Just now',
+                'like_count' => 0,
+                'liked' => false
+            ]
+        ]);
+        echo json_encode([
+            'success' => true,
+            'html' => ""
+        ]);
+
+        exit;
 
     case 'delete_post':
         $postId = filter_input(INPUT_POST, 'postId', FILTER_VALIDATE_INT);
