@@ -35,20 +35,26 @@ switch ($_POST['action']) {
         
         header('Content-Type: application/json');
 
+        // echo json_encode([
+        //     'success' => true,
+        //     'post' => [
+        //         'id' => $post['id'],
+        //         'username' => $_SESSION['user']['username'],
+        //         'content' => $post['content'],
+        //         'created_at' => 'Just now',
+        //         'like_count' => 0,
+        //         'liked' => false
+        //     ]
+        // ]);
+        ob_start();
+
+        require __DIR__ . '/../../views/partials/post.php';
+
+        $html = ob_get_clean();
+
         echo json_encode([
             'success' => true,
-            'post' => [
-                'id' => $post['id'],
-                'username' => $_SESSION['user']['username'],
-                'content' => $post['content'],
-                'created_at' => 'Just now',
-                'like_count' => 0,
-                'liked' => false
-            ]
-        ]);
-        echo json_encode([
-            'success' => true,
-            'html' => ""
+            'html' => $html
         ]);
 
         exit;

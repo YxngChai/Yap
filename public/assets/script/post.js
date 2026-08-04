@@ -97,8 +97,9 @@ createPostForm.addEventListener("submit", async (e) => {
 
     // update dom
 
-    const feed = document.querySelector(".feed");
-    feed.insertAdjacentElement("afterbegin", data.html);
+   const createSection = document.querySelector(".post__create");
+
+  createSection.insertAdjacentHTML("afterend", data.html);
   
     createPostForm.reset();
 
