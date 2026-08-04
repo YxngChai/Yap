@@ -33,7 +33,7 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
                     <form method="dialog">
                         <button value="cancel" class="dialog__close-btn">X</button>
                     </form>
-                    <form action="/yap/public/" method="POST" class="post__form" >
+                    <form action="/yap/public/" method="POST" class="post__form js-update-post-form" >
                         <label class="post__form-title">Update Post</label>
                         <textarea class="post__form-textarea" name="post_content" type="textarea" minlength="1" maxlength="2000" placeholder="Write something"><?= $post["content"] ?></textarea>
                         <input type="hidden" name="action" value="update_post">
@@ -75,7 +75,7 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
                 </dialog>
             <?php endif; ?>
         </header>
-        <p class="post__content"><?= $post["content"] ?></p>
+        <p class="post__content" id="post-content-<?= $post['id'] ?>" ><?= $post["content"] ?></p>
         <footer class="post__footer">
             <form action="/yap/public/" method="POST" class="js-like-form">
                 <input type="hidden" value="<?= htmlspecialchars($post['id']) ?>" name="postId">

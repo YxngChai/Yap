@@ -57,89 +57,9 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
         </section>
         <?php endif; ?>
         <?php if(!empty($posts)): ?>
-
-        <?php foreach($posts as $post): ?>
-        <article class="post">
-            <header class="post__header">
-            <a href="/yap/public/user/<?= htmlspecialchars((string) $post["username"]) ?>"><h2 class="post__username"><?= $post["username"] ?></h2></a><br>
-            <time class="post__time"><?= $post["created_at"] ?></time>
-             <?php if (isset($_SESSION['user']) && $post['username'] === $_SESSION['user']['username']): ?>
-                <button class="post__btn" style="anchor-name: --actions-<?= $post['id'] ?>;" popovertarget="post__actions_<?= $post['id']?>">...</button>
-                <div id="post__actions_<?= $post['id']?>" class="post__actions-popover"  style="position-anchor: --actions-<?= $post['id'] ?>;" popover>
-                    <ul>
-                        <li><button data-dialog="updateDialog-<?= $post['id'] ?>" class="post__action post__action-update">Edit</button></li>
-                        <li><button data-dialog="deleteDialog-<?= $post['id'] ?>" class="post__action post__action-delete">Delete</button></li>
-
-                    </ul>
-                </div>
-               
-                <dialog id="updateDialog-<?= $post['id']?>" class="dialog__edit">
-                    <form method="dialog">
-                        <button value="cancel" class="dialog__close-btn">X</button>
-                    </form>
-                    <form action="/yap/public/" method="POST" class="post__form" >
-                        <label class="post__form-title">Update Post</label>
-                        <textarea class="post__form-textarea" name="post_content" type="textarea" minlength="1" maxlength="2000" placeholder="Write something"><?= $post["content"] ?></textarea>
-                        <input type="hidden" name="action" value="update_post">
-                        <input type="hidden" value="<?= htmlspecialchars($post['id']) ?>" name="postId">
-                        <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
-                        <input
-                        type="hidden"
-                        name="csrf_token"
-                        value="<?= htmlspecialchars(csrfToken()) ?>">
-                        <?php if (!empty($_SESSION['update_errors'])): ?>
-                            <div class="errors">
-                                <?php foreach ($_SESSION['update_errors'] as $error): ?>
-                                    <p class="post__error"><?= htmlspecialchars($error) ?></p>
-                                <?php endforeach; ?>
-                            </div>
-                            <?php unset($_SESSION['update_errors']); ?>
-                        <?php endif; ?>
-                        <button class="post__form-btn" type="submit">Post</button>
-                    </form>
-                </dialog>
-
-                <dialog id="deleteDialog-<?= $post['id'] ?>">
-                    <p>Are you sure you want to delete this post?</p>
-                    <div class="dialog__options">
-                    <form method="dialog" class="dialog__option dialog__option--cancel">
-                        <button value="cancel" class="dialog__action">Cancel</button>
-                    </form>
-                    <form action="/yap/public/" method="POST" class="dialog__option dialog__option--delete">
-                        <input type="hidden" value="<?= htmlspecialchars($post['id']) ?>" name="postId">
-                        <input type="hidden" name="action" value="delete_post">
-                        <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
-                        <input
-                        type="hidden"
-                        name="csrf_token"
-                        value="<?= htmlspecialchars(csrfToken()) ?>">
-                        <button type="submit" value="confirm" class="dialog__action">Delete</button>
-                    </form>
-                    </div>
-                </dialog>
-            <?php endif; ?>
-        </header>
-        <p class="post__content"><?= $post["content"] ?></p>
-        <footer class="post__footer">
-            <form action="/yap/public/" method="POST" class="js-like-form">
-                <input type="hidden" value="<?= htmlspecialchars($post['id']) ?>" name="postId">
-                <input type="hidden" name="action" value="like_post">
-                <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
-                <input
-                type="hidden"
-                name="csrf_token"
-                value="<?= htmlspecialchars(csrfToken()) ?>">
-                <button class="post__like" type="submit">
-                <?= $post["liked"] ? $likedIcon : $likeIcon ?>
-                </button>
-            </form>
-            <span><?= $post['like_count'] ?></span>
-            <button class="post__comment">
-                <?= $commentIcon ?>
-            </button><span>3</span>
-            </footer>
-        </article>
-        <?php endforeach; ?>
+            <?php foreach($posts as $post): ?>
+                <?php require __DIR__ . '/partials/post.php'; ?>
+            <?php endforeach; ?>
         <?php endif; ?>
 
     </section>

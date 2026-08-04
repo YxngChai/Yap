@@ -35,17 +35,6 @@ switch ($_POST['action']) {
         
         header('Content-Type: application/json');
 
-        // echo json_encode([
-        //     'success' => true,
-        //     'post' => [
-        //         'id' => $post['id'],
-        //         'username' => $_SESSION['user']['username'],
-        //         'content' => $post['content'],
-        //         'created_at' => 'Just now',
-        //         'like_count' => 0,
-        //         'liked' => false
-        //     ]
-        // ]);
         ob_start();
 
         require __DIR__ . '/../../views/partials/post.php';
@@ -86,7 +75,19 @@ switch ($_POST['action']) {
         ]);
 
         unset($_SESSION['old_post_content']);
-        redirectBack();
+
+        header('Content-Type: application/json');
+
+        echo json_encode([
+            'success' => true,
+            'post' => [
+                'id' => $_POST['postId'],
+                'username' => $_SESSION['user']['username'],
+                'content' => $_POST['post_content'],
+            ]
+        ]);
+        exit;
+        // redirectBack();
 
         
     case 'remove picture':

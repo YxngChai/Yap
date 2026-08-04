@@ -99,11 +99,49 @@ createPostForm.addEventListener("submit", async (e) => {
 
    const createSection = document.querySelector(".post__create");
 
-  createSection.insertAdjacentHTML("afterend", data.html);
+    createSection.insertAdjacentHTML("afterend", data.html);
   
     createPostForm.reset();
 
   } catch (error ){
     console.log(error);
   }
+});
+
+//update post system
+
+const updateForms = document.querySelectorAll(".js-update-post-form");
+
+updateForms.forEach((form) => {
+  form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  try {
+  const response =  await fetch(form.action, {
+  method: form.method,
+  body: new FormData(form),
+  }); 
+
+  if(!response.ok){
+    throw new Error("server error");
+  }
+
+  const data = await response.json();
+
+  console.log(data);
+
+  const postContent = document.getElementById(`post-content-${data.post.id}`);
+
+  console.log(postContent);
+
+  console.log(data.post.content);
+
+  postContent.textContent =  data.post.content;
+
+  form.closest("dialog").close();
+
+  } catch (error) {
+    console.log(error);
+  }
+})
 });
