@@ -22,6 +22,7 @@ document.querySelectorAll(".post__action").forEach((button) => {
   button.addEventListener("click", () => {
     const dialog = document.getElementById(button.dataset.dialog);
     dialog.showModal();
+     dialog.focus();
   });
 });
 

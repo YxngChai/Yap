@@ -197,9 +197,9 @@ dialog {
   text-align: center;
 }
 .dialog__edit {
-  position: relative;
+  /* position: relative; */
   max-width: 600px;
-  width: 100%;
+  width: 98%;
 }
 .dialog__close-btn {
   position: absolute;

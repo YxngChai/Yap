@@ -23,8 +23,8 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
                 <button class="post__btn" style="anchor-name: --actions-<?= $post['id'] ?>;" popovertarget="post__actions_<?= $post['id']?>">...</button>
                 <div id="post__actions_<?= $post['id']?>" class="post__actions-popover"  style="position-anchor: --actions-<?= $post['id'] ?>;" popover>
                     <ul>
-                        <li><button data-dialog="updateDialog-<?= $post['id'] ?>" class="post__action post__action-update">Edit</button></li>
-                        <li><button data-dialog="deleteDialog-<?= $post['id'] ?>" class="post__action post__action-delete">Delete</button></li>
+                        <li><button type="button" data-dialog="updateDialog-<?= $post['id'] ?>" class="post__action post__action-update">Edit</button></li>
+                        <li><button type="button" data-dialog="deleteDialog-<?= $post['id'] ?>" class="post__action post__action-delete">Delete</button></li>
 
                     </ul>
                 </div>
@@ -51,7 +51,7 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
                             </div>
                             <?php unset($_SESSION['update_errors']); ?>
                         <?php endif; ?>
-                        <button class="post__form-btn" type="submit">Post</button>
+                        <button class="post__form-btn" type="submit">Save</button>
                     </form>
                 </dialog>
 
