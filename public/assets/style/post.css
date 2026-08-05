@@ -10,6 +10,13 @@
 .feed__title {
   margin: 20px;
 }
+
+.post-details__section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--pale-color);
+}
 /* posts card */
 .post {
   border: 1px solid var(--border-color);

@@ -21,7 +21,7 @@ $formatedDate = $date->format('M j \a\t H:i');
 <article class="post">
         <header class="post__header">
             <a href="/yap/public/user/<?= htmlspecialchars((string) $post["username"]) ?>"><h2 class="post__username"><?= $post["username"] ?></h2></a><br>
-            <time class="post__time"><?= $formatedDate ?></time>
+            <a href="/yap/public/p/<?= htmlspecialchars((string) $post['id']) ?>"><time class="post__time"><?= $formatedDate ?></time></a>
             <?php if (isset($_SESSION['user']) && $post['username'] === $_SESSION['user']['username']): ?>
                 <button class="post__btn" style="anchor-name: --actions-<?= $post['id'] ?>;" popovertarget="post__actions_<?= $post['id']?>">...</button>
                 <div id="post__actions_<?= $post['id']?>" class="post__actions-popover"  style="position-anchor: --actions-<?= $post['id'] ?>;" popover>
@@ -94,7 +94,7 @@ $formatedDate = $date->format('M j \a\t H:i');
             </form>
             <span><?= $post['like_count'] ?></span>
             <button class="post__comment">
-                <?= $commentIcon ?>
+                <a href="/yap/public/p/<?= htmlspecialchars((string) $post['id']) ?>"><?= $commentIcon ?></a>
             </button><span>3</span>
         </footer>
     </article>

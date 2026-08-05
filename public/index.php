@@ -38,15 +38,20 @@ if(!isset($_SESSION['user'])){
 if ($method === 'GET') { 
         if (preg_match('#^/yap/public/user/([a-zA-Z0-9_]+)$#', $uri, $matches)) {
         // for other user's profile
-        $_GET['username'] = (string) $matches[1];
-        require __DIR__ . '/../src/controllers/profileController.php';
-        exit;
+            $_GET['username'] = (string) $matches[1];
+            require __DIR__ . '/../src/controllers/profileController.php';
+            exit;
         }
         // for own profile
         if (preg_match('#^/yap/public/user/?$#', $uri)) {
-        $_GET['user_id'] = $_SESSION['user']['id'];
-        require __DIR__ . '/../src/controllers/profileController.php';
-        exit;
+            $_GET['user_id'] = $_SESSION['user']['id'];
+            require __DIR__ . '/../src/controllers/profileController.php';
+            exit;
+        }
+        if (preg_match('#^/yap/public/p/([0-9]+)$#', $uri, $matches)) {
+            $post_id = (string) $matches[1];
+            require __DIR__ . '/../src/controllers/showPostController.php';
+            exit;
         }
     require __DIR__ . '/../src/controllers/feedController.php';
     exit;

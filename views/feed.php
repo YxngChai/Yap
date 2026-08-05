@@ -1,7 +1,7 @@
 <?php
 $pageTitle = 'Yap - Home';
 $pageScript = 'post.js';
-$pageCss = 'feed.css';
+$pageCss = 'post.css';
 ?>
 
 
@@ -37,10 +37,9 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
     </section>
 
     <?php if(!empty($posts)): ?>
-
-    <?php foreach($posts as $post): ?>
-        <?php require __DIR__ . '/partials/post.php'; ?>
-     <?php endforeach; ?>
+        <?php foreach($posts as $post): ?>
+            <?php require __DIR__ . '/partials/post.php'; ?>
+        <?php endforeach; ?>
     <?php endif; ?>
 </section>
 </main>
