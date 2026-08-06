@@ -8,10 +8,10 @@ class Post{
 
     return (int) $pdo->lastInsertId();
     }
-    public static function delete(PDO $pdo, int $postId, int $postUserID): bool {
+    public static function delete(PDO $pdo, int $postId, int $postUserId): bool {
     $sql = 'DELETE FROM posts WHERE id = :id AND user_id = :user_id';
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(['id' => $postId, 'user_id' => $postUserID]);
+    $stmt->execute(['id' => $postId, 'user_id' => $postUserId]);
 
     return $stmt->rowCount() > 0;
     }
