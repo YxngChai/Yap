@@ -78,7 +78,7 @@ if ($method === 'POST') {
     }
 
 
-    if (in_array($action, ['create_comment', 'delete_comment'])) {
+    if (in_array($action, ['create_comment', 'delete_comment', 'update_comment'])) {
         require __DIR__ . '/../src/controllers/commentController.php';
         exit;
     }

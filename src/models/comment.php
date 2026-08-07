@@ -2,7 +2,7 @@
 
 class Comment{
     public static function create(PDO $pdo, array $commentData): int {
-    $sql = 'INSERT INTO comments(content, image_path, user_id, post_id) VALUES(:content, :image_path ,:user_id,:post_id)';
+    $sql = 'INSERT INTO comments(content, image_path, user_id, post_id) VALUES(:content, :image_path, :user_id, :post_id)';
     $stmt = $pdo->prepare($sql);
     $stmt->execute($commentData);
 
