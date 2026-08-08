@@ -27,6 +27,7 @@ require_once __DIR__ . '/../src/config/db.php';
 $action = $_POST['action'] ?? '';
 $method = $_SERVER['REQUEST_METHOD'];
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$commentExpand = false;
 
 // var_dump($uri);
 

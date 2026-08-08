@@ -13,6 +13,8 @@ $data = $_POST;
 $_SESSION['old_comment_content'] = $data['comment_content'] ?? '';
 $rules = ['comment_content' => ['min' => 1, 'max' => 2000],];
 
+
+
 switch ($_POST['action']) {
 
     case 'create_comment':
@@ -22,12 +24,14 @@ switch ($_POST['action']) {
             $_SESSION['create_comment_errors'] = $errors;
             redirectBack();
         }
-        $postId = filter_input(INPUT_POST, 'postId', FILTER_VALIDATE_INT);
+        $postId = filter_input(INPUT_POST, 'post_id', FILTER_VALIDATE_INT);
         if ($postId === false || $postId < 1) {
+            $_SESSION['create_comment_errors'] = $postId;
             redirectBack();
         }
 
         if(!Post::findById($pdo, $postId,  $_SESSION['user']['id'])) {
+            $_SESSION['create_comment_errors'] = 'Cannot find id';
             redirectBack();
         }
 

@@ -97,4 +97,7 @@ $formatedDate = $date->format('M j \a\t H:i');
                 <a href="/yap/public/p/<?= htmlspecialchars((string) $post['id']) ?>"><?= $commentIcon ?></a>
             </button><span>3</span>
         </footer>
+        <?php if ($commentExpand):?>
+            <?php require __DIR__ . "/comment.php"; ?>
+        <?php endif; ?>
     </article>
