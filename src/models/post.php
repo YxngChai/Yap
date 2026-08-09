@@ -36,7 +36,8 @@ class Post{
         p.created_at,
         u.username,
         
-        COUNT(l.post_id) AS like_count,
+        COUNT(DISTINCT l.post_id) AS like_count,
+        COUNT(DISTINCT c.id) AS comment_count,
         
         EXISTS (
         SELECT 1
@@ -52,6 +53,9 @@ class Post{
         
         LEFT JOIN posts_likes l
         ON l.post_id = p.id
+
+        LEFT JOIN comments c
+        ON c.post_id = p.id
 
         WHERE p.id = :post_id
         
@@ -73,7 +77,8 @@ class Post{
         p.created_at,
         u.username,
         
-        COUNT(l.post_id) AS like_count,
+        COUNT(DISTINCT l.post_id) AS like_count,
+        COUNT(DISTINCT c.id) AS comment_count,
         
         EXISTS (
         SELECT 1
@@ -89,6 +94,9 @@ class Post{
         
         LEFT JOIN posts_likes l
         ON l.post_id = p.id
+
+        LEFT JOIN comments c
+        ON c.post_id = p.id
 
         WHERE p.user_id = :user_id
         
@@ -113,7 +121,8 @@ class Post{
     p.created_at,
     u.username,
     
-    COUNT(l.post_id) AS like_count,
+    COUNT(DISTINCT l.post_id) AS like_count,
+    COUNT(DISTINCT c.id) AS comment_count,
     
     EXISTS (
     SELECT 1
@@ -129,6 +138,9 @@ class Post{
     
     LEFT JOIN posts_likes l
     ON l.post_id = p.id
+
+    LEFT JOIN comments c
+    ON c.post_id = p.id
     
     GROUP BY 
     p.id,

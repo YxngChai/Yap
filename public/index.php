@@ -49,6 +49,7 @@ if ($method === 'GET') {
             require __DIR__ . '/../src/controllers/profileController.php';
             exit;
         }
+        // show a post
         if (preg_match('#^/yap/public/p/([0-9]+)$#', $uri, $matches)) {
             $post_id = (string) $matches[1];
             require __DIR__ . '/../src/controllers/showPostController.php';
