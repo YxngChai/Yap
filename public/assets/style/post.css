@@ -131,6 +131,56 @@
   cursor: not-allowed;
 }
 
+/* Comment form */
+
+
+.comment__form {
+  display: flex;
+  padding: 10px 15px;
+  gap: 15px;
+  margin-bottom: 5px;
+}
+
+.comment__form-textarea {
+
+  border-radius: 15px;
+  padding: 10px;
+  min-height: 40px;
+  resize: none;
+  field-sizing: content;
+  flex-grow: 1;
+
+}
+.comment__form-textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(242, 0, 255, 0.344);
+}
+.comment__form-btn {
+  flex-shrink: 0;
+  border-radius: 8px;
+  color: var(--pale-color);
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+  font-weight: 700;
+  padding: 8px 10px; 
+  text-align: center;
+  border: 1px solid var(--border-color);
+  background-color: #d97ffd;
+  box-shadow: 0 0 15px rgba(116, 116, 116, 0.322);
+}
+
+.comment__form-btn:disabled {
+  background-color: var(--secondary-color-light);
+  cursor: not-allowed;
+}
+
+.comment__form-icon {
+  opacity: 0.8;
+  width: 20px;
+
+}
+
+
 /* Edit / Modify post */
 .post__btn {
   anchor-name: --actions-button;
@@ -246,7 +296,6 @@ dialog {
 
 .comment {
   display: flex;
-  
   border-top: 3px solid var(--pale-color);
   padding: 10px;
 }
