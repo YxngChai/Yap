@@ -34,8 +34,10 @@ document.querySelectorAll("dialog").forEach((dialog) => {
 });
 
 
+// *********
+// Posts
 
-// Like system
+// Post like system
 
 const likeForms = document.querySelectorAll(".js-like-form");
 
@@ -79,6 +81,7 @@ likeForms.forEach((form) => {
 
 const createPostForm = document.querySelector(".js-create-post-form");
 
+if(createPostForm){
 createPostForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -107,6 +110,7 @@ createPostForm.addEventListener("submit", async (e) => {
     console.log(error);
   }
 });
+}
 
 //update post system
 
@@ -145,3 +149,37 @@ updateForms.forEach((form) => {
   }
 })
 });
+
+// ************
+// Comments
+
+
+const createCommentForm = document.querySelector(".js-create-comment-form");
+
+if (createCommentForm) {
+createCommentForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  try {
+
+    const response = await fetch(createCommentForm.action, {
+      method: createCommentForm.method,
+      body: new FormData(createCommentForm),
+    });
+
+    if(!response.ok) {
+        throw new Error('Server error');
+    }
+
+    const data = await response.json();
+
+    // update dom
+
+    createCommentForm.insertAdjacentHTML("beforebegin", data.html);
+  
+    createCommentForm.reset();
+
+  } catch (error ){
+    console.log(error);
+  }
+});
+}

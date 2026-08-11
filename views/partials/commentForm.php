@@ -1,6 +1,6 @@
 
-<form action="/yap/public/" method="POST" class="comment__form js-post-form">
-            <textarea class="comment__form-textarea js-post-textarea" name="comment_content" type="textarea" minlength="1" maxlength="2000" placeholder="Comment something..."><?=$_SESSION['old_post_content']  ?? ''   ?></textarea>
+<form action="/yap/public/" method="POST" class="comment__form js-post-form js-create-comment-form">
+            <textarea class="comment__form-textarea js-post-textarea" name="comment_content" type="textarea" minlength="1" maxlength="2000" placeholder="Comment something..."><?=$_SESSION['old_comment_content']  ?? ''   ?></textarea>
             <input type="hidden" name="action" value="create_comment">
             <input type="hidden" name="post_id" value="<?= $post['id'] ?? '' ?>">
             <input
@@ -9,7 +9,7 @@
             value="<?= htmlspecialchars(csrfToken()) ?>">
             <?php if (!empty($_SESSION['create_comment_errors'])): ?>
                 <div class="errors">
-                    <?php foreach ($_SESSION['create_errors'] as $error): ?>
+                    <?php foreach ($_SESSION['create_comment_errors'] as $error): ?>
                         <p class="post__error"><?= htmlspecialchars($error) ?></p>
                     <?php endforeach; ?>
                 </div>
