@@ -10,14 +10,13 @@ verifyCsrf();
 
 $data = $_POST;
 $_SESSION['old_post_content'] = $data['post_content'] ?? '';
+$rules = ['post_content' => ['min' => 1, 'max' => 2000],];
 
 switch ($_POST['action']) {
 
     case 'create_post':
 
-        $rules = [
-            'post_content' => ['min' => 1, 'max' => 2000],
-        ];
+
         $errors = Validator::validatePost($data, $rules);
         if(!empty($errors)){
             $_SESSION['create_errors'] = $errors;
@@ -30,6 +29,7 @@ switch ($_POST['action']) {
             'user_id' => $_SESSION['user']['id'],
         ]);
         unset($_SESSION['old_post_content']);
+
             // redirectBack();
         $post = Post::findById($pdo, $postId, $_SESSION['user']['id']);
         
@@ -55,22 +55,27 @@ switch ($_POST['action']) {
         exit;
         }
         Post::delete($pdo, $postId, $_SESSION['user']['id']);
-            redirectBack();
+
 
 
     case 'update_post':
-        $rules = [
-            'post_content' => ['min' => 1, 'max' => 2000],
-        ];
+
         $errors = Validator::validatePost($data, $rules);
         if(!empty($errors)){
             $_SESSION['update_errors'] = $errors;
             redirectBack();
         }
+
+        $postId = filter_input(INPUT_POST, 'postId', FILTER_VALIDATE_INT);
+        if ($postId === false || $postId < 1) {
+            redirectBack();
+            exit;
+        }
+
         Post::update($pdo, [
             'content' => $_POST['post_content'],
             'image_path' => null,
-            'id' => $_POST['postId'],
+            'id' => $postId,
             'user_id' => $_SESSION['user']['id'],
         ]);
 
