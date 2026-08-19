@@ -321,7 +321,7 @@ height: 30px;
 .comment__username{
   font-size: 1em;
 }
-.post__actions-container{
+.comment__actions-container{
   flex-shrink: 0;
   margin-left: 10px;
   border-radius: 50px;
@@ -331,7 +331,7 @@ height: 30px;
   justify-content: center;
   align-items: center;
 }
-.post__actions-container:hover{
+.comment__actions-container:hover{
   background-color: var(--secondary-color-light);
 }
 .post__actions{

@@ -33,6 +33,15 @@ document.querySelectorAll("dialog").forEach((dialog) => {
   });
 });
 
+// Comments
+
+document.querySelectorAll(".comment__action").forEach((button) => {
+  button.addEventListener("click", () => {
+    const dialog = document.getElementById(button.dataset.dialog);
+    dialog.showModal();
+  });
+});
+
 
 // *********
 // Posts

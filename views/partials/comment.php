@@ -36,8 +36,60 @@ if ($diff ->days > 0) {
     </div>
 
     <?php if($comment['user_id'] === $_SESSION['user']['id']):  ?>
-        <div class="post__actions-container">
-            <button class="post__actions" style="anchor-name: --actions-<?= $comment['id'] ?>;" popovertarget="post__actions_<?= $comment['id']?>">...</button>
+        <div class="comment__actions-container">
+            <button class="comment__actions" style="anchor-name: --actions-<?= $comment['id'] ?>;" popovertarget="comment__actions_<?= $comment['id']?>">...</button>
         </div>
+        <div id="comment__actions_<?= $comment['id']?>" class="comment__actions-popover"  style="position-anchor: --actions-<?= $comment['id'] ?>;" popover>
+                <ul>
+                    <li><button type="button" data-dialog="updateCommentDialog-<?= $comment['id'] ?>" class="comment__action comment__action-update">Edit</button></li>
+                    <li><button type="button" data-dialog="deleteCommentDialog-<?= $comment['id'] ?>" class="comment__action comment__action-delete">Delete</button></li>
+
+                </ul>
+            </div>
+
+            <dialog id="updateCommentDialog-<?= $comment['id']?>" class="dialog__edit">
+                <form method="dialog">
+                    <button value="cancel" class="dialog__close-btn">X</button>
+                </form>
+                <form action="/yap/public/" method="POST" class="comment__form js-update-comment-form" >
+                    <label class="comment__form-title">Update Comment</label>
+                    <textarea class="comment__form-textarea" name="comment_content" type="textarea" minlength="1" maxlength="2000" placeholder="Write something"><?= $comment["content"] ?></textarea>
+                    <input type="hidden" name="action" value="update_comment">
+                    <input type="hidden" value="<?= htmlspecialchars($comment['id']) ?>" name="commentId">
+                    <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
+                    <input
+                    type="hidden"
+                    name="csrf_token"
+                    value="<?= htmlspecialchars(csrfToken()) ?>">
+                    <?php if (!empty($_SESSION['update_errors'])): ?>
+                        <div class="errors">
+                            <?php foreach ($_SESSION['update_errors'] as $error): ?>
+                                <p class="comment__error"><?= htmlspecialchars($error) ?></p>
+                            <?php endforeach; ?>
+                        </div>
+                        <?php unset($_SESSION['update_errors']); ?>
+                    <?php endif; ?>
+                    <button class="comment__form-btn" type="submit">Save</button>
+                </form>
+            </dialog>
+
+            <dialog id="deleteCommentDialog-<?= $comment['id'] ?>">
+                <p>Are you sure you want to delete this comment?</p>
+                <div class="dialog__options">
+                <form method="dialog" class="dialog__option dialog__option--cancel">
+                    <button value="cancel" class="dialog__action">Cancel</button>
+                </form>
+                <form action="/yap/public/" method="POST" class="dialog__option dialog__option--delete">
+                    <input type="hidden" value="<?= htmlspecialchars($comment['id']) ?>" name="commentId">
+                    <input type="hidden" name="action" value="delete_comment">
+                    <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
+                    <input
+                    type="hidden"
+                    name="csrf_token"
+                    value="<?= htmlspecialchars(csrfToken()) ?>">
+                    <button type="submit" value="confirm" class="dialog__action">Delete</button>
+                </form>
+                </div>
+            </dialog>    
     <?php endif; ?>
 </div>
