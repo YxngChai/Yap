@@ -114,7 +114,7 @@ main {
 
 .header__popover {
   margin: 10px -1px 0 0;
-  background-color: var(--light-grey-background);
+   background-color: var(--pale-color);
   border-radius: 0 0 0 15px;
   inset: 0;
   padding: 10px 0px;

@@ -37,7 +37,7 @@ if ($diff ->days > 0) {
 
     <?php if($comment['user_id'] === $_SESSION['user']['id']):  ?>
         <div class="comment__actions-container">
-            <button class="comment__actions" style="anchor-name: --actions-<?= $comment['id'] ?>;" popovertarget="comment__actions_<?= $comment['id']?>">...</button>
+            <button class="comment__actions comment__btn" style="anchor-name: --actions-<?= $comment['id'] ?>;" popovertarget="comment__actions_<?= $comment['id']?>">...</button>
         </div>
         <div id="comment__actions_<?= $comment['id']?>" class="comment__actions-popover"  style="position-anchor: --actions-<?= $comment['id'] ?>;" popover>
                 <ul>
@@ -51,7 +51,7 @@ if ($diff ->days > 0) {
                 <form method="dialog">
                     <button value="cancel" class="dialog__close-btn">X</button>
                 </form>
-                <form action="/yap/public/" method="POST" class="comment__form js-update-comment-form" >
+                <form action="/yap/public/" method="POST" class="comment__edit-form js-update-comment-form" >
                     <label class="comment__form-title">Update Comment</label>
                     <textarea class="comment__form-textarea" name="comment_content" type="textarea" minlength="1" maxlength="2000" placeholder="Write something"><?= $comment["content"] ?></textarea>
                     <input type="hidden" name="action" value="update_comment">

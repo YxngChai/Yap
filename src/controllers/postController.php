@@ -55,7 +55,8 @@ switch ($_POST['action']) {
         exit;
         }
         Post::delete($pdo, $postId, $_SESSION['user']['id']);
-
+        header('Location: /yap/public/');
+        exit;
 
 
     case 'update_post':
