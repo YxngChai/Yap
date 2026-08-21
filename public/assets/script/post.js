@@ -18,11 +18,16 @@ document.querySelectorAll(".js-post-form").forEach((form) => {
 });
 
 
-document.querySelectorAll(".post__action").forEach((button) => {
-  button.addEventListener("click", () => {
+document.addEventListener("click", (e) => {
+    const button = e.target.closest(".post__action, .comment__action");
+
+    if (!button) return;
+
     const dialog = document.getElementById(button.dataset.dialog);
-    dialog.showModal();
-  });
+
+    if (dialog) {
+        dialog.showModal();
+    }
 });
 
 document.querySelectorAll("dialog").forEach((dialog) => {
@@ -35,12 +40,6 @@ document.querySelectorAll("dialog").forEach((dialog) => {
 
 // Comments
 
-document.querySelectorAll(".comment__action").forEach((button) => {
-  button.addEventListener("click", () => {
-    const dialog = document.getElementById(button.dataset.dialog);
-    dialog.showModal();
-  });
-});
 
 
 // *********
@@ -48,10 +47,11 @@ document.querySelectorAll(".comment__action").forEach((button) => {
 
 // Post like system
 
-const likeForms = document.querySelectorAll(".js-like-form");
+document.addEventListener("submit", async (e) => {
+  const form = e.target.closest(".js-like-form")
 
-likeForms.forEach((form) => {
-  form.addEventListener('submit', async (e) =>{
+    if (!form) return;
+    
     e.preventDefault();
 
     try {
@@ -66,9 +66,6 @@ likeForms.forEach((form) => {
       }
 
       const data = await response.json();
-      console.log(response);
-
-      console.log(data);
 
       const button = form.querySelector(".post__like")
       const likeCount = form.nextElementSibling;
@@ -84,7 +81,7 @@ likeForms.forEach((form) => {
       console.log(error);
     }
   })
-})
+
 
 // create post system
 
@@ -123,11 +120,14 @@ createPostForm.addEventListener("submit", async (e) => {
 
 //update post system
 
-const updateForms = document.querySelectorAll(".js-update-post-form");
+document.addEventListener("submit", async (e) => {
 
-updateForms.forEach((form) => {
-  form.addEventListener("submit", async (e) => {
+ const form = e.target.closest(".js-update-post-form")
+
+ if (!form) return;
+
   e.preventDefault();
+
 
   try {
   const response =  await fetch(form.action, {
@@ -141,13 +141,7 @@ updateForms.forEach((form) => {
 
   const data = await response.json();
 
-  console.log(data);
-
   const postContent = document.getElementById(`post-content-${data.post.id}`);
-
-  console.log(postContent);
-
-  console.log(data.post.content);
 
   postContent.textContent =  data.post.content;
 
@@ -157,10 +151,10 @@ updateForms.forEach((form) => {
     console.log(error);
   }
 })
-});
 
 // ************
 // Comments
+// ************
 
 
 const createCommentForm = document.querySelector(".js-create-comment-form");
@@ -192,3 +186,37 @@ createCommentForm.addEventListener("submit", async (e) => {
   }
 });
 }
+
+//update post system
+
+document.addEventListener("submit", async (e) => {
+
+ const form = e.target.closest(".js-update-comment-form")
+
+ if (!form) return;
+
+  e.preventDefault();
+
+  try {
+  const response =  await fetch(form.action, {
+  method: form.method,
+  body: new FormData(form),
+  }); 
+
+  if(!response.ok){
+    throw new Error("server error");
+  }
+
+  const data = await response.json();
+
+
+  const commentContent = document.getElementById(`comment-content-${data.comment.id}`);
+
+  commentContent.textContent =  data.comment.content;
+
+  form.closest("dialog").close();
+
+  } catch (error) {
+    console.log(error);
+  }
+});

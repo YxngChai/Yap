@@ -32,7 +32,7 @@ if ($diff ->days > 0) {
         </a>
         <time class="comment__time"><?= $formatedDate ?></time>
         </div>
-        <p class="comment__content"><?= $comment['content'] ?></p>
+        <p class="comment__content" id="comment-content-<?= $comment['id'] ?>"><?= $comment['content'] ?></p>
     </div>
 
     <?php if($comment['user_id'] === $_SESSION['user']['id']):  ?>
