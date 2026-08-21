@@ -1,4 +1,8 @@
-<?php /** @var array $comment */ ?>
+<?php 
+/** @var array $comment */
+/** @var string|null $redirect */
+
+?>
 
 <?php 
 
@@ -56,7 +60,7 @@ if ($diff ->days > 0) {
                     <textarea class="comment__form-textarea" name="comment_content" type="textarea" minlength="1" maxlength="2000" placeholder="Write something"><?= $comment["content"] ?></textarea>
                     <input type="hidden" name="action" value="update_comment">
                     <input type="hidden" value="<?= htmlspecialchars($comment['id']) ?>" name="commentId">
-                    <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
+                    <input type="hidden" name="redirect" value="<?= htmlspecialchars($redirect ?? $_SERVER['REQUEST_URI'])  ?>">
                     <input
                     type="hidden"
                     name="csrf_token"
@@ -82,7 +86,7 @@ if ($diff ->days > 0) {
                 <form action="/yap/public/" method="POST" class="dialog__option dialog__option--delete">
                     <input type="hidden" value="<?= htmlspecialchars($comment['id']) ?>" name="commentId">
                     <input type="hidden" name="action" value="delete_comment">
-                    <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
+                    <input type="hidden" name="redirect" value="<?= htmlspecialchars($redirect ?? $_SERVER['REQUEST_URI']) ?>">
                     <input
                     type="hidden"
                     name="csrf_token"

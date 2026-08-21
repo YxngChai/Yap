@@ -48,6 +48,8 @@ switch ($_POST['action']) {
         if (!$comment) {
             exit;
         }
+        $redirect = $_POST['redirect'] ?? '/yap/public/';
+
         header('Content-Type: application/json');
 
         ob_start();

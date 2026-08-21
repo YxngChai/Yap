@@ -3,6 +3,7 @@
             <textarea class="comment__form-textarea js-post-textarea" name="comment_content" type="textarea" minlength="1" maxlength="2000" placeholder="Comment something..."><?=$_SESSION['old_comment_content']  ?? ''   ?></textarea>
             <input type="hidden" name="action" value="create_comment">
             <input type="hidden" name="post_id" value="<?= $post['id'] ?? '' ?>">
+            <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
             <input
             type="hidden"
             name="csrf_token"
