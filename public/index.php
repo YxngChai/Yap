@@ -29,7 +29,6 @@ $method = $_SERVER['REQUEST_METHOD'];
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $commentExpand = false;
 
-// var_dump($uri);
 
 if(!isset($_SESSION['user'])){
     require __DIR__ . '/../src/controllers/authController.php';
@@ -63,7 +62,6 @@ if ($method === 'GET') {
 
 if ($method === 'POST') {
 
-// var_dump($action);
 
     if (in_array($action, ['signin', 'signup', 'logout'])) {
         require __DIR__ . '/../src/controllers/authController.php';

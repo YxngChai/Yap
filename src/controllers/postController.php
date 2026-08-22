@@ -33,6 +33,8 @@ switch ($_POST['action']) {
             // redirectBack();
         $post = Post::findById($pdo, $postId, $_SESSION['user']['id']);
         
+        $postRedirect =  $_POST['redirect'] ?? '/yap/public/';
+
         header('Content-Type: application/json');
 
         ob_start();
@@ -55,7 +57,7 @@ switch ($_POST['action']) {
         exit;
         }
         Post::delete($pdo, $postId, $_SESSION['user']['id']);
-        header('Location: /yap/public/');
+            redirectBack();
         exit;
 
 
