@@ -319,7 +319,7 @@ dialog {
   border-top: 3px solid var(--pale-color);
   padding: 10px;
 }
-.comment__content {
+.comment__contents {
   flex-grow: 1;
 }
 .comment__details{
@@ -333,33 +333,52 @@ dialog {
   flex-shrink: 0;
 }
 .comment__photo {
-border-radius: 50px;
-width: 30px;
-height: 30px;
+  border-radius: 50px;
+  width: 30px;
+  height: 30px;
 }
 .comment__username{
   font-size: 1em;
 }
-.comment__actions-container{
+
+.comment__controls{
   flex-shrink: 0;
   margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between ;
+  align-items: end;
+}
+
+.comment__actions-container{
   border-radius: 50px;
-  height: 25px;
-  width: 25px;
+  height: 22px;
+  width: 22px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .comment__actions-container:hover{
   background-color: var(--secondary-color-light);
 }
 .comment__actions{
  padding-bottom: 7px;
 }
+.comment__like-system{
+  display: flex;
+  align-items: center;
+  font-weight: 200;
+}
+.comment__like {
+    width: 18px;
+    padding: 5px 2px 0 5px;
+}
 .comment__time {
   font-size: 0.8em;
   font-weight: 200;
 }
+
 .comment__btn {
   anchor-name: --comment-actions-button;
 }

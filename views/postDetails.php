@@ -7,6 +7,8 @@ $commentExpand = true;
 
 require_once __DIR__ . '/header.php';
 
+require __DIR__ . "/../src/helpers/icons.php";
+
 ?>
 
 <main class="post-details__section">

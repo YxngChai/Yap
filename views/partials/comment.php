@@ -2,9 +2,7 @@
 /** @var array $comment */
 /** @var string|null $commentRedirect */
 
-?>
-
-<?php 
+require __DIR__ . "/../../src/helpers/icons.php";
 
 $date = new DateTime($comment['created_at']);
 $now = new DateTime();
@@ -27,7 +25,7 @@ if ($diff ->days > 0) {
             <img class="comment__photo" src="/yap/public/assets/images/profile_anonymous_mini.jpeg" alt="">
         </a>
     </div>
-    <div class="comment__content">
+    <div class="comment__contents">
         <div class="comment__details">
         <a href="/yap/public/user/<?= $comment['username'] ?>">
             <h2 class="comment__username">
@@ -40,8 +38,25 @@ if ($diff ->days > 0) {
     </div>
 
     <?php if($comment['user_id'] === $_SESSION['user']['id']):  ?>
-        <div class="comment__actions-container">
-            <button class="comment__actions comment__btn" style="anchor-name: --actions-<?= $comment['id'] ?>;" popovertarget="comment__actions_<?= $comment['id']?>">...</button>
+        <div class="comment__controls">
+            <div class="comment__actions-container">
+                <button class="comment__actions comment__btn" style="anchor-name: --actions-<?= $comment['id'] ?>;" popovertarget="comment__actions_<?= $comment['id']?>">...</button>
+            </div>
+            <div class="comment__like-system">
+            <span><?= $comment['like_count'] === 0 ? '' : $comment['like_count']  ?></span>
+                <form action="/yap/public/" method="POST" class="js-like-comment-form">
+                    <input type="hidden" value="<?= htmlspecialchars($comment['id']) ?>" name="commentId">
+                    <input type="hidden" name="action" value="like_comment">
+                    <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
+                    <input
+                    type="hidden"
+                    name="csrf_token"
+                    value="<?= htmlspecialchars(csrfToken()) ?>">
+                    <button class="comment__like" type="submit">
+                    <?= $comment["liked"] ? $likedIcon : $likeIcon ?>
+                    </button>
+                </form>
+            </div>
         </div>
         <div id="comment__actions_<?= $comment['id']?>" class="comment__actions-popover"  style="position-anchor: --actions-<?= $comment['id'] ?>;" popover>
                 <ul>
