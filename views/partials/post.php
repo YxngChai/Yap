@@ -51,9 +51,9 @@ if ($diff ->days > 0) {
                     <form method="dialog">
                         <button value="cancel" class="dialog__close-btn">X</button>
                     </form>
-                    <form action="/yap/public/" method="POST" class="post__form js-update-post-form" >
+                    <form action="/yap/public/" method="POST" class="post__form js-update-post-form js-post-form" >
                         <label class="post__form-title">Update Post</label>
-                        <textarea class="post__form-textarea" name="post_content" type="textarea" minlength="1" maxlength="2000" placeholder="Write something"><?= $post["content"] ?></textarea>
+                        <textarea class="post__form-textarea js-post-textarea" name="post_content" type="textarea" minlength="1" maxlength="2000" placeholder="Write something"><?= $post["content"] ?></textarea>
                         <input type="hidden" name="action" value="update_post">
                         <input type="hidden" value="<?= htmlspecialchars($post['id']) ?>" name="postId">
                         <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
@@ -69,7 +69,7 @@ if ($diff ->days > 0) {
                             </div>
                             <?php unset($_SESSION['update_errors']); ?>
                         <?php endif; ?>
-                        <button class="post__form-btn" type="submit">Save</button>
+                        <button class="post__form-btn js-post-btn" type="submit">Save</button>
                     </form>
                 </dialog>
 

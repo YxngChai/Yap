@@ -247,6 +247,11 @@ dialog {
   gap: 15px;
   margin-bottom: 5px;
 }
+.comment__form:disabled{
+  background-color: var(--secondary-color-light);
+  cursor: not-allowed;
+}
+
 .comment__edit-form {
   display: flex;
   flex-direction: column;
