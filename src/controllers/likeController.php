@@ -2,6 +2,7 @@
 
 
 require_once __DIR__ . '/../models/post.php';
+require_once __DIR__ . '/../models/comment.php';
 
 verifyCsrf();
 
@@ -38,5 +39,30 @@ switch($_POST['action']) {
         exit;
 
     case 'like_comment':
+        $commentId = filter_input(INPUT_POST, 'commentId', FILTER_VALIDATE_INT);
+        if ($commentId === false || $commentId < 1) {
+            http_response_code(400);
+            exit('Invalid comment ID.');
+        }
+        $comment = Comment::findById($pdo, $commentId, $_SESSION['user']['id']);
+
+        if (!$comment) {
+            http_response_code(404);
+            exit('Comment not found.');
+        }
+
+        if ($comment['liked']) {
+            Comment::unlikeComment($pdo, $commentId , $_SESSION['user']['id']);
+        } else {
+            Comment::likeComment($pdo, $commentId ,  $_SESSION['user']['id']);
+        }
+
+        $postUpdated = Comment::findById($pdo,  $commentId, $_SESSION['user']['id']);
+        header('Content-Type: application/json');
+
+        echo json_encode([
+            'liked' => $postUpdated['liked'],
+            'likeCount' =>  $postUpdated['like_count'],
+        ]);
         exit;
 }

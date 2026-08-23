@@ -81,7 +81,7 @@ $formatedDate = $date->format('M j \a\t H:i');
         </header>
         <p class="post__content" id="post-content-<?= $post['id'] ?>" ><?= $post["content"] ?></p>
         <footer class="post__footer">
-            <form action="/yap/public/" method="POST" class="js-like-form">
+            <form action="/yap/public/" method="POST" class="js-like-post-form">
                 <input type="hidden" value="<?= htmlspecialchars($post['id']) ?>" name="postId">
                 <input type="hidden" name="action" value="like_post">
                 <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">

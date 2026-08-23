@@ -48,7 +48,7 @@ document.querySelectorAll("dialog").forEach((dialog) => {
 // Post like system
 
 document.addEventListener("submit", async (e) => {
-  const form = e.target.closest(".js-like-form")
+  const form = e.target.closest(".js-like-post-form")
 
     if (!form) return;
     
@@ -73,9 +73,9 @@ document.addEventListener("submit", async (e) => {
       button.innerHTML = data.liked ? likedIcon : likeIcon;
       likeCount.textContent = data.likeCount;
 
-      button.classList.remove("post__like--animate");
+      button.classList.remove("like-animation");
       void button.offsetWidth;
-      button.classList.add("post__like--animate");
+      button.classList.add("like-animation");
 
     } catch (error) {
       console.log(error);
@@ -157,6 +157,8 @@ document.addEventListener("submit", async (e) => {
 // ************
 
 
+// create comment
+
 const createCommentForm = document.querySelector(".js-create-comment-form");
 
 if (createCommentForm) {
@@ -187,7 +189,7 @@ createCommentForm.addEventListener("submit", async (e) => {
 });
 }
 
-//update post system
+//update comment 
 
 document.addEventListener("submit", async (e) => {
 
@@ -220,3 +222,43 @@ document.addEventListener("submit", async (e) => {
     console.log(error);
   }
 });
+
+// like comment 
+
+// Post like system
+
+document.addEventListener("submit", async (e) => {
+  const form = e.target.closest(".js-like-comment-form")
+
+    if (!form) return;
+    
+    e.preventDefault();
+
+    try {
+
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: new FormData(form)
+      });
+
+      if(!response.ok) {
+        throw new Error('Server error');
+      }
+
+      const data = await response.json();
+
+      const button = form.querySelector(".comment__like")
+      const likeCount = form.previousElementSibling;
+
+      button.innerHTML = data.liked ? likedIcon : likeIcon;
+      likeCount.textContent = data.likeCount > 0 ? data.likeCount : '';
+
+      button.classList.remove("like-animation");
+      void button.offsetWidth;
+      button.classList.add("like-animation");
+
+    } catch (error) {
+      console.log(error);
+    }
+  })
+

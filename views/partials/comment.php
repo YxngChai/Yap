@@ -43,7 +43,7 @@ if ($diff ->days > 0) {
                 <button class="comment__actions comment__btn" style="anchor-name: --actions-<?= $comment['id'] ?>;" popovertarget="comment__actions_<?= $comment['id']?>">...</button>
             </div>
             <div class="comment__like-system">
-            <span><?= $comment['like_count'] === 0 ? '' : $comment['like_count']  ?></span>
+                <span><?= $comment['like_count'] < 1 ? '' : $comment['like_count']  ?></span>
                 <form action="/yap/public/" method="POST" class="js-like-comment-form">
                     <input type="hidden" value="<?= htmlspecialchars($comment['id']) ?>" name="commentId">
                     <input type="hidden" name="action" value="like_comment">
