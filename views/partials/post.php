@@ -93,11 +93,11 @@ $formatedDate = $date->format('M j \a\t H:i');
                 <?= $post["liked"] ? $likedIcon : $likeIcon ?>
                 </button>
             </form>
-            <span><?= $post['like_count'] ?></span>
+            <span><?= $post['like_count']  ?></span>
             <button class="post__comment">
                 <a href="/yap/public/p/<?= htmlspecialchars((string) $post['id']) ?>"><?= $commentIcon ?></a>
             </button>
-            <span><?= $post['comment_count'] ?></span>
+            <span><?= $post['comment_count'] > 0 ? $post['comment_count'] : '' ?></span>
         </footer>
         <?php if ($commentExpand):?>
             <?php foreach($comments as $comment): ?>
