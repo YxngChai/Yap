@@ -13,7 +13,7 @@ if ($diff ->days > 0) {
     $formatedDate = $diff-> days . ' day' . ($diff->days > 1 ? 's' : '') . ' ago';        
 } elseif ($diff->h > 0) {
     $formatedDate = $diff->h . ' hour' . ($diff->h > 1 ? 's' : '') . ' ago';
-} elseif ($diff->m > 0) {
+} elseif ($diff->i > 0) {
     $formatedDate = $diff->i . ' minute' . ($diff->i > 1 ? 's' : '') . ' ago';
 } else {
     $formatedDate = "just now";
@@ -45,7 +45,7 @@ if ($diff ->days > 0) {
                 <button class="comment__actions comment__btn" style="anchor-name: --actions-<?= $comment['id'] ?>;" popovertarget="comment__actions_<?= $comment['id']?>">...</button>
             </div>
             <div class="comment__like-system">
-                <span><?= $comment['like_count'] > 0 ? '' : $comment['like_count']  ?></span>
+                <span><?= $comment['like_count'] > 0 ? $comment['like_count'] : ''  ?></span>
                 <form action="/yap/public/" method="POST" class="js-like-comment-form">
                     <input type="hidden" value="<?= htmlspecialchars($comment['id']) ?>" name="commentId">
                     <input type="hidden" name="action" value="like_comment">
@@ -77,7 +77,7 @@ if ($diff ->days > 0) {
                     <textarea class="comment__form-textarea" name="comment_content" type="textarea" minlength="1" maxlength="2000" placeholder="Write something"><?= $comment["content"] ?></textarea>
                     <input type="hidden" name="action" value="update_comment">
                     <input type="hidden" value="<?= htmlspecialchars($comment['id']) ?>" name="commentId">
-                    <input type="hidden" name="redirect" value="<?= htmlspecialchars($commentrRedirect ?? $_SERVER['REQUEST_URI'])  ?>">
+                    <input type="hidden" name="redirect" value="<?= htmlspecialchars($commentRedirect ?? $_SERVER['REQUEST_URI'])  ?>">
                     <input
                     type="hidden"
                     name="csrf_token"
