@@ -90,7 +90,7 @@ if ($diff ->days > 0) {
                         </div>
                         <?php unset($_SESSION['update_errors']); ?>
                     <?php endif; ?>
-                    <button class="comment__form-btn js-post-btn" type="submit">Save</button>
+                    <button class="comment__form-btn comment__form-btn--update js-post-btn" type="submit">Save</button>
                 </form>
             </dialog>
 
