@@ -13,8 +13,10 @@ if ($diff ->days > 0) {
     $formatedDate = $diff-> days . ' day' . ($diff->days > 1 ? 's' : '') . ' ago';        
 } elseif ($diff->h > 0) {
     $formatedDate = $diff->h . ' hour' . ($diff->h > 1 ? 's' : '') . ' ago';
-} else {
+} elseif ($diff->m > 0) {
     $formatedDate = $diff->i . ' minute' . ($diff->i > 1 ? 's' : '') . ' ago';
+} else {
+    $formatedDate = "just now";
 }
 
 ?>
