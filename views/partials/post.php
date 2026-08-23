@@ -16,7 +16,21 @@
 require __DIR__ . "/../../src/helpers/icons.php";
 
 $date = new DateTime($post["created_at"]);
+$now = new DateTime();
+
+$diff = $now->diff($date);
+
 $formatedDate = $date->format('M j \a\t H:i');
+if ($diff ->days > 0) {
+    $formatedDate = $date->format('M j \a\t H:i');       
+} elseif ($diff->h > 0) {
+    $formatedDate = $diff->h . ' hour' . ($diff->h > 1 ? 's' : '') . ' ago';
+} elseif ($diff->i > 0) {
+    $formatedDate = $diff->i . ' minute' . ($diff->i > 1 ? 's' : '') . ' ago';
+} else {
+    $formatedDate = "just now";
+}
+
 ?>
 
 <article class="post">
