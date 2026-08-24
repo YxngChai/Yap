@@ -15,27 +15,7 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
 
 <main>
 <section class="feed">
-    <section class="post__create">
-        <form action="/yap/public/" method="POST" class="post__form js-create-post-form js-post-form">
-            <label class="post__form-title">Create Post</label>
-            <textarea class="post__form-textarea js-post-textarea" name="post_content" type="textarea" minlength="1" maxlength="2000" placeholder="Write something"><?=$_SESSION['old_post_content']  ?? ''   ?></textarea>
-            <input type="hidden" name="action" value="create_post">
-            <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
-            <input
-            type="hidden"
-            name="csrf_token"
-            value="<?= htmlspecialchars(csrfToken()) ?>">
-            <?php if (!empty($_SESSION['create_errors'])): ?>
-                <div class="errors">
-                    <?php foreach ($_SESSION['create_errors'] as $error): ?>
-                        <p class="post__error"><?= htmlspecialchars($error) ?></p>
-                    <?php endforeach; ?>
-                </div>
-                <?php unset($_SESSION['create_errors']); ?>
-            <?php endif; ?>
-            <button class="post__form-btn js-post-btn" type="submit" disabled>Post</button>
-        </form>
-    </section>
+    <?php require_once __DIR__ . '/partials/postForm.php'; ?>
 
     <?php if(!empty($posts)): ?>
         <?php foreach($posts as $post): ?>
