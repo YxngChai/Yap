@@ -82,7 +82,10 @@ if ($method === 'POST') {
         require __DIR__ . '/../src/controllers/commentController.php';
         exit;
     }
-
+        if (in_array($action, ['upload_image', 'delete_image',])) {
+        require __DIR__ . '/../src/controllers/fileController.php';
+        exit;
+    }
 
 }
 
