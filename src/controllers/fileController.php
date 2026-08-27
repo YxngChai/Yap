@@ -1,5 +1,8 @@
 <?php
 
+require_once __DIR__ . '/../models/user.php';
+$pdo = Database::getConnection();
+
 
 switch ($_POST['action']) {
   case "upload_image":
@@ -66,6 +69,9 @@ switch ($_POST['action']) {
     if (!move_uploaded_file($tmp,$path)) {
         die ('Failed to save image');
     }
+    
+    // need to verify image_type input 
+    User::addProfilePicture($pdo, $filename, $_SESSION['user']['id']);
 
     // add file name to DB
     redirectBack();

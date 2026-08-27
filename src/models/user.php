@@ -28,5 +28,10 @@ class User{
     return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public static function addProfilePicture(PDO $pdo, string $filepath, int $userId ): void{
+    $sql = 'UPDATE users SET profile_picture = :profile_picture WHERE id  = :userId';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['profile_picture' => $filepath, 'userId' => $userId]);
+    }
 
 }
