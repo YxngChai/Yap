@@ -25,7 +25,7 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
                 <img class="user-header__wallpaper" src="/yap/public/assets/images/anzellans.jpg">
             </div>
             <div class="user-header__profile-container">
-                <img class="user-header__profile" src="/yap/public/assets/images/babyyoda-profile.jpg">
+                <img class="user-header__profile" src="<?= $profilePicture ?>">
             </div>
         </div>
         <div class="user-header__infos">
@@ -38,7 +38,7 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
         <input type="hidden" name="action" value="upload_image">
         <input type="hidden" name="image_type" value="profile_image">
         <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
-        <input type="file" name="file" id="profile-picture">
+        <input type="file" name="file" id="profile-picture" >
         <button type="submit">Save</button>
     </form>
     <section class="feed">
