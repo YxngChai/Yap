@@ -16,13 +16,6 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
 <main>
 <section class="feed">
     <?php require_once __DIR__ . '/partials/postForm.php'; ?>
-
-    <form action="/yap/public/" method="POST" enctype="multipart/form-data">
-        <label for="profile-picture"></label>
-        <input type="hidden" name="action" value="upload_image">
-        <input type="file" name="file" id="profile-picture">
-        <button type="submit">Save</button>
-    </form>
     <?php if(!empty($posts)): ?>
         <?php foreach($posts as $post): ?>
             <?php require __DIR__ . '/partials/post.php'; ?>

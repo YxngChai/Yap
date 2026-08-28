@@ -42,7 +42,7 @@
 }
 .user-header__infos{
   margin-left: 180px;
-  margin-bottom: 20px;
+  position: relative;
 }
 .user-header__username {
   font-size: 1.8em;
@@ -83,4 +83,42 @@
 .userNotFound__link:hover{
   transform: scale(1.1);
   box-shadow: 2px 2px 10px rgba(124, 124, 124, 0.124);
+}
+
+/* Actions */
+
+.profile__action-btn {
+  width: 40px;
+  height: 33px;
+  padding: 0 0 7px 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+
+  position: absolute;
+  right: 0;
+  bottom: 0;
+
+  anchor-name: --profile-actions;
+}
+.profile__action-btn:hover {
+    background-color: var(--secondary-color-light);
+}
+
+.profile__actions-popover {
+  border: 1px solid var(--border-color);
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  border-radius: 15px;
+  background-color: #fcfcfc;
+  overflow: hidden;
+
+  position: absolute;
+  position-anchor:--profile-actions;
+  position-area: bottom span-left;
 }

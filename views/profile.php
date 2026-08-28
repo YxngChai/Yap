@@ -31,16 +31,24 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
         <div class="user-header__infos">
             <h1 class="user-header__username"><?= htmlspecialchars((string) $user['username'])?></h1>
             <h2 class="user-header__names"><?= htmlspecialchars((string) $user['name'])?> <?= htmlspecialchars((string) $user['surname'])?></h2>
+            <button class="profile__action-btn" popovertarget="profile__actions">...</button>
+            <div id="profile__actions" class="profile__actions-popover" popover>
+                    <ul>
+                        <li><button type="button" class="post__action post__action-update">Change profile picture</button></li>
+                        <li><button type="button" class="post__action post__action-delete">Change cover image</button></li>
+                        <li><button type="button" class="post__action post__action-delete">Settings</button></li>
+                    </ul>
+            </div>
         </div>
     </section>
-    <form action="/yap/public/" method="POST" enctype="multipart/form-data">
+    <!-- <form action="/yap/public/" method="POST" enctype="multipart/form-data">
         <label for="profile-picture">Change Profile Picture</label>
         <input type="hidden" name="action" value="upload_image">
         <input type="hidden" name="image_type" value="profile_image">
         <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
         <input type="file" name="file" id="profile-picture" >
         <button type="submit">Save</button>
-    </form>
+    </form> -->
     <section class="feed">
         <?php if($isOwnProfile): ?>
             <?php require_once __DIR__ . '/partials/postForm.php'; ?>
