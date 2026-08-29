@@ -19,7 +19,7 @@ document.querySelectorAll(".js-post-form").forEach((form) => {
 
 
 document.addEventListener("click", (e) => {
-    const button = e.target.closest(".post__action, .comment__action");
+    const button = e.target.closest(".post__action, .comment__action, .profile__action");
 
     if (!button) return;
 

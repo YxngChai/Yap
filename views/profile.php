@@ -34,21 +34,31 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
             <button class="profile__action-btn" popovertarget="profile__actions">...</button>
             <div id="profile__actions" class="profile__actions-popover" popover>
                     <ul>
-                        <li><button type="button" class="post__action post__action-update">Change profile picture</button></li>
-                        <li><button type="button" class="post__action post__action-delete">Change cover image</button></li>
-                        <li><button type="button" class="post__action post__action-delete">Settings</button></li>
+                        <li><button type="button" data-dialog="updatePicture" class="profile__action">Change profile picture</button></li>
+                        <li><button type="button" data-dialog="updateCover" class="profile__action">Change cover image</button></li>
+                        <li><a href="/yap/public/settings/" type="button" class="profile__action">Settings</a></li>
                     </ul>
             </div>
+            <dialog id="updatePicture">
+                   <form method="dialog">
+                        <button value="cancel" class="dialog__close-btn">X</button>
+                    </form>
+                        <form action="/yap/public/" method="POST" enctype="multipart/form-data">
+                        <label for="profile-picture">Change Profile Picture</label>
+                        <div class="dialog__user-img">
+                            <input type="hidden" name="action" value="upload_image">
+                            <input type="hidden" name="image_type" value="profile_image">
+                            <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
+                            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(csrfToken()) ?>">
+                            <input type="file" name="file" id="profile-picture" >
+                        </div>
+                        <!-- insert error messages here -->
+                        <button type="submit" class="dialog__user-img">Save</button>
+                    </form>
+                </dialog>
         </div>
     </section>
-    <!-- <form action="/yap/public/" method="POST" enctype="multipart/form-data">
-        <label for="profile-picture">Change Profile Picture</label>
-        <input type="hidden" name="action" value="upload_image">
-        <input type="hidden" name="image_type" value="profile_image">
-        <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
-        <input type="file" name="file" id="profile-picture" >
-        <button type="submit">Save</button>
-    </form> -->
+
     <section class="feed">
         <?php if($isOwnProfile): ?>
             <?php require_once __DIR__ . '/partials/postForm.php'; ?>

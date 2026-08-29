@@ -48,6 +48,12 @@ if ($method === 'GET') {
             require __DIR__ . '/../src/controllers/profileController.php';
             exit;
         }
+        if (preg_match('#^/yap/public/settings/?$#', $uri)) {
+            // $_GET['user_id'] = $_SESSION['user']['id'];
+            // require __DIR__ . '/../src/controllers/settingsController.php';
+            echo "Coming Soon";
+            exit;
+        }
         // show a post
         if (preg_match('#^/yap/public/p/([0-9]+)$#', $uri, $matches)) {
             $post_id = (string) $matches[1];

@@ -3,6 +3,7 @@
 require_once __DIR__ . '/../models/user.php';
 $pdo = Database::getConnection();
 
+verifyCsrf();
 
 switch ($_POST['action']) {
   case "upload_image":

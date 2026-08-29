@@ -31,7 +31,7 @@
   width: 170px;
   height: 170px;
   overflow: hidden;
-  border: 2px solid black;
+  border: 1px solid black;
   border-radius: 50%;
 }
 .user-header__profile {
@@ -121,4 +121,12 @@
   position: absolute;
   position-anchor:--profile-actions;
   position-area: bottom span-left;
+}
+.profile__action {
+  padding: 5px 10px;
+  width: 100%;
+  display: block;
+}
+.profile__action:hover {
+  background-color: var(--pale-color);
 }
