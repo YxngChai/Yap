@@ -5,6 +5,9 @@
 $pageTitle = 'Yap - '. htmlspecialchars((string) $user['username']);
 $pageScript = 'post.js';
 $pageCss = 'profile.css';
+if($isOwnProfile){
+    $imagesScript = 'images.js';
+}
 
 ?>
 

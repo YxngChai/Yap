@@ -10,7 +10,10 @@
 </footer>
     <?php if (isset($pageScript)): ?>
     <script src="/yap/public/assets/script/<?= htmlspecialchars($pageScript)?>"></script>
-<?php endif; ?>    
+    <?php endif; ?>
+    <?php if (isset($imagesScript)): ?>
+    <script src="/yap/public/assets/script/<?= htmlspecialchars($imagesScript)?>"></script>
+    <?php endif; ?>        
 
 </body>
 </html>
