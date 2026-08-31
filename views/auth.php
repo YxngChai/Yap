@@ -3,7 +3,7 @@ $pageTitle = 'Yap - Login';
 $pageScript = 'auth.js';
 $pageCss = 'auth.css';
 
-require __DIR__ . '/header.php'; ?>
+require __DIR__ . '/partials/header.php'; ?>
 
 <main class="main">
     <!-- <h1>Yap</h1><br> -->
@@ -56,4 +56,4 @@ require __DIR__ . '/header.php'; ?>
     </section>
 </main>
 
-<?php require __DIR__ . '/footer.php'; ?>
+<?php require __DIR__ . '/partials/footer.php'; ?>

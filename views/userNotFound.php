@@ -6,7 +6,7 @@ $pageCss = 'profile.css';
 ?>
 
 
-<?php require __DIR__ . '/header.php'; ?>
+<?php require __DIR__ . '/partials/header.php'; ?>
 
 <main class="userNotFound">
     <section class="userNotFound__content">
@@ -18,4 +18,4 @@ $pageCss = 'profile.css';
     
 </main>
 
-<?php require __DIR__ . '/footer.php'; ?>
+<?php require __DIR__ . '/partials/footer.php'; ?>
