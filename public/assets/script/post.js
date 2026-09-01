@@ -262,3 +262,14 @@ document.addEventListener("submit", async (e) => {
     }
   })
 
+
+  // return button
+
+document.addEventListener('click', (e) => {
+    const btn = e.target.closest('#back-btn')
+  if (!btn) return;
+
+  e.preventDefault();
+  history.back();
+
+  })

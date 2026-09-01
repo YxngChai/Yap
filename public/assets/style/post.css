@@ -16,7 +16,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
- 
+  flex-direction: column;
 }
 /* posts card */
 .post {
@@ -430,4 +430,13 @@ dialog {
     100% {
         transform: scale(1);
     }
+}
+
+
+/* return btn */
+
+.post__return-btn{
+  width: 40px;
+  fill: var(--primary-color);
+  margin-bottom: 10px;
 }
