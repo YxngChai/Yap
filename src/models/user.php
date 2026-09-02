@@ -27,6 +27,12 @@ class User{
     $stmt->execute(['userId' => $userId]);
     return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+    public static function getProfilePicture(PDO $pdo, int $userId) {
+    $sql = 'SELECT profile_picture, profile_picture_mini FROM  users WHERE id = :userId';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['userId' => $userId]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 
     public static function addProfilePicture(PDO $pdo, string $filepath, int $userId ): bool{
     $sql = 'UPDATE users SET profile_picture = :profile_picture WHERE id  = :userId';

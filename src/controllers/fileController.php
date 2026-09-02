@@ -7,6 +7,7 @@ verifyCsrf();
 
 switch ($_POST['action']) {
   case "upload_image":
+
     if (!isset($_FILES['file'])) {
         die('No file uploaded');
     }
@@ -64,6 +65,7 @@ switch ($_POST['action']) {
     if (!move_uploaded_file($tmp,$path)) {
         die ('Failed to save image');
     }
+
     // - need to verify image_type input from the form
     // - check what is the image is for
 
@@ -76,15 +78,21 @@ switch ($_POST['action']) {
     // }
 
     // for profile picture:
-    // get big and small images from DB
-    // $user["profile_picture"];
+     // get big and small images from DB
+    ['profile_picture' => $main, 'profile_picture_mini' => $mini] =
+    User::getProfilePicture($pdo, $_SESSION['user']['id']);
+    // add file name to DB
+    if($main){
+        $pathMain = __DIR__ . '/../../public/assets/uploads/' . $main;
 
-
-
+        if(is_file($pathMain)) {
+            unlink($pathMain);
+        }
+    }
     User::addProfilePicture($pdo, $filename, $_SESSION['user']['id']);
     // if successfull delete the old picture from uploads;
 
-    // add file name to DB
+
     redirectBack();
     exit;
 
