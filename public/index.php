@@ -81,6 +81,7 @@ if ($method === 'POST') {
 
     if (in_array($action, ['like_post', 'like_comment'])){
         require __DIR__ . '/../src/controllers/likeController.php';
+        exit;
     }
 
 
@@ -92,7 +93,7 @@ if ($method === 'POST') {
         require __DIR__ . '/../src/controllers/fileController.php';
         exit;
     }
-
+    redirectBack();
 }
 
 // require __DIR__ . '/../src/controllers/feedController.php';

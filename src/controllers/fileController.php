@@ -40,13 +40,7 @@ switch ($_POST['action']) {
     if($size > $maxSize) {
         die('File too large, 5MB maximum');
     }
-    // might implement dimensions rules depending of image type
-    // switch ($_POST['image_type']) {
-    //     case "post_image":
-    //     case "profile_image":
-    //     case "cover_image":
-    //       break;
-    // }
+
     $imageDimensions = getimagesize($tmp);
 
     if (!$imageDimensions) {
@@ -70,9 +64,25 @@ switch ($_POST['action']) {
     if (!move_uploaded_file($tmp,$path)) {
         die ('Failed to save image');
     }
-    
-    // need to verify image_type input 
+    // - need to verify image_type input from the form
+    // - check what is the image is for
+
+    // might implement more specific dimensions rules depending of image type
+    // switch ($_POST['image_type']) {
+    //     case "post_image":
+    //     case "profile_image":
+    //     case "cover_image":
+    //       break;
+    // }
+
+    // for profile picture:
+    // get big and small images from DB
+    // $user["profile_picture"];
+
+
+
     User::addProfilePicture($pdo, $filename, $_SESSION['user']['id']);
+    // if successfull delete the old picture from uploads;
 
     // add file name to DB
     redirectBack();
@@ -80,5 +90,4 @@ switch ($_POST['action']) {
 
     case "delete_image":
         exit;
-
 }
