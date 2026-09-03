@@ -28,7 +28,7 @@ class User{
     return $stmt->fetch(PDO::FETCH_ASSOC);
     }
     public static function getProfilePicture(PDO $pdo, int $userId) {
-    $sql = 'SELECT profile_picture, profile_picture_mini FROM  users WHERE id = :userId';
+    $sql = 'SELECT profile_picture FROM users WHERE id = :userId';
     $stmt = $pdo->prepare($sql);
     $stmt->execute(['userId' => $userId]);
     return $stmt->fetch(PDO::FETCH_ASSOC);

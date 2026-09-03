@@ -56,7 +56,6 @@ switch ($_POST['action']) {
         die('Dimensions are too small');
     }
 
-
     $extension = $allowed[$mime];
 
     $filename = bin2hex(random_bytes(16)) . '.' . $extension;
@@ -78,15 +77,15 @@ switch ($_POST['action']) {
     // }
 
     // for profile picture:
-     // get big and small images from DB
-    ['profile_picture' => $main, 'profile_picture_mini' => $mini] =
-    User::getProfilePicture($pdo, $_SESSION['user']['id']);
-    // add file name to DB
-    if($main){
-        $pathMain = __DIR__ . '/../../public/assets/uploads/' . $main;
+     // get image name from DB
+    $photoFileName = User::getProfilePicture($pdo, $_SESSION['user']['id']);
 
-        if(is_file($pathMain)) {
-            unlink($pathMain);
+    // add file name to DB
+    if($photoFileName){
+        $pathPhoto = __DIR__ . '/../../public/assets/uploads/' . $photoFileName['profile_picture'];
+
+        if(is_file($pathPhoto)) {
+            unlink($pathPhoto);
         }
     }
     User::addProfilePicture($pdo, $filename, $_SESSION['user']['id']);
