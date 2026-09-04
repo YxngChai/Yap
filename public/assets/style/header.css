@@ -32,6 +32,7 @@ main {
   font-family: "Chilanka";
   margin-top: 5px;
   text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.27);
+  color:  var(--pale-color);
 }
 .header__profile-picture-container {
   position: relative;
@@ -71,7 +72,6 @@ main {
   font-weight: 600;
   font-size: 0.9em;
   border: 1px solid white;
-  box-shadow: 1px 1px 8px rgba(119, 119, 119, 0.47);
   border-radius: 8px;
 }
 .header__auth-section {
