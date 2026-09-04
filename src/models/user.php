@@ -40,4 +40,11 @@ class User{
     return $stmt->execute(['profile_picture' => $filepath, 'userId' => $userId]);
     }
 
+    public static function getProfilePicturePath(?string $profilePicture): string {
+    if (!$profilePicture) {
+        return '/yap/public/assets/images/profile_anonymous.jpeg';
+    } else {
+        return '/yap/public/assets/uploads/' . $profilePicture;
+        }
+    }
 }

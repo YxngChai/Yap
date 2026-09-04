@@ -35,6 +35,9 @@ if(!isset($_SESSION['user'])){
     exit;
     }
 
+require_once __DIR__ . '/../src/models/user.php';
+$profilePicture = User::getProfilePicturePath($_SESSION['user']['profile_picture'] ?? NULL);
+
 if ($method === 'GET') { 
         if (preg_match('#^/yap/public/user/([a-zA-Z0-9_]+)$#', $uri, $matches)) {
         // for other user's profile

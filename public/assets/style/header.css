@@ -44,7 +44,10 @@ main {
   border-radius: 50%;
   box-shadow: 2px 2px 8px rgba(128, 128, 128, 0.333);
   width: 50px;
+  height: 50px;
   border: 1px solid var(--pale-color);
+  object-fit: cover;
+
 }
 .header__profile-expand {
   width: 15px;
