@@ -333,6 +333,7 @@ dialog {
   border-radius: 50px;
   width: 30px;
   height: 30px;
+  object-fit: cover;
 }
 .comment__username{
   font-size: 1em;

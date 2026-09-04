@@ -21,7 +21,7 @@ if (!$user) {
 
 }
 
-
+$userPicture = User::getProfilePicturePath($user['profile_picture']);
 
 $isOwnProfile = $user['id'] === $_SESSION['user']['id'];
 

@@ -2,6 +2,7 @@
 
 
 require_once __DIR__ . '/../models/post.php';
+require_once __DIR__ . '/../models/user.php';
 require_once __DIR__ . '/../models/comment.php';
 
 
