@@ -142,7 +142,6 @@ main {
   background-color: rgba(249, 223, 253, 0.985);
 }
 .popover__item {
-  margin-right: 15px;
   width: 100%;
   text-align: end;
   font-weight: 600;
@@ -152,7 +151,9 @@ main {
   background: none;
   cursor: pointer;
   display: block;
+  box-sizing: border-box;
 }
+
 .popover__username {
   font-weight: 700;
   font-size: 1.1em;
