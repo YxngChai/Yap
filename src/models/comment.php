@@ -37,6 +37,7 @@ class Comment{
         c.image_path,
         c.created_at,
         u.username,
+        u.profile_picture,
         
         COUNT(l.comment_id) AS like_count,
         

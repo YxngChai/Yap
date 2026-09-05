@@ -89,6 +89,7 @@ switch ($_POST['action']) {
         }
     }
     User::addProfilePicture($pdo, $filename, $_SESSION['user']['id']);
+    $_SESSION['user']['profile_picture'] = $filename;
     // if successfull delete the old picture from uploads;
 
 
