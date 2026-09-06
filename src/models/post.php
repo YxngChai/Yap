@@ -35,6 +35,7 @@ class Post{
         p.image_path,
         p.created_at,
         u.username,
+        u.profile_picture,
         
         COUNT(DISTINCT l.post_id) AS like_count,
         COUNT(DISTINCT c.id) AS comment_count,
@@ -76,6 +77,7 @@ class Post{
         p.image_path,
         p.created_at,
         u.username,
+        u.profile_picture,
         
         COUNT(DISTINCT l.post_id) AS like_count,
         COUNT(DISTINCT c.id) AS comment_count,
@@ -120,6 +122,7 @@ class Post{
     p.image_path,
     p.created_at,
     u.username,
+    u.profile_picture,
     
     COUNT(DISTINCT l.post_id) AS like_count,
     COUNT(DISTINCT c.id) AS comment_count,

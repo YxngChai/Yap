@@ -67,8 +67,11 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
                                     <span class="user-photo-dialog__drop-text">Browse, take a picture or drag & drop</span>
                                 </label>
                             </div>
-                            <!-- insert error messages here -->
-                            <button type="submit" class="user-photo-dialog__save-btn">Save</button>
+                            <div class="user-photo-dialog__container">
+                                <span class="user-photo-dialog__rules">JPEG/JPG, PNG, and WebP accepted, 5MB max.</span>
+                                <!-- insert error messages here -->
+                                <button type="submit" class="user-photo-dialog__save-btn">Save</button>
+                            </div>
                         </form>
                     </dialog>
                 <?php endif; ?>

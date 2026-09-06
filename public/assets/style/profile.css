@@ -206,7 +206,17 @@
   display: block;
   margin-left: auto;
 }
+.user-photo-dialog__save-btn:hover{
+  background-color: var(--secondary-color);
+}
 .user-photo-dialog__drop-zone.is-dragging {
     border-color: #000;
     background-color: #f5f5f5;
+}
+.user-photo-dialog__container{
+  display: flex;
+}
+.user-photo-dialog__rules{
+  font-size: 0.8em;
+  color: var(--tertiary-color);
 }
