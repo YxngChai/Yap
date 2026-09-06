@@ -104,17 +104,21 @@ createPostForm.addEventListener("submit", async (e) => {
 
     const data = await response.json();
 
+    if(!data.success) {
+      const errorField = document.querySelector('.js-post__error');
+      errorField.textContent = data.errors;
+    } else {
     // update dom
 
-   const createSection = document.querySelector(".post__create");
+    const createSection = document.querySelector(".post__create");
 
     createSection.insertAdjacentHTML("afterend", data.html);
-  
     createPostForm.reset();
+    };
 
-  } catch (error ){
-    console.log(error);
-  }
+    } catch (error){
+      console.log(error);
+    }
 });
 }
 

@@ -19,8 +19,13 @@ switch ($_POST['action']) {
 
         $errors = Validator::validatePost($data, $rules);
         if(!empty($errors)){
-            $_SESSION['create_errors'] = $errors;
-            redirectBack();
+            header('Content-Type: application/json');
+
+            echo json_encode([
+                'success' => false,
+                'errors' => $errors
+            ]);
+            exit;
         }
 
         $postId = Post::create($pdo, [
@@ -65,8 +70,13 @@ switch ($_POST['action']) {
 
         $errors = Validator::validatePost($data, $rules);
         if(!empty($errors)){
-            $_SESSION['update_errors'] = $errors;
-            redirectBack();
+            header('Content-Type: application/json');
+
+            echo json_encode([
+                'success' => false,
+                'errors' => $errors
+            ]);
+            exit;
         }
 
         $postId = filter_input(INPUT_POST, 'postId', FILTER_VALIDATE_INT);
@@ -95,8 +105,6 @@ switch ($_POST['action']) {
             ]
         ]);
         exit;
-        // redirectBack();
-
         
     case 'remove picture':
         break;
