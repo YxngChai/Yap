@@ -90,6 +90,7 @@ const createPostForm = document.querySelector(".js-create-post-form");
 if(createPostForm){
 createPostForm.addEventListener("submit", async (e) => {
   e.preventDefault();
+  const errorField = document.querySelector('.js-post__error');
 
   try {
 
@@ -103,13 +104,11 @@ createPostForm.addEventListener("submit", async (e) => {
     }
 
     const data = await response.json();
-
+    
     if(!data.success) {
-      const errorField = document.querySelector('.js-post__error');
       errorField.textContent = data.errors;
     } else {
     // update dom
-
     const createSection = document.querySelector(".post__create");
 
     createSection.insertAdjacentHTML("afterend", data.html);
@@ -118,6 +117,7 @@ createPostForm.addEventListener("submit", async (e) => {
 
     } catch (error){
       console.log(error);
+      errorField.textContent = "Something went wrong. Please try again.";
     }
 });
 }
@@ -131,7 +131,7 @@ document.addEventListener("submit", async (e) => {
  if (!form) return;
 
   e.preventDefault();
-
+  const errorField = form.querySelector(".js-edit-post-error");
 
   try {
   const response =  await fetch(form.action, {
@@ -145,14 +145,18 @@ document.addEventListener("submit", async (e) => {
 
   const data = await response.json();
 
-  const postContent = document.getElementById(`post-content-${data.post.id}`);
-
-  postContent.textContent =  data.post.content;
-
-  form.closest("dialog").close();
+  if(!data.success){
+    errorField.textContent = data.errors;
+    
+  } else {
+    const postContent = document.getElementById(`post-content-${data.post.id}`);
+    postContent.textContent =  data.post.content;
+    form.closest("dialog").close();
+    }
 
   } catch (error) {
     console.log(error);
+    errorField.textContent = "Something went wrong. Please try again.";
   }
 })
 
@@ -168,6 +172,7 @@ const createCommentForm = document.querySelector(".js-create-comment-form");
 if (createCommentForm) {
 createCommentForm.addEventListener("submit", async (e) => {
   e.preventDefault();
+  const errorField = document.querySelector('.js-comment-errors');
   try {
 
     const response = await fetch(createCommentForm.action, {
@@ -181,14 +186,20 @@ createCommentForm.addEventListener("submit", async (e) => {
 
     const data = await response.json();
 
-    // update dom
 
-    createCommentForm.insertAdjacentHTML("beforebegin", data.html);
-  
-    createCommentForm.reset();
+
+    if(!data.success) {
+      errorField.textContent = data.errors;
+    }
+    else {
+
+      createCommentForm.insertAdjacentHTML("beforebegin", data.html);
+      createCommentForm.reset();
+    }
 
   } catch (error ){
     console.log(error);
+    errorField.textContent =  "Something went wrong. Please try again.";
   }
 });
 }
@@ -202,6 +213,7 @@ document.addEventListener("submit", async (e) => {
  if (!form) return;
 
   e.preventDefault();
+  const errorField = form.querySelector('.js-edit-comment-errors');
 
   try {
   const response =  await fetch(form.action, {
@@ -209,21 +221,24 @@ document.addEventListener("submit", async (e) => {
   body: new FormData(form),
   }); 
 
-  if(!response.ok){
-    throw new Error("server error");
+  if(!response.ok) {
+    throw new Error('Server error');
   }
 
   const data = await response.json();
+  
+  if(!data.success){
+     errorField.textContent = data.errors;
+  } else {
+    const commentContent = document.getElementById(`comment-content-${data.comment.id}`);
 
+    commentContent.textContent =  data.comment.content;
 
-  const commentContent = document.getElementById(`comment-content-${data.comment.id}`);
-
-  commentContent.textContent =  data.comment.content;
-
-  form.closest("dialog").close();
+    form.closest("dialog").close();
+    }
 
   } catch (error) {
-    console.log(error);
+     errorField.textContent = "Something went wrong. Please try again.";
   }
 });
 

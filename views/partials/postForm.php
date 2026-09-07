@@ -10,14 +10,6 @@
         type="hidden"
         name="csrf_token"
         value="<?= htmlspecialchars(csrfToken()) ?>">
-        <?php if (!empty($_SESSION['create_errors'])): ?>
-            <div class="errors">
-                <?php foreach ($_SESSION['create_errors'] as $error): ?>
-                    <p class="post__error"><?= htmlspecialchars($error) ?></p>
-                <?php endforeach; ?>
-            </div>
-            <?php unset($_SESSION['create_errors']); ?>
-        <?php endif; ?>
         <p class="post__error js-post__error"></p>
         <button class="post__form-btn js-post-btn" type="submit" disabled>Post</button>
     </form>

@@ -21,18 +21,32 @@ switch ($_POST['action']) {
 
         $errors = Validator::validatePost($data, $rules);
         if(!empty($errors)){
-            $_SESSION['create_comment_errors'] = $errors;
-            redirectBack();
+            header('Content-Type: application/json') ;
+            echo json_encode([
+                'success' => false,
+                'errors' => $errors
+            ]);
+            exit;
         }
         $postId = filter_input(INPUT_POST, 'post_id', FILTER_VALIDATE_INT);
         if ($postId === false || $postId < 1) {
-            $_SESSION['create_comment_errors'] = $postId;
-            redirectBack();
+            http_response_code(400);
+            header('Content-Type: application/json');
+            echo json_encode([
+                'success' => false,
+                'errors' => 'Invalid request.'
+            ]);
+            exit;
         }
 
         if(!Post::findById($pdo, $postId,  $_SESSION['user']['id'])) {
-            $_SESSION['create_comment_errors'] = 'Cannot find id';
-            redirectBack();
+            http_response_code(400);
+            header('Content-Type: application/json');
+            echo json_encode([
+                'success' => false,
+                'errors' => 'Invalid request.'
+            ]);
+            exit;
         }
 
         $commentId = Comment::create($pdo, [
@@ -78,13 +92,35 @@ switch ($_POST['action']) {
 
         $errors = Validator::validatePost($data, $rules);
         if(!empty($errors)){
-            $_SESSION['update_comment_errors'] = $errors;
-            redirectBack();
+            header('Content-type: application/json');
+            
+            echo json_encode([
+                'success' => false,
+                'errors' => $errors
+            ]);
+            exit;
         }
         $commentId = filter_input(INPUT_POST, 'commentId', FILTER_VALIDATE_INT);
         if ($commentId === false || $commentId < 1) {
-            redirectBack();
+            http_response_code(400);
+            header('Content-Type: application/json');
+            echo json_encode([
+                'success' => false,
+                'errors' => 'Invalid request.'
+            ]);
+            exit;
         }
+
+        if(!Comment::findById($pdo, $commentId,  $_SESSION['user']['id'])) {
+            http_response_code(400);
+            header('Content-Type: application/json');
+            echo json_encode([
+                'success' => false,
+                'errors' => 'Invalid request.'
+            ]);
+            exit;
+        }
+
         Comment::update($pdo, [
             'content' => $data['comment_content'],
             'image_path' => null,

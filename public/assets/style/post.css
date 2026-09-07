@@ -167,8 +167,12 @@
 
 /* errors */
 
-.post__error {
+.post__error, .edit-comment__error {
   color: var(--primary-color);
+}
+.comment__error {
+    color: var(--primary-color);
+    padding: 0 15px 10px 15px;
 }
 
 /* Modals */

@@ -1,22 +1,16 @@
 
 <form action="/yap/public/" method="POST" class="comment__form js-post-form js-create-comment-form">
-            <textarea class="comment__form-textarea js-post-textarea" name="comment_content" type="textarea" minlength="1" maxlength="2000" placeholder="Comment something..."><?=$_SESSION['old_comment_content']  ?? ''   ?></textarea>
-            <input type="hidden" name="action" value="create_comment">
-            <input type="hidden" name="post_id" value="<?= $post['id'] ?? '' ?>">
-            <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
-            <input
-            type="hidden"
-            name="csrf_token"
-            value="<?= htmlspecialchars(csrfToken()) ?>">
-            <?php if (!empty($_SESSION['create_comment_errors'])): ?>
-                <div class="errors">
-                    <?php foreach ($_SESSION['create_comment_errors'] as $error): ?>
-                        <p class="post__error"><?= htmlspecialchars($error) ?></p>
-                    <?php endforeach; ?>
-                </div>
-                <?php unset($_SESSION['create_comment_errors']); ?>
-            <?php endif; ?>
-            <button class="comment__form-btn js-post-btn" type="submit" disabled>
-                <svg class="comment__form-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M322.5 351.7L523.4 150.9L391 520.3L322.5 351.7zM489.4 117L288.6 317.8L120 249.3L489.4 117zM70.1 280.8L275.9 364.4L359.5 570.2C364.8 583.3 377.6 591.9 391.8 591.9C406.5 591.9 419.6 582.7 424.6 568.8L602.6 72C606.1 62.2 603.6 51.4 596.3 44C589 36.6 578.1 34.2 568.3 37.7L71.4 215.7C57.5 220.7 48.3 233.8 48.3 248.5C48.3 262.7 56.9 275.5 70 280.8z"/></svg>
-            </button>
-        </form>
+    <textarea class="comment__form-textarea js-post-textarea" name="comment_content" type="textarea" minlength="1" maxlength="2000" placeholder="Comment something..."><?=$_SESSION['old_comment_content']  ?? ''   ?></textarea>
+    <input type="hidden" name="action" value="create_comment">
+    <input type="hidden" name="post_id" value="<?= $post['id'] ?? '' ?>">
+    <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
+    <input
+    type="hidden"
+    name="csrf_token"
+    value="<?= htmlspecialchars(csrfToken()) ?>">
+    <button class="comment__form-btn js-post-btn" type="submit" disabled>
+        <svg class="comment__form-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M322.5 351.7L523.4 150.9L391 520.3L322.5 351.7zM489.4 117L288.6 317.8L120 249.3L489.4 117zM70.1 280.8L275.9 364.4L359.5 570.2C364.8 583.3 377.6 591.9 391.8 591.9C406.5 591.9 419.6 582.7 424.6 568.8L602.6 72C606.1 62.2 603.6 51.4 596.3 44C589 36.6 578.1 34.2 568.3 37.7L71.4 215.7C57.5 220.7 48.3 233.8 48.3 248.5C48.3 262.7 56.9 275.5 70 280.8z"/></svg>
+    </button>
+    
+</form>
+<p class="comment__error js-comment-errors"></p>

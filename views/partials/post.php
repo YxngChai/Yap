@@ -61,14 +61,7 @@ if ($diff ->days > 0) {
                         type="hidden"
                         name="csrf_token"
                         value="<?= htmlspecialchars(csrfToken()) ?>">
-                        <?php if (!empty($_SESSION['update_errors'])): ?>
-                            <div class="errors">
-                                <?php foreach ($_SESSION['update_errors'] as $error): ?>
-                                    <p class="post__error"><?= htmlspecialchars($error) ?></p>
-                                <?php endforeach; ?>
-                            </div>
-                            <?php unset($_SESSION['update_errors']); ?>
-                        <?php endif; ?>
+                        <p class="post__error js-edit-post-error"></p>
                         <button class="post__form-btn js-post-btn" type="submit">Save</button>
                     </form>
                 </dialog>
