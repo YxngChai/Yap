@@ -218,5 +218,8 @@
 }
 .user-photo-dialog__rules{
   font-size: 0.8em;
+  color: var(--primary-color);
+}
+.user-photo-dialog__erros{
   color: var(--tertiary-color);
 }

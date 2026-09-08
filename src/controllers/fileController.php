@@ -1,6 +1,8 @@
 <?php
 
 require_once __DIR__ . '/../models/user.php';
+require_once __DIR__ . '/../helpers/errors.php';
+
 $pdo = Database::getConnection();
 
 verifyCsrf();
@@ -16,11 +18,18 @@ switch ($_POST['action']) {
     $size = $_FILES['file']['size'];
     $error = $_FILES['file']['error'];
 
+    $errors = [];
+
     if ($error !== UPLOAD_ERR_OK) {
-            die('File upload failed');
+            $errors[] = 'File upload failed';
+            jsonError($errors);
+            exit;
+            
     }
     if (!is_uploaded_file($tmp)) {
-        die('Invalid upload');
+        $errors[] = 'Invalid upload';
+        jsonError($errors);
+        exit;
     }
 
     $finfo = new finfo(FILEINFO_MIME_TYPE);
@@ -34,26 +43,32 @@ switch ($_POST['action']) {
     ];
 
     if(!isset($allowed[$mime])) {
-        die('Invalid file format');
+        $errors[] = 'Invalid file format';
+        jsonError($errors);
+        exit;
     } 
     
     $maxSize = 5 * 1024 * 1024;
     if($size > $maxSize) {
-        die('File too large, 5MB maximum');
+        $errors[] = 'File too large, 5MB maximum.';
     }
 
     $imageDimensions = getimagesize($tmp);
 
     if (!$imageDimensions) {
-        die('Invalid image');
+        $errors[] = 'Invalid image';
     }
     [$width, $height] = $imageDimensions;
     
     if($width > 6000 || $height > 6000) {
-        die('Dimensions are too large');
+        $errors[] = 'Dimensions are too large.';
     }
     if($width < 300 || $height < 300) {
-        die('Dimensions are too small');
+        $errors[] = 'Dimensions are too small.';
+    }
+    if(!empty($errors)) {
+        jsonError($errors);
+        exit;
     }
 
     $extension = $allowed[$mime];
@@ -62,7 +77,9 @@ switch ($_POST['action']) {
     
     $path =  __DIR__ .'/../../public/assets/uploads/'.$filename;
     if (!move_uploaded_file($tmp,$path)) {
-        die ('Failed to save image');
+        $errors[] = 'Failed to save the image';
+        jsonError($errors);
+        exit;
     }
 
     // - need to verify image_type input from the form
@@ -80,7 +97,6 @@ switch ($_POST['action']) {
      // get image name from DB
     $photoFileName = User::getProfilePicture($pdo, $_SESSION['user']['id']);
 
-    // add file name to DB
     if($photoFileName){
         $pathPhoto = __DIR__ . '/../../public/assets/uploads/' . $photoFileName['profile_picture'];
 
@@ -90,10 +106,12 @@ switch ($_POST['action']) {
     }
     User::addProfilePicture($pdo, $filename, $_SESSION['user']['id']);
     $_SESSION['user']['profile_picture'] = $filename;
-    // if successfull delete the old picture from uploads;
 
-
-    redirectBack();
+    header('Content-Type: application/json');
+    echo json_encode([
+    'success' => true,
+    'errors' => NULL
+    ]);
     exit;
 
     case "delete_image":

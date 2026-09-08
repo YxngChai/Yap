@@ -7,7 +7,7 @@ $pageTitle = 'Yap - '. htmlspecialchars((string) $user['username']);
 $pageScript = 'post.js';
 $pageCss = 'profile.css';
 if($isOwnProfile){
-    $imagesScript = 'images.js';
+    $imagesScript = 'profileImages.js';
 }
 
 ?>
@@ -48,7 +48,7 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
                     <form method="dialog">
                             <button value="cancel" class="dialog__close-btn">X</button>
                         </form>
-                            <form action="/yap/public/" method="POST" enctype="multipart/form-data">
+                            <form action="/yap/public/" method="POST" enctype="multipart/form-data" class="js-profile-picture-form">
                             <label for="profile-picture" class="user-photo-dialog__title">Change Profile Picture</label>
                             <div class="user-photo-dialog__form">
                                 <input type="hidden" name="action" value="upload_image">
@@ -68,9 +68,11 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
                                 </label>
                             </div>
                             <div class="user-photo-dialog__container">
-                                <span class="user-photo-dialog__rules">JPEG/JPG, PNG, and WebP accepted, 5MB max.</span>
+                                <span class="user-photo-dialog__rules">JPEG/JPG, PNG, and WebP accepted. 5MB max.</span>
                                 <!-- insert error messages here -->
                                 <button type="submit" class="user-photo-dialog__save-btn">Save</button>
+                            </div>
+                            <div class="user-photo-dialog__erros">
                             </div>
                         </form>
                     </dialog>
