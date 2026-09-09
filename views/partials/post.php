@@ -35,8 +35,11 @@ if ($diff ->days > 0) {
 
 <article class="post">
         <header class="post__header">
+            <img src="<?= $post['profile_picture'] ?  '/yap/public/assets/uploads/'. $post['profile_picture'] : '/yap/public/assets/images/profile_anonymous_mini.jpeg' ?>" alt="Profile picture" class="post__profile-picture">
+            <div>
             <a href="/yap/public/user/<?= htmlspecialchars((string) $post["username"]) ?>"><h2 class="post__username"><?= $post["username"] ?></h2></a><br>
             <a href="/yap/public/p/<?= htmlspecialchars((string) $post['id']) ?>"><time class="post__time"><?= $formatedDate ?></time></a>
+            </div>
             <?php if (isset($_SESSION['user']) && $post['username'] === $_SESSION['user']['username']): ?>
                 <button class="post__btn" style="anchor-name: --actions-<?= $post['id'] ?>;" popovertarget="post__actions_<?= $post['id']?>">...</button>
                 <div id="post__actions_<?= $post['id']?>" class="post__actions-popover"  style="position-anchor: --actions-<?= $post['id'] ?>;" popover>

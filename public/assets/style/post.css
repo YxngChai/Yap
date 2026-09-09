@@ -48,6 +48,14 @@
   background-color: var(--light-grey);
   position: relative;
   padding: 10px;
+  display: flex; 
+  gap: 10px;
+}
+.post__profile-picture{
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .post__btn {
@@ -59,7 +67,6 @@
 }
 .post__username {
   font-size: 1.4em;
-  margin-bottom: 5px;
   display: inline-block;
 }
 .post__time {

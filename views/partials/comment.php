@@ -24,7 +24,7 @@ if ($diff ->days > 0) {
 <div class="comment">
     <div class="comment__photo-container">
         <a href="/yap/public/user/<?= $comment['username'] ?>">
-            <img class="comment__photo" src="<?= $comment['profile_picture'] ?  '/yap/public/assets/uploads/'. $comment['profile_picture'] : '/yap/public/assets/images/profile_anonymous_mini.jpeg' ?> " alt="User picture">
+            <img class="comment__photo" src="<?= $comment['profile_picture'] ?  '/yap/public/assets/uploads/'. $comment['profile_picture'] : '/yap/public/assets/images/profile_anonymous_mini.jpeg' ?>" alt="User picture">
         </a>
     </div>
     <div class="comment__contents">
