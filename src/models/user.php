@@ -47,4 +47,16 @@ class User{
         return '/yap/public/assets/uploads/' . $profilePicture;
         }
     }
+    public static function addCoverimage(PDO $pdo, string $filepath, int $userId ): bool{
+    $sql = 'UPDATE users SET cover_picture = :cover_picture WHERE id  = :userId';
+    $stmt = $pdo->prepare($sql);
+    return $stmt->execute(['cover_picture' => $filepath, 'userId' => $userId]);
+    }
+    public static function getCoverImagePath(?string $coverImage): string {
+    if (!$coverImage) {
+        return '/yap/public/assets/images/profile_anonymous.jpeg';
+    } else {
+        return '/yap/public/assets/uploads/' . $coverImage;
+        }
+    }
 }
