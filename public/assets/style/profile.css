@@ -223,3 +223,8 @@
 .user-photo-dialog__erros{
   color: var(--tertiary-color);
 }
+
+/* cover image */
+.user-photo-dialog__drop-zone--cover{
+  aspect-ratio: 2;
+}

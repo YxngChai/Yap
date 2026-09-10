@@ -1,30 +1,32 @@
-const input = document.querySelector('#profile-picture-input');
-const dropZone = document.querySelector('.user-photo-dialog__drop-zone');
+// Change profile picture
 
-dropZone.addEventListener('dragover', (e) => {
+const profileInput = document.querySelector('#profile-picture-input');
+const profileDropZone = document.querySelector('.user-photo-dialog__drop-zone');
+
+profileDropZone.addEventListener('dragover', (e) => {
     e.preventDefault();
-    dropZone.classList.add('is-dragging');
+    profileDropZone.classList.add('is-dragging');
 });
 
-dropZone.addEventListener('dragleave', () => {
-    dropZone.classList.remove('is-dragging');
+profileDropZone.addEventListener('dragleave', () => {
+    profileDropZone.classList.remove('is-dragging');
 });
 
-dropZone.addEventListener('drop', (e) => {
+profileDropZone.addEventListener('drop', (e) => {
     e.preventDefault();
 
-    dropZone.classList.remove('is-dragging');
+    profileDropZone.classList.remove('is-dragging');
 
     const files = e.dataTransfer.files;
     if (files.length > 0) {
-        input.files = files;
+        profileInput.files = files;
         const text = document.querySelector('.user-photo-dialog__drop-text');
         text.textContent = files[0].name;
     }
 });
 
-input.addEventListener('change', () => {
-    if (input.files.length > 0) {
+profileInput.addEventListener('change', () => {
+    if (profileInput.files.length > 0) {
         document.querySelector('.user-photo-dialog__drop-text').textContent = input.files[0].name;
     }
 });
@@ -35,7 +37,7 @@ document.addEventListener('submit', async (e) => {
     if(!form) return;
 
     e.preventDefault();
-    const errorField = document.querySelector('.user-photo-dialog__erros');
+    const errorField = document.querySelector('.user-photo-dialog__errors');
 
     try {
 
@@ -70,3 +72,6 @@ document.addEventListener('submit', async (e) => {
 
     
 })
+
+// Change cover image
+

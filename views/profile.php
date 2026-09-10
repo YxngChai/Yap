@@ -69,10 +69,41 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
                             </div>
                             <div class="user-photo-dialog__container">
                                 <span class="user-photo-dialog__rules">JPEG/JPG, PNG, and WebP accepted. 5MB max.</span>
+                                <button type="submit" class="user-photo-dialog__save-btn">Save</button>
+                            </div>
+                            <div class="user-photo-dialog__errors">
+                            </div>
+                        </form>
+                    </dialog>
+                     <dialog id="updateCover" class="user-photo-dialog">
+                    <form method="dialog">
+                            <button value="cancel" class="dialog__close-btn">X</button>
+                        </form>
+                            <form action="/yap/public/" method="POST" enctype="multipart/form-data" class="js-cover-picture-form">
+                            <label for="profile-picture" class="user-photo-dialog__title">Change cover image</label>
+                            <div class="user-photo-dialog__form">
+                                <input type="hidden" name="action" value="upload_image">
+                                <input type="hidden" name="image_type" value="cover_image">
+                                <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
+                                <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(csrfToken()) ?>">
+                                <input
+                                    type="file"
+                                    name="file"
+                                    id="profile-picture-input"
+                                    class="user-photo-dialog__file-input"
+                                    accept="image/jpeg,image/png,image/webp">
+                                <label for="profile-picture-input" class="user-photo-dialog__drop-zone user-photo-dialog__drop-zone--cover">
+                                    <span class="user-photo-dialog__drop-icon">+</span>
+                                    <span class="user-photo-dialog__drop-title">Upload a profile picture</span>
+                                    <span class="user-photo-dialog__drop-text">Browse, take a picture or drag & drop</span>
+                                </label>
+                            </div>
+                            <div class="user-photo-dialog__container">
+                                <span class="user-photo-dialog__rules">JPEG/JPG, PNG, and WebP accepted. 5MB max.</span>
                                 <!-- insert error messages here -->
                                 <button type="submit" class="user-photo-dialog__save-btn">Save</button>
                             </div>
-                            <div class="user-photo-dialog__erros">
+                            <div class="user-cover-dialog__errors">
                             </div>
                         </form>
                     </dialog>
