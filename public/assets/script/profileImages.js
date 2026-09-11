@@ -37,7 +37,7 @@ document.addEventListener('submit', async (e) => {
     if(!form) return;
 
     e.preventDefault();
-    const errorField = document.querySelector('.user-photo-dialog__errors');
+    const errorField = document.querySelector('.js-profile-error-container');
 
     try {
 
@@ -75,3 +75,44 @@ document.addEventListener('submit', async (e) => {
 
 // Change cover image
 
+document.addEventListener('submit', async (e) => {
+    const form = e.target.closest('.js-cover-picture-form');
+
+    if(!form) return;
+
+    e.preventDefault();
+    const errorField = document.querySelector('.js-cover-error-container');
+
+    try {
+
+        const response = await fetch(form.action, {
+            method: form.method,
+            body: new FormData(form),
+        });
+
+        if(!response.ok){
+            throw new Error('server error');
+        }
+
+        const data = await response.json();
+
+        if(!data.success){
+            errorField.innerHTML = '';
+            data.errors.forEach((error) => {
+                console.log(error);
+                const errorContainer = document.createElement('p');
+                errorContainer.textContent = error;
+                errorField.appendChild(errorContainer);
+            })
+            
+        } else {
+            window.location.reload();
+        }
+    } catch (e) {
+        const error = document.createElement('p');
+        error.textContent = 'Something went wrong. Please try again.'
+        errorField.appendChild(error);
+    }
+
+    
+})

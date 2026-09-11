@@ -220,7 +220,7 @@
   font-size: 0.8em;
   color: var(--primary-color);
 }
-.user-photo-dialog__erros{
+.user-photo-dialog__errors{
   color: var(--tertiary-color);
 }
 

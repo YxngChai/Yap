@@ -86,33 +86,53 @@ switch ($_POST['action']) {
     // - check what is the image is for
 
     // might implement more specific dimensions rules depending of image type
-    // switch ($_POST['image_type']) {
-    //     case "post_image":
-    //     case "profile_image":
-    //     case "cover_image":
-    //       break;
-    // }
+    switch ($_POST['image_type']) {
+        case "profile_image":
+            $photoFileName = User::getProfilePicture($pdo, $_SESSION['user']['id']);
+
+            if($photoFileName){
+                $pathPhoto = __DIR__ . '/../../public/assets/uploads/' . $photoFileName['profile_picture'];
+
+                if(is_file($pathPhoto)) {
+                    unlink($pathPhoto);
+                }
+            }
+            User::addProfilePicture($pdo, $filename, $_SESSION['user']['id']);
+            $_SESSION['user']['profile_picture'] = $filename;
+
+            header('Content-Type: application/json');
+            echo json_encode([
+            'success' => true,
+            'errors' => NULL
+            ]);
+            exit;
+
+        case "cover_image":
+            $coverFileName = User::getCoverImage($pdo, $_SESSION['user']['id']);
+
+            if($coverFileName){
+                $pathImage = __DIR__ . '/../../public/assets/uploads/' . $coverFileName['cover_picture'];
+
+                if(is_file($pathImage)) {
+                    unlink($pathImage);
+                }
+            }
+            User::addCoverimage($pdo, $filename, $_SESSION['user']['id']);
+
+            header('Content-Type: application/json');
+            echo json_encode([
+                'success' => true,
+                'errors' => NULL
+            ]);
+            exit;
+
+        case "post_image":
+          break;
+    }
 
     // for profile picture:
      // get image name from DB
-    $photoFileName = User::getProfilePicture($pdo, $_SESSION['user']['id']);
 
-    if($photoFileName){
-        $pathPhoto = __DIR__ . '/../../public/assets/uploads/' . $photoFileName['profile_picture'];
-
-        if(is_file($pathPhoto)) {
-            unlink($pathPhoto);
-        }
-    }
-    User::addProfilePicture($pdo, $filename, $_SESSION['user']['id']);
-    $_SESSION['user']['profile_picture'] = $filename;
-
-    header('Content-Type: application/json');
-    echo json_encode([
-    'success' => true,
-    'errors' => NULL
-    ]);
-    exit;
 
     case "delete_image":
         exit;

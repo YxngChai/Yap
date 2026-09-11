@@ -1,7 +1,9 @@
 <?php
 /** @var array $user 
 * @var bool $isOwnProfile 
-* @var string $userPicture */
+* @var string $userPicture 
+* @var string $coverImage
+*/
 
 $pageTitle = 'Yap - '. htmlspecialchars((string) $user['username']);
 $pageScript = 'post.js';
@@ -26,7 +28,7 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
     <section  class="user-header">
         <div class="user-header__images">
             <div class="user-header__wallpaper-container">
-                <img class="user-header__wallpaper" src="/yap/public/assets/images/anzellans.jpg">
+                <img class="user-header__wallpaper" src="<?= $coverImage ?>">
             </div>
             <div class="user-header__profile-container">
                 <img class="user-header__profile" src="<?= $userPicture ?>">
@@ -71,10 +73,11 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
                                 <span class="user-photo-dialog__rules">JPEG/JPG, PNG, and WebP accepted. 5MB max.</span>
                                 <button type="submit" class="user-photo-dialog__save-btn">Save</button>
                             </div>
-                            <div class="user-photo-dialog__errors">
+                            <div class="user-photo-dialog__errors js-profile-error-container">
                             </div>
                         </form>
                     </dialog>
+                    
                      <dialog id="updateCover" class="user-photo-dialog">
                     <form method="dialog">
                             <button value="cancel" class="dialog__close-btn">X</button>
@@ -89,10 +92,10 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
                                 <input
                                     type="file"
                                     name="file"
-                                    id="profile-picture-input"
+                                    id="cover-image-input"
                                     class="user-photo-dialog__file-input"
                                     accept="image/jpeg,image/png,image/webp">
-                                <label for="profile-picture-input" class="user-photo-dialog__drop-zone user-photo-dialog__drop-zone--cover">
+                                <label for="cover-image-input" class="user-photo-dialog__drop-zone user-photo-dialog__drop-zone--cover">
                                     <span class="user-photo-dialog__drop-icon">+</span>
                                     <span class="user-photo-dialog__drop-title">Upload a profile picture</span>
                                     <span class="user-photo-dialog__drop-text">Browse, take a picture or drag & drop</span>
@@ -103,7 +106,7 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
                                 <!-- insert error messages here -->
                                 <button type="submit" class="user-photo-dialog__save-btn">Save</button>
                             </div>
-                            <div class="user-cover-dialog__errors">
+                            <div class="user-photo-dialog__errors js-cover-error-container">
                             </div>
                         </form>
                     </dialog>

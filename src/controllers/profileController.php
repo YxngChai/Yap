@@ -22,6 +22,7 @@ if (!$user) {
 }
 
 $userPicture = User::getProfilePicturePath($user['profile_picture']);
+$coverImage = User::getCoverImagePath($user['cover_picture']);
 
 $isOwnProfile = $user['id'] === $_SESSION['user']['id'];
 
