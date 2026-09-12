@@ -23,6 +23,7 @@ if (!$user) {
 
 $userPicture = User::getProfilePicturePath($user['profile_picture']);
 $coverImage = User::getCoverImagePath($user['cover_picture']);
+$postRedirect = $_SERVER['REQUEST_URI'];
 
 $isOwnProfile = $user['id'] === $_SESSION['user']['id'];
 

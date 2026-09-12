@@ -62,7 +62,7 @@ switch ($_POST['action']) {
         exit;
         }
         Post::delete($pdo, $postId, $_SESSION['user']['id']);
-            redirectBack();
+        redirectBack();
         exit;
 
 

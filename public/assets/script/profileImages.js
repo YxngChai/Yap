@@ -27,7 +27,7 @@ profileDropZone.addEventListener('drop', (e) => {
 
 profileInput.addEventListener('change', () => {
     if (profileInput.files.length > 0) {
-        document.querySelector('.user-photo-dialog__drop-text').textContent = input.files[0].name;
+        document.querySelector('.user-photo-dialog__drop-text').textContent = profileInput.files[0].name;
     }
 });
 
@@ -103,7 +103,7 @@ coverDropZone.addEventListener('drop', (e) => {
 
 coverInput.addEventListener('change', () => {
     if (coverInput.files.length > 0) {
-        document.querySelector('.js-cover-drop-text').textContent = input.files[0].name;
+        document.querySelector('.js-cover-drop-text').textContent = coverInput.files[0].name;
     }
 });
 
