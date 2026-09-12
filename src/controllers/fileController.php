@@ -86,7 +86,8 @@ switch ($_POST['action']) {
     // - check what is the image is for
 
     // might implement more specific dimensions rules depending of image type
-    switch ($_POST['image_type']) {
+    $imageType = $_POST['image_type'] ?? NULL;
+    switch ($imageType) {
         case "profile_image":
             $photoFileName = User::getProfilePicture($pdo, $_SESSION['user']['id']);
 
@@ -125,9 +126,15 @@ switch ($_POST['action']) {
                 'errors' => NULL
             ]);
             exit;
-
         case "post_image":
           break;
+        default: 
+            if(is_file($path)) {
+                    unlink($path);
+                }
+            jsonError(['Invalid image type']);
+            exit;
+        
     }
 
     // for profile picture:
