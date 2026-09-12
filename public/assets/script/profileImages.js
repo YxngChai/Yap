@@ -74,6 +74,39 @@ document.addEventListener('submit', async (e) => {
 })
 
 // Change cover image
+const coverInput = document.querySelector('#cover-image-input');
+const coverDropZone = document.querySelector('.user-photo-dialog__drop-zone--cover');
+
+coverDropZone.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    coverDropZone.classList.add('is-dragging');
+});
+
+coverDropZone.addEventListener('dragleave', () => {
+    coverDropZone.classList.remove('is-dragging');
+});
+
+coverDropZone.addEventListener('drop', (e) => {
+    e.preventDefault();
+
+    coverDropZone.classList.remove('is-dragging');
+
+    const files = e.dataTransfer.files;
+    console.log(files);
+    if (files.length > 0) {
+        coverInput.files = files;
+        const text = document.querySelector('.js-cover-drop-text');
+        console.log(text);
+        text.textContent = files[0].name;
+    }
+});
+
+coverInput.addEventListener('change', () => {
+    if (coverInput.files.length > 0) {
+        document.querySelector('.js-cover-drop-text').textContent = input.files[0].name;
+    }
+});
+
 
 document.addEventListener('submit', async (e) => {
     const form = e.target.closest('.js-cover-picture-form');
@@ -116,3 +149,4 @@ document.addEventListener('submit', async (e) => {
 
     
 })
+

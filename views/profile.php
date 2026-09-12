@@ -98,7 +98,7 @@ $commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><p
                                 <label for="cover-image-input" class="user-photo-dialog__drop-zone user-photo-dialog__drop-zone--cover">
                                     <span class="user-photo-dialog__drop-icon">+</span>
                                     <span class="user-photo-dialog__drop-title">Upload a profile picture</span>
-                                    <span class="user-photo-dialog__drop-text">Browse, take a picture or drag & drop</span>
+                                    <span class="user-photo-dialog__drop-text js-cover-drop-text">Browse, take a picture or drag & drop</span>
                                 </label>
                             </div>
                             <div class="user-photo-dialog__container">
