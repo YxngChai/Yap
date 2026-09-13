@@ -11,7 +11,7 @@ verifyCsrf();
 switch ($_POST['action']) {
   case "upload_image":
     $imageType = $_POST['image_type'] ?? NULL;
-    if (!in_array($imageType, ['profile_image', 'cover_image', 'post_image'], true)) {
+    if (!in_array($imageType, ['profile_image', 'cover_image'], true)) {
     jsonError(['Invalid image type']);
     exit;
     }
@@ -85,14 +85,14 @@ switch ($_POST['action']) {
                 'errors' => NULL
             ]);
             exit;
-        case "post_image":
+        // case "post_image":
 
-            header('Content-Type: application/json');
-            echo json_encode([
-                'success' => false,
-                'errors' => 'It Works'
-            ]);
-            exit;
+        //     header('Content-Type: application/json');
+        //     echo json_encode([
+        //         'success' => false,
+        //         'errors' => 'It Works'
+        //     ]);
+        //     exit;
         default: 
             if(is_file($path)) {
                     unlink($path);

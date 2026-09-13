@@ -3,6 +3,7 @@
 
 require_once __DIR__ . '/../models/post.php';
 require_once __DIR__ . '/../validators/validator.php';
+require_once __DIR__ . '/../helpers/errors.php';
 
 $pdo = Database::getConnection();
 
@@ -18,22 +19,38 @@ switch ($_POST['action']) {
 
         $errors = Validator::validatePost($data, $rules);
         if(!empty($errors)){
-            header('Content-Type: application/json');
-
-            echo json_encode([
-                'success' => false,
-                'errors' => $errors
-            ]);
+            jsonError($errors);
             exit;
         }
-        
-        if(isset($_POST['file'])){
-            require_once __DIR__ . '/../fileController.php';
+        $filename = NULL;
+
+        if(isset($_FILES['file'])){
+            
+            //verify    
+            $result = Validator::validateImage(($_FILES['file']));
+
+            if(!$result['success']) {
+                jsonError($result['errors']);
+                exit;
+            }
+
+            $extension = $result['extension'];
+            $tmp= $_FILES['file']['tmp_name'];
+
+            // save the file
+            $filename = bin2hex(random_bytes(16)) . '.' . $extension;
+                
+            $path =  __DIR__ .'/../../public/assets/uploads/'.$filename;
+                if (!move_uploaded_file($tmp,$path)) {
+                    $errors[] = 'Failed to save the image';
+                    jsonError($errors);
+                    exit;
+                }
         }
 
         $postId = Post::create($pdo, [
             'content' => $_POST['post_content'],
-            'image_path' => null,
+            'image_path' => $filename,
             'user_id' => $_SESSION['user']['id'],
         ]);
         unset($_SESSION['old_post_content']);
@@ -73,12 +90,7 @@ switch ($_POST['action']) {
 
         $errors = Validator::validatePost($data, $rules);
         if(!empty($errors)){
-            header('Content-Type: application/json');
-
-            echo json_encode([
-                'success' => false,
-                'errors' => $errors
-            ]);
+            jsonError($errors);
             exit;
         }
 
