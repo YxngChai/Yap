@@ -155,6 +155,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #fcfcfc;
 }
 .post__form-upload-btn{
   width: 25px;
@@ -178,6 +179,16 @@
   cursor: not-allowed;
 }
 
+.post__form-image-preview{
+  border-radius: 8px;
+  margin: 10px 0;
+  max-height: 300px;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  border: 1px solid var(--secondary-color-light);
+  align-self: center;
+}
 
 
 

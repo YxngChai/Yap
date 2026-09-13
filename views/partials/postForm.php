@@ -4,6 +4,7 @@
             <label class="post__form-title">Create Post</label>
         <?php endif; ?>
         <textarea class="post__form-textarea js-post-textarea" name="post_content" type="textarea" minlength="1" maxlength="2000" placeholder="Write something"><?=$_SESSION['old_post_content']  ?? ''   ?></textarea>
+        <img id="postImagePreview" alt="Image preview" class="post__form-image-preview" hidden>
         <input type="hidden" name="action" value="create_post">
         <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
         <input
