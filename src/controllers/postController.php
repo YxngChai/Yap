@@ -16,7 +16,6 @@ switch ($_POST['action']) {
 
     case 'create_post':
 
-
         $errors = Validator::validatePost($data, $rules);
         if(!empty($errors)){
             header('Content-Type: application/json');
@@ -26,6 +25,10 @@ switch ($_POST['action']) {
                 'errors' => $errors
             ]);
             exit;
+        }
+        
+        if(isset($_POST['file'])){
+            require_once __DIR__ . '/../fileController.php';
         }
 
         $postId = Post::create($pdo, [

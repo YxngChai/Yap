@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../models/user.php';
 require_once __DIR__ . '/../helpers/errors.php';
+require_once __DIR__ . '/../validators/validator.php';
 
 $pdo = Database::getConnection();
 
@@ -9,84 +10,42 @@ verifyCsrf();
 
 switch ($_POST['action']) {
   case "upload_image":
+    $imageType = $_POST['image_type'] ?? NULL;
+    if (!in_array($imageType, ['profile_image', 'cover_image', 'post_image'], true)) {
+    jsonError(['Invalid image type']);
+    exit;
+    }
 
     if (!isset($_FILES['file'])) {
-        die('No file uploaded');
+        $errors[] = 'No file uploaded';
+        jsonError($errors);
+        exit;
     }
 
-    $tmp = $_FILES['file']['tmp_name'];
-    $size = $_FILES['file']['size'];
-    $error = $_FILES['file']['error'];
+    $result = Validator::validateImage(($_FILES['file']));
 
-    $errors = [];
+    if(!$result['success']) {
+        jsonError($result['errors']);
+        exit;
+    }
+    $extension = $result['extension'];
+    $tmp= $_FILES['file']['tmp_name'];
+    
+    
 
-    if ($error !== UPLOAD_ERR_OK) {
-            $errors[] = 'File upload failed';
+    // save the file
+    $filename = bin2hex(random_bytes(16)) . '.' . $extension;
+        
+    $path =  __DIR__ .'/../../public/assets/uploads/'.$filename;
+        if (!move_uploaded_file($tmp,$path)) {
+            $errors[] = 'Failed to save the image';
             jsonError($errors);
             exit;
-            
-    }
-    if (!is_uploaded_file($tmp)) {
-        $errors[] = 'Invalid upload';
-        jsonError($errors);
-        exit;
-    }
+        }
 
-    $finfo = new finfo(FILEINFO_MIME_TYPE);
 
-    $mime =  $finfo->file($tmp);
-
-    $allowed = [
-        'image/jpeg' => 'jpg',
-        'image/png' => 'png',
-        'image/webp' => 'webp',
-    ];
-
-    if(!isset($allowed[$mime])) {
-        $errors[] = 'Invalid file format';
-        jsonError($errors);
-        exit;
-    } 
-    
-    $maxSize = 5 * 1024 * 1024;
-    if($size > $maxSize) {
-        $errors[] = 'File too large, 5MB maximum.';
-    }
-
-    $imageDimensions = getimagesize($tmp);
-
-    if (!$imageDimensions) {
-        $errors[] = 'Invalid image';
-    }
-    [$width, $height] = $imageDimensions;
-    
-    if($width > 6000 || $height > 6000) {
-        $errors[] = 'Dimensions are too large.';
-    }
-    if($width < 300 || $height < 300) {
-        $errors[] = 'Dimensions are too small.';
-    }
-    if(!empty($errors)) {
-        jsonError($errors);
-        exit;
-    }
-
-    $extension = $allowed[$mime];
-
-    $filename = bin2hex(random_bytes(16)) . '.' . $extension;
-    
-    $path =  __DIR__ .'/../../public/assets/uploads/'.$filename;
-    if (!move_uploaded_file($tmp,$path)) {
-        $errors[] = 'Failed to save the image';
-        jsonError($errors);
-        exit;
-    }
-
-    // - need to verify image_type input from the form
-    // - check what is the image is for
 
     // might implement more specific dimensions rules depending of image type
-    $imageType = $_POST['image_type'] ?? NULL;
     switch ($imageType) {
         case "profile_image":
             $photoFileName = User::getProfilePicture($pdo, $_SESSION['user']['id']);
@@ -127,7 +86,13 @@ switch ($_POST['action']) {
             ]);
             exit;
         case "post_image":
-          break;
+
+            header('Content-Type: application/json');
+            echo json_encode([
+                'success' => false,
+                'errors' => 'It Works'
+            ]);
+            exit;
         default: 
             if(is_file($path)) {
                     unlink($path);

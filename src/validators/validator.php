@@ -87,4 +87,65 @@ class Validator {
         return $errors;
 
     }
+
+    public static function validateImage(array $file): array {
+        $tmp = $file['tmp_name'];
+        $size = $file['size'];
+        $error = $file['error'];
+
+        $errors = [];
+
+        if ($error !== UPLOAD_ERR_OK) {
+                $errors[] = 'File upload failed';
+                return ['success' => false, 'errors' => $errors];
+                
+        }
+        if (!is_uploaded_file($tmp)) {
+            $errors[] = 'Invalid upload';
+            return ['success' => false, 'errors' => $errors];
+        }
+
+        $finfo = new finfo(FILEINFO_MIME_TYPE);
+
+        $mime =  $finfo->file($tmp);
+
+        $allowed = [
+            'image/jpeg' => 'jpg',
+            'image/png' => 'png',
+            'image/webp' => 'webp',
+        ];
+
+        if(!isset($allowed[$mime])) {
+            $errors[] = 'Invalid file format';
+            return ['success' => false, 'errors' => $errors];
+        } 
+        
+        $maxSize = 5 * 1024 * 1024;
+        if($size > $maxSize) {
+            $errors[] = 'File too large, 5MB maximum.';
+        }
+
+        $imageDimensions = getimagesize($tmp);
+
+        if (!$imageDimensions) {
+            $errors[] = 'Invalid image';
+            return ['success' => false, 'errors' => $errors];
+        }
+        [$width, $height] = $imageDimensions;
+        
+        if($width > 6000 || $height > 6000) {
+            $errors[] = 'Dimensions are too large.';
+        }
+        if($width < 300 || $height < 300) {
+            $errors[] = 'Dimensions are too small.';
+        }
+        if(!empty($errors)) {
+            return ['success' => false, 'errors' => $errors];
+        }
+
+        $extension = $allowed[$mime];
+
+
+        return ['success' => true, 'extension' => $extension];
+    }
 }

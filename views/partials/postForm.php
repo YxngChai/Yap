@@ -7,6 +7,7 @@
         <img id="postImagePreview" alt="Image preview" class="post__form-image-preview" hidden>
         <input type="hidden" name="action" value="create_post">
         <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
+        <input type="hidden" name="image_type" value="post_image">
         <input
         type="hidden"
         name="csrf_token"

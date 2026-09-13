@@ -98,12 +98,16 @@ createPostForm.addEventListener("submit", async (e) => {
       method: createPostForm.method,
       body: new FormData(createPostForm),
     });
+  
 
     if(!response.ok) {
         throw new Error('Server error');
     }
 
     const data = await response.json();
+
+    console.log(data.post);
+    console.log(data.files);
     
     if(!data.success) {
       errorField.textContent = data.errors;
@@ -340,24 +344,3 @@ if(input && preview){
       preview.hidden = false;
   });
 }
-
-// let objectUrl = null;
-
-// input.addEventListener('change', () => {
-//     const file = input.files[0];
-
-//     if (objectUrl) {
-//         URL.revokeObjectURL(objectUrl);
-//         objectUrl = null;
-//     }
-
-//     if (!file) {
-//         preview.hidden = true;
-//         return;
-//     }
-
-//     objectUrl = URL.createObjectURL(file);
-
-//     preview.src = objectUrl;
-//     preview.hidden = false;
-// });
