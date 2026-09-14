@@ -169,6 +169,12 @@ class Post{
     $stmt = $pdo->prepare($sql);
     $stmt->execute([ 'post_id' => $postId,'user_id' => $userId]);
     }
+    public static function getPostImage(PDO $pdo, int $postId, int $userId): array | false {
+    $sql = 'SELECT image_path FROM posts WHERE id = :id AND user_id = :user_id';
+    $stmt = $pdo->prepare($sql);
+    $stmt -> execute(['id'=> $postId, 'user_id' => $userId]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 
     // public static function findAllProgressiveLoading(PDO $pdo, int $offset): array {
     // $sql = 'SELECT 

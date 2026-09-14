@@ -74,11 +74,19 @@
 }
 .post__content {
   z-index: 10;
-  padding: 20px 10px;
   box-shadow:
     rgba(234, 28, 224, 0.074) 0px 4px 6px -1px,
     rgba(215, 215, 215, 0.06) 0px 2px 4px -1px;
 }
+.post__text{
+  padding: 20px 10px;
+}
+.post__image{
+  margin:auto;
+  width: 100%;
+  height: auto;
+}
+
 
 .post__footer {
   padding: 5px 0;

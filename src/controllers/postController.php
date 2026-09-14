@@ -24,10 +24,10 @@ switch ($_POST['action']) {
         }
         $filename = NULL;
 
-        if(isset($_FILES['file'])){
+        if(isset($_FILES['file']) &&  $_FILES['file']['error'] !== UPLOAD_ERR_NO_FILE){
             
             //verify    
-            $result = Validator::validateImage(($_FILES['file']));
+            $result = Validator::validateImage($_FILES['file']);
 
             if(!$result['success']) {
                 jsonError($result['errors']);
@@ -81,6 +81,16 @@ switch ($_POST['action']) {
         header('Location: /yap/public/');
         exit;
         }
+        $filename = Post::getPostImage($pdo, $postId, $_SESSION['user']['id'] );
+
+        if($filename){
+                $path = __DIR__ . '/../../public/assets/uploads/' . $filename['image_path'];
+
+                if(is_file($path)) {
+                    unlink($path);
+                }
+            }
+
         Post::delete($pdo, $postId, $_SESSION['user']['id']);
         redirectBack();
         exit;

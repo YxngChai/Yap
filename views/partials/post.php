@@ -89,7 +89,12 @@ if ($diff ->days > 0) {
                 </dialog>
             <?php endif; ?>
         </header>
-        <p class="post__content" id="post-content-<?= $post['id'] ?>" ><?= $post["content"] ?></p>
+        <div class="post__content">
+        <p class="post__text" id="post-content-<?= $post['id'] ?>" ><?= $post["content"] ?></p>
+        <?php if(!empty($post['image_path'])): ?>
+            <img src="/yap/public/assets/uploads/<?= htmlspecialchars($post['image_path']) ?>" alt="post image" class="post__image">
+        <?php endif; ?>
+         </div>
         <footer class="post__footer">
             <form action="/yap/public/" method="POST" class="js-like-post-form">
                 <input type="hidden" value="<?= htmlspecialchars($post['id']) ?>" name="postId">
