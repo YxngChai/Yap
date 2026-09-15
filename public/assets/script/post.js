@@ -303,10 +303,12 @@ document.addEventListener('click', (e) => {
 
 
 const input = document.querySelector('#postImageInput');
+const previewContainer = document.querySelector('#postImagePreviewContainer');
 const preview = document.querySelector('#postImagePreview');
+const closePreview = document.querySelector('#postImagePreviewCloseBtn');
 
 
-if(input && preview){
+if(input && preview && closePreview){
   input.addEventListener('change', () => {
       const file = input.files[0];
 
@@ -314,7 +316,7 @@ if(input && preview){
       errorField.textContent = '';
 
       if (!file) {
-          preview.hidden = true;
+          previewContainer.hidden = true;
           return;
       }
 
@@ -326,7 +328,7 @@ if(input && preview){
 
       if (!allowedTypes.includes(file.type)) {
           input.value = '';
-          preview.hidden = true;
+          previewContainer.hidden = true;
           errorField.textContent = 'Invalid file format, jpeg/jpg, png and webp only.'
           return;
       }
@@ -334,13 +336,20 @@ if(input && preview){
       if (file.size > 5 * 1024 * 1024) {
           input.value = '';
           errorField.textContent = 'File too large, 5MB maximum.'
-          preview.hidden = true;
+          previewContainer.hidden = true;
           return;
       }
 
       const objectUrl = URL.createObjectURL(file);
 
       preview.src = objectUrl;
-      preview.hidden = false;
+      previewContainer.hidden = false;
   });
+
+  closePreview.addEventListener('click', (e) => {
+    e.preventDefault();
+    preview.src = '';
+    previewContainer.hidden = true;
+  })
 }
+

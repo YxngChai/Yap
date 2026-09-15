@@ -186,6 +186,11 @@
   background-color: var(--secondary-color-light);
   cursor: not-allowed;
 }
+.post__form-image-container{
+  width: fit-content;
+  margin-inline: auto;
+  position: relative;
+}
 
 .post__form-image-preview{
   border-radius: 8px;
@@ -195,9 +200,21 @@
   width: auto;
   height: auto;
   border: 1px solid var(--secondary-color-light);
-  align-self: center;
-}
 
+}
+.post__form-image-close-btn{
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  border-radius: 50%;
+ background-color: #fcfcfc30;
+  z-index: 100;
+  padding: 6px 10px;
+}
+.post__form-image-close-btn:hover  {
+ 
+    background-color: rgba(221, 160, 221, 0.724);
+}
 
 
 /* Edit / Modify post */
