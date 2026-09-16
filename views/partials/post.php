@@ -46,7 +46,6 @@ if ($diff ->days > 0) {
                     <ul>
                         <li><button type="button" data-dialog="updateDialog-<?= $post['id'] ?>" class="post__action post__action-update">Edit</button></li>
                         <li><button type="button" data-dialog="deleteDialog-<?= $post['id'] ?>" class="post__action post__action-delete">Delete</button></li>
-
                     </ul>
                 </div>
 
@@ -65,7 +64,7 @@ if ($diff ->days > 0) {
                         name="csrf_token"
                         value="<?= htmlspecialchars(csrfToken()) ?>">
                         <p class="post__error js-edit-post-error"></p>
-                        <button class="post__form-btn js-post-btn" type="submit">Save</button>
+                        <button class="post__form-btn post__form-btn--edit js-post-btn" type="submit">Save</button>
                     </form>
                 </dialog>
 

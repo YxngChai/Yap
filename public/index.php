@@ -47,14 +47,13 @@ if ($method === 'GET') {
         }
         // for own profile
         if (preg_match('#^/yap/public/user/?$#', $uri)) {
-            $_GET['user_id'] = $_SESSION['user']['id'];
+            $_GET['username'] = $_SESSION['user']['username'];
             require __DIR__ . '/../src/controllers/profileController.php';
             exit;
         }
         if (preg_match('#^/yap/public/settings/?$#', $uri)) {
-            // $_GET['user_id'] = $_SESSION['user']['id'];
-            // require __DIR__ . '/../src/controllers/settingsController.php';
-            echo "Coming Soon";
+            $_GET['user_id'] = $_SESSION['user']['id'];
+            require __DIR__ . '/../src/controllers/settingsController.php';
             exit;
         }
         // show a post

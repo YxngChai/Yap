@@ -9,7 +9,6 @@ $pdo = Database::getConnection();
 $user = NULL;
 
 
-
 if (isset($_GET['username'])) {
     $username = $_GET['username'];
     $user = User::findByUsername($pdo, $username);

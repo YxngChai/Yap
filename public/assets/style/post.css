@@ -181,6 +181,10 @@
   background-color: #d97ffd;
   box-shadow: 0 0 15px rgba(116, 116, 116, 0.322);
 }
+.post__form-btn--edit{
+  width: auto;
+  margin-top: 10px;
+}
 
 .post__form-btn:disabled {
   background-color: var(--secondary-color-light);
@@ -207,7 +211,7 @@
   top: 30px;
   right: 20px;
   border-radius: 50%;
- background-color: #fcfcfc30;
+  background-color: #fcfcfc6a;
   z-index: 100;
   padding: 6px 10px;
 }
