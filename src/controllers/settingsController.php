@@ -10,8 +10,7 @@ $user = NULL;
 if (isset($_GET['user_id'])) {
     $userId = $_GET['user_id'];
     $user = User::findById($pdo, $userId);
-    echo 'test';
-    var_dump($user);
+
 }
 
 if (!$user) {
@@ -20,3 +19,5 @@ if (!$user) {
 
 }
 
+
+require __DIR__ . "/../../views/settings.php";

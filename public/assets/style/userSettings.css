@@ -1,0 +1,21 @@
+.settings {
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 700px;
+}
+.settings__title{
+    font-size: 2em;
+    
+    
+
+}
+.settings__separator{
+    content: "";
+    width: 70%;
+    border: none;
+
+    height: 2px;
+    background-color: rgba(198, 198, 198, 0.703);
+}
