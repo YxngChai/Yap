@@ -16,10 +16,10 @@ require_once __DIR__ . '/partials/header.php';
         <h1 class="settings__title">Settings</h1>
         <hr class="settings__separator"></hr>
     </header>
-    <section>
-        <form action="/yap/public/" method="POST" enctype="multipart/form-data" class="js-profile-picture-settings-form">
-            <label for="picture-form__label" class="user-photo-dialog__title">Change Profile Picture</label>
-            <div class="picture-form">
+    <section >
+        <form action="/yap/public/" method="POST" enctype="multipart/form-data" class="picture-form js-profile-picture-settings-form">
+            <label for="picture-form__label" class="picture-form__title">Change Profile Picture</label>
+            <div class="picture-form__inputs">
                 <input type="hidden" name="action" value="upload_image">
                 <input type="hidden" name="image_type" value="profile_image">
                 <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
@@ -27,13 +27,14 @@ require_once __DIR__ . '/partials/header.php';
                 
                 <label for="profile-picture-input" class="picture-form__image-container">
                     <img class="picture-form__image" src="<?= $profilePicture ?>">
+                    <img class="picture-form__icon" src="/yap/public/assets/images/camera-icon.jpg">
                     <!-- insert camera device image over the picture -->
                 </label>
                 <input
                     type="file"
                     name="file"
                     id="profile-picture-input"
-                    class="user-photo-dialog__file-input"
+                    class="picture-form__file-input"
                     accept="image/jpeg,image/png,image/webp">
             </div>
             <div class="picture-form__container">
@@ -44,6 +45,7 @@ require_once __DIR__ . '/partials/header.php';
             </div>
         </form>
     </section>
+    <hr class="settings__separator"></hr>
 </main>
 
 
