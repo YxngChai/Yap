@@ -103,7 +103,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             header('Location: /yap/public/');
             exit;
-            break;
+            
         case 'logout':
             //logout
             session_unset();

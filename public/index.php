@@ -91,12 +91,14 @@ if ($method === 'POST') {
         require __DIR__ . '/../src/controllers/commentController.php';
         exit;
     }
-        if (in_array($action, ['upload_image', 'delete_image',])) {
+    if (in_array($action, ['upload_image', 'delete_image',])) {
         require __DIR__ . '/../src/controllers/fileController.php';
+        exit;
+    }
+    if (in_array($action, ['update_user', 'delete_user', 'update_password'])) {
+        require __DIR__ . '/../src/controllers/userController.php';
         exit;
     }
     redirectBack();
 }
-
-// require __DIR__ . '/../src/controllers/feedController.php';
 

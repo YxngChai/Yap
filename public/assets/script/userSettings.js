@@ -36,7 +36,15 @@ profilePictureInput.addEventListener('change', () => {
 profilePictureForm.addEventListener('submit', async(e) =>{
     e.preventDefault();
 
-    
+    if (profilePictureInput.files.length === 0) {
+        const error = document.createElement('p');
+        error.textContent = 'Please select an image first.';
+        errorField.innerHTML = '';
+        errorField.appendChild(error);
+
+        return;
+
+    }
 
     try {
 

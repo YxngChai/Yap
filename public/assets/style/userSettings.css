@@ -15,12 +15,29 @@
     height: 2px;
     background-color: rgba(198, 198, 198, 0.703);
 }
-.picture-form{
-    position: relative;
-}
-.picture-form__title{
+.form__title{
+    font-size: 1.1em;
     font-weight: bold;
     margin-bottom: 20px;
+}
+
+.form__save-btn{
+    background-color: var(--secondary-color-light);
+    padding: 5px 17px;
+    border-radius: 10px;
+    font-size: 0.9em;
+    margin-bottom: 20px;
+    align-self: flex-start;
+}
+.form__save-btn:hover{
+    background-color: var(--secondary-color);
+}
+
+
+/* Profile Picture */
+
+.picture-form{
+    position: relative;
 }
 .picture-form__inputs{
     display: flex;
@@ -54,13 +71,22 @@
     display: block;
     padding-bottom: 20px;
 }
-.picture-form__save-btn{
-    background-color: var(--secondary-color-light);
-    padding: 5px 17px;
-    border-radius: 10px;
-    font-size: 0.9em;
-    margin-bottom: 20px;
-}
+
 .picture-form__errors{
     color: var(--tertiary-color);
+}
+
+/* User details */
+
+.persoDetailsForm{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.persoDetailsForm__input {
+    width: 40%;
+    margin-bottom: 5px;
+}
+.form__save-btn--personal-details{
+    margin-top: 20px;
 }
