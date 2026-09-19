@@ -28,7 +28,6 @@ require_once __DIR__ . '/partials/header.php';
                 <label for="profile-picture-input" class="picture-form__image-container">
                     <img class="picture-form__image" src="<?= $profilePicture ?>">
                     <img class="picture-form__icon" src="/yap/public/assets/images/camera-icon.jpg">
-                    <!-- insert camera device image over the picture -->
                 </label>
                 <input
                     type="file"
