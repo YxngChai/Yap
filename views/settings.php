@@ -59,9 +59,10 @@ require_once __DIR__ . '/partials/header.php';
             <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
             <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(csrfToken()) ?>">
 
-             <button type="submit" class="form__save-btn form__save-btn--personal-details">Save</button>
+             <button type="submit" class="form__save-btn">Save</button>
         </form>
     </section>
+    <hr class="settings__separator"></hr>
 </main>
 
 

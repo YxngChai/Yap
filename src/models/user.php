@@ -9,6 +9,12 @@ class User{
     return $pdo->lastInsertId();
     }
 
+    public static function updateDetails(PDO $pdo, array $data): bool {
+        $sql = 'UPDATE users SET name = :name, surname = :surname, birth_date = :birth_date WHERE id = :user_id';
+        $stmt = $pdo -> prepare($sql);
+        return $stmt->execute($data);
+    }
+
     public static function findByEmail(PDO $pdo, string $email) {
     $sql = 'SELECT * FROM  users WHERE email = :email';
     $stmt = $pdo->prepare($sql);

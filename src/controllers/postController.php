@@ -55,7 +55,6 @@ switch ($_POST['action']) {
         ]);
         unset($_SESSION['old_post_content']);
 
-            // redirectBack();
         $post = Post::findById($pdo, $postId, $_SESSION['user']['id']);
         
         $postRedirect =  $_POST['redirect'] ?? '/yap/public/';

@@ -26,7 +26,7 @@
     padding: 5px 17px;
     border-radius: 10px;
     font-size: 0.9em;
-    margin-bottom: 20px;
+    margin: 20px 0;
     align-self: flex-start;
 }
 .form__save-btn:hover{
@@ -69,7 +69,6 @@
 .picture-form__rules{
     font-size: 0.8em;
     display: block;
-    padding-bottom: 20px;
 }
 
 .picture-form__errors{
@@ -86,7 +85,4 @@
 .persoDetailsForm__input {
     width: 40%;
     margin-bottom: 5px;
-}
-.form__save-btn--personal-details{
-    margin-top: 20px;
 }

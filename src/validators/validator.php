@@ -2,7 +2,7 @@
 
 class Validator {
 
-    public static function validateNewUser(array $data ,array $rules) {
+    public static function validateUser(array $data ,array $rules) {
         $errors = [];
 
         foreach($rules as $field => $ruleSet) {
