@@ -1,9 +1,12 @@
+// Update profile picture
+
 const profilePictureForm = document.querySelector('.js-profile-picture-settings-form');
 const profilePictureInput = document.querySelector('#profile-picture-input');
 const profilePicture = document.querySelector('.picture-form__image');
-const errorField = document.querySelector('.js-picture-form-error-container');
+
 
 profilePictureInput.addEventListener('change', () => {
+    const errorField = document.querySelector('.js-picture-form-error-container');
     const file = profilePictureInput.files[0];
 
     errorField.innerHTML = '';
@@ -77,4 +80,53 @@ profilePictureForm.addEventListener('submit', async(e) =>{
         errorField.appendChild(error);
     }
 })
+
+// update personal details
+
+const personalDetailsForm = document.querySelector('.js-personal-details-form');
+
+personalDetailsForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    try {
+
+        const response = await fetch(personalDetailsForm.ariaDescription, {
+            method: personalDetailsForm.method,
+            body: new FormData(personalDetailsForm)
+        })
+
+        if(!response.ok){
+            throw new Error('Server error');
+        }
+        const data = await response.json();
+
+        if(!data.success){
+            const errorField = document.querySelector('.js-details-message-container');
+            console.log(data.errors);
+            errorField.innerHTML = '';
+            data.errors.forEach((error) => {
+                const errorContainer = document.createElement('p');
+                errorContainer.classList.add('form__errors');
+                errorContainer.textContent = error;
+                errorField.appendChild(errorContainer);
+            })
+        } else {
+            const messageContainer = document.querySelector('.js-details-message-container');
+            messageContainer.innerHTML = '';
+            const message = document.createElement('p');
+            message.classList.add('form__success');
+            message.textContent = 'Changes saved successfully.'
+            messageContainer.appendChild(message);
+        }
+
+    } catch (e) {
+        console.log(e);
+        const errorField = document.querySelector('.js-details-message-container');
+        const error = document.createElement('p');
+        error.classList.add('form__errors');
+        error.textContent = 'Something went wrong. Please try again.';
+        errorField.appendChild(error);
+    }
+})
+
 

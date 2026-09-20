@@ -31,12 +31,12 @@ switch($data['action']){
             'user_id' => $_SESSION['user']['id']
         ])) {
             $_SESSION['user']['name'] = $data['name'];
-            $_SESSION['user']['name'] = $data['name'];
+            $_SESSION['user']['surname'] = $data['surname'];
             $_SESSION['user']['birth_date'] = $data['birth_date'];
             header('Content-Type: application/json');
 
             echo json_encode([
-                'sucess' => true,
+                'success' => true,
                 'errors' => null
             ]);
             exit;

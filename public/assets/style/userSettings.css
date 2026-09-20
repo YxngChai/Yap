@@ -32,6 +32,12 @@
 .form__save-btn:hover{
     background-color: var(--secondary-color);
 }
+.form__errors{
+    color: var(--tertiary-color);
+}
+.form__success{
+    color: rgb(4, 172, 4);
+}
 
 
 /* Profile Picture */
@@ -71,9 +77,7 @@
     display: block;
 }
 
-.picture-form__errors{
-    color: var(--tertiary-color);
-}
+
 
 /* User details */
 

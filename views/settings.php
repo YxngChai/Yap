@@ -40,13 +40,13 @@ require_once __DIR__ . '/partials/header.php';
                 <span class="picture-form__rules">JPEG/JPG, PNG, and WebP accepted. 5MB max.</span>
                 <button type="submit" class="form__save-btn">Save</button>
             </div>
-            <div class="picture-form__errors js-picture-form-error-container">
+            <div class="form__errors js-picture-form-error-container">
             </div>
         </form>
     </section>
     <hr class="settings__separator"></hr>
     <section>
-        <form action="/yap/public/" method="POST" class="persoDetailsForm">
+        <form action="/yap/public/" method="POST" class="persoDetailsForm js-personal-details-form"> 
             <h2 class="form__title">Personal Details</h2>
             <label class="form__label">Name</label>
             <input class="persoDetailsForm__input" type="text" name="name" minlength="2" maxlength="50" autocomplete="name" value="<?= htmlspecialchars($_SESSION['user']['name'], ENT_QUOTES, 'UTF-8') ?>" required>
@@ -59,8 +59,10 @@ require_once __DIR__ . '/partials/header.php';
             <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
             <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(csrfToken()) ?>">
 
-             <button type="submit" class="form__save-btn">Save</button>
+            <button type="submit" class="form__save-btn">Save</button>
         </form>
+         <div class="js-details-message-container"><p></p>
+            </div>
     </section>
     <hr class="settings__separator"></hr>
 </main>
