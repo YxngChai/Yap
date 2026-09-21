@@ -38,6 +38,16 @@
 .form__success{
     color: rgb(4, 172, 4);
 }
+.form__input {
+    width: 40%;
+    margin-bottom: 5px;
+}
+.updateForm{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
 
 
 /* Profile Picture */
@@ -80,13 +90,3 @@
 
 
 /* User details */
-
-.persoDetailsForm{
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-.persoDetailsForm__input {
-    width: 40%;
-    margin-bottom: 5px;
-}
