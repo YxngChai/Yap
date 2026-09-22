@@ -47,6 +47,31 @@ switch($data['action']){
 
 
     case 'update_password':
+        var_dump($_SESSION['user']);
+
+        $hash = User::getHash($pdo, $_SESSION['user']['email'], $_SESSION['user']['id']);
+        var_dump($hash);
+        // $errors = NULL;
+
+        // if(!password_verify($data['old_password'], $_SESSION['user']['password_hash'])){
+        //     jsonError(['Incorrect password']);
+        //     exit;
+        // }
+
+        // if($data['new_password'] !== $data['new_password_verification']) {
+        //     jsonError(['passwords do not match']);
+        //     exit;
+        // }
+        // header('Content-Type: application/json');
+
+        // echo json_encode([
+        //     'success' => true,
+        //     'errors' => null
+        // ]);
+
+        exit;
+
+
         exit;
     case 'delete_user':
         exit;

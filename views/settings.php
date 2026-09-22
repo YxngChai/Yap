@@ -81,7 +81,7 @@ require_once __DIR__ . '/partials/header.php';
 
             <button type="submit" class="form__save-btn">Save</button>
         </form>
-         <div class="js-details-message-container"><p></p>
+         <div class="js-update-password-message-container"><p></p>
             </div>
     </section>
 </main>

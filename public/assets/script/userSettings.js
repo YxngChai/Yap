@@ -51,7 +51,7 @@ profilePictureForm.addEventListener('submit', async(e) =>{
 
     try {
 
-        const response = await fetch(profilePictureForm.ariaDescription, {
+        const response = await fetch(profilePictureForm.action, {
             method: profilePictureForm.method,
             body: new FormData(profilePictureForm)
         })
@@ -90,7 +90,7 @@ personalDetailsForm.addEventListener('submit', async (e) => {
 
     try {
 
-        const response = await fetch(personalDetailsForm.ariaDescription, {
+        const response = await fetch(personalDetailsForm.action, {
             method: personalDetailsForm.method,
             body: new FormData(personalDetailsForm)
         })
@@ -132,50 +132,50 @@ personalDetailsForm.addEventListener('submit', async (e) => {
 
 // update password
 
-const updatePasswordForm = document.querySelector('.js-update-password-form');
+// const updatePasswordForm = document.querySelector('.js-update-password-form');
 
-updatePasswordForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
+// updatePasswordForm.addEventListener('submit', async (e) => {
+//     e.preventDefault();
 
-    try {
+//     try {
 
-        const response = await fetch(updatePasswordForm.ariaDescription, {
-            method: updatePasswordForm.method,
-            body: new FormData(updatePasswordForm)
-        })
+//         const response = await fetch(updatePasswordForm.action, {
+//             method: updatePasswordForm.method,
+//             body: new FormData(updatePasswordForm)
+//         })
 
-        if(!response.ok){
-            throw new Error('Server error');
-        }
-        const data = await response.json();
+//         if(!response.ok){
+//             throw new Error('Server error');
+//         }
+//         const data = await response.json();
 
-        if(!data.success){
-            const errorField = document.querySelector('.js-update-password-message-container');
-            console.log(data.errors);
-            errorField.innerHTML = '';
-            data.errors.forEach((error) => {
-                const errorContainer = document.createElement('p');
-                errorContainer.classList.add('form__errors');
-                errorContainer.textContent = error;
-                errorField.appendChild(errorContainer);
-            })
-        } else {
-            const messageContainer = document.querySelector('.js-update-password-message-container');
-            messageContainer.innerHTML = '';
-            const message = document.createElement('p');
-            message.classList.add('form__success');
-            message.textContent = 'New password saved successfully.'
-            messageContainer.appendChild(message);
-        }
+//         if(!data.success){
+//             const errorField = document.querySelector('.js-update-password-message-container');
+//             console.log(data.errors);
+//             errorField.innerHTML = '';
+//             data.errors.forEach((error) => {
+//                 const errorContainer = document.createElement('p');
+//                 errorContainer.classList.add('form__errors');
+//                 errorContainer.textContent = error;
+//                 errorField.appendChild(errorContainer);
+//             })
+//         } else {
+//             const messageContainer = document.querySelector('.js-update-password-message-container');
+//             messageContainer.innerHTML = '';
+//             const message = document.createElement('p');
+//             message.classList.add('form__success');
+//             message.textContent = 'New password saved successfully.'
+//             messageContainer.appendChild(message);
+//         }
 
-    } catch (e) {
-        console.log(e);
-        const errorField = document.querySelector('.js-update-password-message-container');
-        const error = document.createElement('p');
-        error.classList.add('form__errors');
-        error.textContent = 'Something went wrong. Please try again.';
-        errorField.appendChild(error);
-    }
-})
+//     } catch (e) {
+//         console.log(e);
+//         const errorField = document.querySelector('.js-update-password-message-container');
+//         const error = document.createElement('p');
+//         error.classList.add('form__errors');
+//         error.textContent = 'Something went wrong. Please try again.';
+//         errorField.appendChild(error);
+//     }
+// })
 
 

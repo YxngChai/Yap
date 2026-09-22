@@ -5,14 +5,12 @@ class User{
     $sql = 'INSERT INTO users(username, name, surname, birth_date, email, password_hash) VALUES(:username, :name, :surname, :birth_date, :email, :password_hash)';
     $stmt = $pdo->prepare($sql);
     $stmt->execute($userData);
-
     return $pdo->lastInsertId();
     }
-
     public static function updateDetails(PDO $pdo, array $data): bool {
-        $sql = 'UPDATE users SET name = :name, surname = :surname, birth_date = :birth_date WHERE id = :user_id';
-        $stmt = $pdo -> prepare($sql);
-        return $stmt->execute($data);
+    $sql = 'UPDATE users SET name = :name, surname = :surname, birth_date = :birth_date WHERE id = :user_id';
+    $stmt = $pdo -> prepare($sql);
+    return $stmt->execute($data);
     }
 
     public static function findByEmail(PDO $pdo, string $email) {
@@ -39,6 +37,18 @@ class User{
     $stmt->execute(['userId' => $userId]);
     return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+    public static function getHash(PDO $pdo, string $email , int $userId) {
+    $sql = 'SELECT password_hash FROM users WHERE email = :email AND id = :user_id';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['email' => $email,'user_id' => $userId]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    public static function updateHas(PDO $pdo, string $email , int $userId) {
+    $sql = 'UPDATE users SET email = :email WHERE id = :user_id';
+    $stmt = $pdo->prepare($sql);
+    return $stmt->execute(['email' => $email,'user_id' => $userId]);
+    }
+    
 
     public static function addProfilePicture(PDO $pdo, string $filepath, int $userId ): bool{
     $sql = 'UPDATE users SET profile_picture = :profile_picture WHERE id  = :userId';
@@ -53,7 +63,6 @@ class User{
         return '/yap/public/assets/uploads/' . $profilePicture;
         }
     }
-
     public static function getCoverImage(PDO $pdo, int $userId) {
     $sql = 'SELECT cover_picture FROM users WHERE id = :userId';
     $stmt = $pdo->prepare($sql);
