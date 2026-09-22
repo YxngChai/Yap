@@ -43,10 +43,10 @@ class User{
     $stmt->execute(['email' => $email,'user_id' => $userId]);
     return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-    public static function updateHas(PDO $pdo, string $email , int $userId) {
-    $sql = 'UPDATE users SET email = :email WHERE id = :user_id';
+    public static function updateHash(PDO $pdo, string $password , int $userId):bool {
+    $sql = 'UPDATE users SET password_hash = :password_hash WHERE id = :user_id';
     $stmt = $pdo->prepare($sql);
-    return $stmt->execute(['email' => $email,'user_id' => $userId]);
+    return $stmt->execute(['password_hash' => $password,'user_id' => $userId]);
     }
     
 

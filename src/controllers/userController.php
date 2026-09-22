@@ -47,32 +47,49 @@ switch($data['action']){
 
 
     case 'update_password':
-        var_dump($_SESSION['user']);
-
+        if (
+            !isset($data['old_password'], $data['new_password'], $data['new_password_verification'])
+            || !is_string($data['old_password'])
+            || !is_string($data['new_password'])
+            || !is_string($data['new_password_verification'])
+        ) {
+            jsonError(['Invalid request']);
+            exit;
+        }
         $hash = User::getHash($pdo, $_SESSION['user']['email'], $_SESSION['user']['id']);
-        var_dump($hash);
-        // $errors = NULL;
 
-        // if(!password_verify($data['old_password'], $_SESSION['user']['password_hash'])){
-        //     jsonError(['Incorrect password']);
-        //     exit;
-        // }
+        if(!$hash || !password_verify($data['old_password'], $hash['password_hash'])){
+            jsonError(['Incorrect password']);
+            exit;
+        }
 
-        // if($data['new_password'] !== $data['new_password_verification']) {
-        //     jsonError(['passwords do not match']);
-        //     exit;
-        // }
-        // header('Content-Type: application/json');
+        if($data['new_password'] !== $data['new_password_verification']) {
+            jsonError(['Passwords do not match']);
+            exit;
+        }
+        if(strlen($data['new_password']) < 8 ){
+            jsonError(['Password must be at least 8 characters']);
+            exit;
+        }
+        if(strlen($data['new_password']) > 72 ){
+            jsonError(['Password must be at most 72 characters']);
+            exit;
+        }
 
-        // echo json_encode([
-        //     'success' => true,
-        //     'errors' => null
-        // ]);
+        if(!User::updateHash($pdo, password_hash($data['new_password'], PASSWORD_DEFAULT), $_SESSION['user']['id'] )){
+            jsonError(['Error, please try again later']);
+            exit;
+        }
+        header('Content-Type: application/json');
+
+        echo json_encode([
+            'success' => true,
+            'errors' => null
+        ]);
 
         exit;
 
 
-        exit;
     case 'delete_user':
         exit;
 }

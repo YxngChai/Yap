@@ -69,11 +69,11 @@ require_once __DIR__ . '/partials/header.php';
         <form action="/yap/public/" method="POST" class="updateForm js-update-password-form"> 
             <h2 class="form__title">Update Password</h2>
             <label class="form__label">Old password</label>
-            <input class="form__input" type="password" name="old_password" minlength="8" maxlength="72" required>
+            <input class="form__input" type="password" name="old_password" minlength="1" maxlength="72" required>
             <label class="form__label">New password</label>
-            <input class="form__input" type="password" name="new_password" minlength="8" maxlength="72" autocomplete="password" required>
+            <input class="form__input" type="password" name="new_password" minlength="1" maxlength="72" autocomplete="password" required>
             <label class="form__labe">New password verification</label>
-            <input class="form__input" type="password" name="new_password_verification" minlength="8" maxlength="72" autocomplete="password" required>
+            <input class="form__input" type="password" name="new_password_verification" minlength="1" maxlength="72" autocomplete="password" required>
 
             <input type="hidden" name="action" value="update_password">
             <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
@@ -84,6 +84,7 @@ require_once __DIR__ . '/partials/header.php';
          <div class="js-update-password-message-container"><p></p>
             </div>
     </section>
+    <hr class="settings__separator"></hr>
 </main>
 
 
