@@ -32,7 +32,7 @@
 .form__save-btn:hover{
     background-color: var(--secondary-color);
 }
-.form__errors{
+.form__errors,.form__warning{
     color: var(--tertiary-color);
 }
 .form__success{
@@ -42,7 +42,7 @@
     width: 40%;
     margin-bottom: 5px;
 }
-.updateForm{
+.updateForm, .deleteDialog{
     display: flex;
     flex-direction: column;
     gap: 8px;

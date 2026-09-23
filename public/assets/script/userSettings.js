@@ -180,3 +180,15 @@ updatePasswordForm.addEventListener('submit', async (e) => {
 })
 
 
+const dialogBtn = document.getElementById('deleteAccountModalBtn');
+const dialog = document.getElementById('deleteAccountModal');
+
+dialogBtn.addEventListener('click', ()=>{
+    dialog.showModal();
+})
+
+dialog.addEventListener("click", (e) => {
+    if (e.target === dialog) {
+      dialog.close();
+  }}
+);
