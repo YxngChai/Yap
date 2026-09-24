@@ -21,7 +21,7 @@
     margin-bottom: 20px;
 }
 
-.form__save-btn{
+.form__save-btn, .form__cancel{
     background-color: var(--secondary-color-light);
     padding: 5px 17px;
     border-radius: 10px;
@@ -46,6 +46,17 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
+}
+.form__warning-btn{
+    background-color: var(--tertiary-color);
+    color: #f2f2f2;
+    padding: 5px 17px;
+    border-radius: 10px;
+    flex: 0 0 auto;
+    margin-top: 20px;
+}
+.form__warning-btn:hover{
+    background-color: var(--tertiary-color-dark);
 }
 
 
@@ -89,4 +100,58 @@
 
 
 
-/* User details */
+/* Delete Account */
+.deleteAccountModal{
+    border: 1px solid var(--border-color);
+    box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    border-radius: 15px;
+    background-color: #fcfcfc;
+    padding: 18px 20px;
+}
+.deleteAccountModal__form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.form__input--password-check{
+    min-width: 160px;
+}
+dialog::backdrop {
+  background-color: #39004f97;
+}
+.deleteDialog__confirmation {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.deleteDialog__comfirmation-checkbox{
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid black;
+    flex-shrink: 0;
+}
+.deleteDialog__comfirmation-checkbox:checked {
+    background-color: var(--tertiary-color);
+    box-shadow: inset 0 0 0 4px white;
+}
+.deleteDialog__comfirmation-text{
+    font-size: 0.9em;
+    color: var(--tertiary-color);
+}
+
+.deleteDialog__btns{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: bottom;
+}
+.form__cancel--dialog{
+    margin: 0;
+}
+.form__warning-btn--dialog{
+    margin: 0;
+}

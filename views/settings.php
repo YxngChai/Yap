@@ -88,23 +88,25 @@ require_once __DIR__ . '/partials/header.php';
     <section>
         <h2 class="form__title">Delete Account</h2>
         <p class="form__warning">Deleting your account is permanent. Your posts, photos, messages, and other account data will be permanently deleted and cannot be recovered.</p>
-        <button type="button" id="deleteAccountModalBtn">Delete account</button>
-        <dialog id="deleteAccountModal">
+        <button type="button" id="deleteAccountModalBtn" class="form__warning-btn">Delete account</button>
+        <dialog id="deleteAccountModal" class="deleteAccountModal">
             <form action="/yap/public/" method="POST" class="deleteDialog">
                 <h3 class="form__title">Delete your account</h3>
-                <label class="form__label">Enter your password</label>
-                <input class="form__input" type="password" name="old_password" minlength="1" maxlength="72" required>
-                <div>
-                    <input type="radio" class="" id="comfirmation" name="comfirmation" value="ok">
-                    <label for="comfirmation">I understand that deleting my account is permanent and that data cannot be recovered</label>
-                </div>
-                <input type="hidden" name="action" value="delete_account">
-                <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
-                <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(csrfToken()) ?>">
-                
-                <div>
-                    <button type="button" id="formCancel" class="form__cancel">Cancel</button>
-                    <button type="submit" class="form__warning-btn">Delete</button>
+                <div class="deleteAccountModal__form">
+                    <label class="form__label">Enter your password</label>
+                    <input class="form__input form__input--password-check" type="password" name="old_password" autocomplete="off" required>
+                    <div class="deleteDialog__confirmation">
+                        <input type="checkbox" class="deleteDialog__comfirmation-checkbox" id="comfirmation" name="comfirmation" value="ok">
+                        <label for="comfirmation" class="deleteDialog__comfirmation-text">I understand that deleting my account is permanent and that data cannot be recovered</label>
+                    </div>
+                    <input type="hidden" name="action" value="delete_account">
+                    <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
+                    <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(csrfToken()) ?>">
+                    
+                    <div class="deleteDialog__btns">
+                        <button type="button" id="formCancel" class="form__cancel form__cancel--dialog">Cancel</button>
+                        <button type="submit" class="form__warning-btn form__warning-btn--dialog">Delete</button>
+                    </div>
                 </div>
             </form>
         </dialog>
