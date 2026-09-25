@@ -175,6 +175,12 @@ class Post{
     $stmt -> execute(['id'=> $postId, 'user_id' => $userId]);
     return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+    public static function findAllUserImages(PDO $pdo, int $userId):array {
+    $sql = 'SELECT image_path FROM posts WHERE user_id = :user_id AND image_path IS NOT NULL';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['user_id' => $userId]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
     // public static function findAllProgressiveLoading(PDO $pdo, int $offset): array {
     // $sql = 'SELECT 

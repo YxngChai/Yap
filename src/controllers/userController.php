@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../models/user.php';
+require_once __DIR__ . '/../models/post.php';
 require_once __DIR__ . '/../validators/validator.php';
 require_once __DIR__ . '/../helpers/errors.php';
 
@@ -91,5 +92,20 @@ switch($data['action']){
 
 
     case 'delete_user':
+
+        $postImageFiles = Post::findAllUserImages($pdo, $_SESSION['user']['id']);
+        foreach ($postImageFiles as $file) {
+                $path = __DIR__ . '/../../public/assets/uploads/' . $file['image_path'];
+                if(is_file($path)) {
+                    unlink($path);
+                }
+            };
+        $userImages = User::findUserImages($pdo, $_SESSION['user']['id']);
+        foreach ($userImages as $file) {
+                $path = __DIR__ . '/../../public/assets/uploads/' . $file;
+                if(is_file($path)) {
+                    unlink($path);
+                }
+            };
         exit;
 }

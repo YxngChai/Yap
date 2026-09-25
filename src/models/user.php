@@ -81,4 +81,19 @@ class User{
         return '/yap/public/assets/uploads/' . $coverImage;
         }
     }
+    public static function findUserImages(PDO $pdo, int $userId): array{
+    $sql = 'SELECT profile_picture, cover_picture FROM users WHERE id = :id';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['id' => $userId]);
+    return $stmt->fetch(PDO::FETCH_ASSOC) ?: [];
+    }
+
+    public static function delete(PDO $pdo, int $userId): bool {
+    $sql = 'DELETE FROM users WHERE id = :id';
+    $stmt = $pdo->prepare($sql);
+    return $stmt->execute(['id' => $userId]);
+    }
+
+
+
 }

@@ -96,10 +96,10 @@ require_once __DIR__ . '/partials/header.php';
                     <label class="form__label">Enter your password</label>
                     <input class="form__input form__input--password-check" type="password" name="old_password" autocomplete="off" required>
                     <div class="deleteDialog__confirmation">
-                        <input type="checkbox" class="deleteDialog__comfirmation-checkbox" id="comfirmation" name="comfirmation" value="ok">
+                        <input type="checkbox" class="deleteDialog__comfirmation-checkbox" id="comfirmation" name="comfirmation" value="ok" required>
                         <label for="comfirmation" class="deleteDialog__comfirmation-text">I understand that deleting my account is permanent and that data cannot be recovered</label>
                     </div>
-                    <input type="hidden" name="action" value="delete_account">
+                    <input type="hidden" name="action" value="delete_user">
                     <input type="hidden" name="redirect" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
                     <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(csrfToken()) ?>">
                     
