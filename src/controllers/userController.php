@@ -92,20 +92,59 @@ switch($data['action']){
 
 
     case 'delete_user':
+        // verify form
+        if ( !isset($data['password']) || !is_string($data['password'])) {
+            jsonError(['Password not set']);
+            exit;
+        }
+
+        $hash = User::getHash($pdo, $_SESSION['user']['email'], $_SESSION['user']['id']);
+
+        if(!$hash || !password_verify($data['password'], $hash['password_hash'])){
+            jsonError(['Incorrect password']);
+            exit;
+        }
+
+        if ( !isset($data['confirmation']) || $data['confirmation'] !== 'y' ) {
+            jsonError(['You must confirm that you want to delete your account']);
+            exit;
+        }
+
+        //get images
 
         $postImageFiles = Post::findAllUserImages($pdo, $_SESSION['user']['id']);
+        $userImages = User::findUserImages($pdo, $_SESSION['user']['id']);
+
+
+        // delete user
+
+        User::delete($pdo, $_SESSION['user']['id']);
+
+        // delete images
+
         foreach ($postImageFiles as $file) {
                 $path = __DIR__ . '/../../public/assets/uploads/' . $file['image_path'];
                 if(is_file($path)) {
                     unlink($path);
                 }
             };
-        $userImages = User::findUserImages($pdo, $_SESSION['user']['id']);
+
         foreach ($userImages as $file) {
                 $path = __DIR__ . '/../../public/assets/uploads/' . $file;
                 if(is_file($path)) {
                     unlink($path);
                 }
             };
+
+
+
+        session_unset();
+        session_destroy();
+
+        session_start();
+        session_regenerate_id(true);
+
+        header('Location: /yap/public/');
+         
         exit;
 }

@@ -94,9 +94,9 @@ require_once __DIR__ . '/partials/header.php';
                 <h3 class="form__title">Delete your account</h3>
                 <div class="deleteAccountModal__form">
                     <label class="form__label">Enter your password</label>
-                    <input class="form__input form__input--password-check" type="password" name="old_password" autocomplete="off" required>
+                    <input class="form__input form__input--password-check" type="password" name="password" autocomplete="off" required>
                     <div class="deleteDialog__confirmation">
-                        <input type="checkbox" class="deleteDialog__comfirmation-checkbox" id="comfirmation" name="comfirmation" value="ok" required>
+                        <input type="checkbox" class="deleteDialog__comfirmation-checkbox" id="comfirmation" name="comfirmation" value="y" required>
                         <label for="comfirmation" class="deleteDialog__comfirmation-text">I understand that deleting my account is permanent and that data cannot be recovered</label>
                     </div>
                     <input type="hidden" name="action" value="delete_user">
