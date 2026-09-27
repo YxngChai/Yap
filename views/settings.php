@@ -81,8 +81,7 @@ require_once __DIR__ . '/partials/header.php';
 
             <button type="submit" class="form__save-btn">Save</button>
         </form>
-         <div class="js-update-password-message-container"><p></p>
-            </div>
+         <div class="js-update-password-message-container"></div>
     </section>
     <hr class="settings__separator"></hr>
     <section>
@@ -90,13 +89,13 @@ require_once __DIR__ . '/partials/header.php';
         <p class="form__warning">Deleting your account is permanent. Your posts, photos, messages, and other account data will be permanently deleted and cannot be recovered.</p>
         <button type="button" id="deleteAccountModalBtn" class="form__warning-btn">Delete account</button>
         <dialog id="deleteAccountModal" class="deleteAccountModal">
-            <form action="/yap/public/" method="POST" class="deleteDialog">
+            <form action="/yap/public/" method="POST" class="deleteDialog js-delete-aac" >
                 <h3 class="form__title">Delete your account</h3>
                 <div class="deleteAccountModal__form">
                     <label class="form__label">Enter your password</label>
                     <input class="form__input form__input--password-check" type="password" name="password" autocomplete="off" required>
                     <div class="deleteDialog__confirmation">
-                        <input type="checkbox" class="deleteDialog__comfirmation-checkbox" id="comfirmation" name="comfirmation" value="y" required>
+                        <input type="checkbox" class="deleteDialog__comfirmation-checkbox" id="confirmation" name="confirmation" value="y" required>
                         <label for="comfirmation" class="deleteDialog__comfirmation-text">I understand that deleting my account is permanent and that data cannot be recovered</label>
                     </div>
                     <input type="hidden" name="action" value="delete_user">
@@ -108,7 +107,9 @@ require_once __DIR__ . '/partials/header.php';
                         <button type="submit" class="form__warning-btn form__warning-btn--dialog">Delete</button>
                     </div>
                 </div>
+                <p class="js-delete-error-field form__errors"></p>
             </form>
+            
         </dialog>
     </section>
     <hr class="settings__separator"></hr>

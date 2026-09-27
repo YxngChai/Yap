@@ -65,7 +65,7 @@ switch($data['action']){
         }
 
         if($data['new_password'] !== $data['new_password_verification']) {
-            jsonError(['Passwords do not match']);
+            jsonError(['New passwords do not match']);
             exit;
         }
         if(strlen($data['new_password']) < 8 ){
@@ -144,7 +144,12 @@ switch($data['action']){
         session_start();
         session_regenerate_id(true);
 
-        header('Location: /yap/public/');
-         
+        header('Content-Type: application/json');
+
+        echo json_encode([
+            'success' => true,
+            'errors' => null
+        ]);
+
         exit;
 }

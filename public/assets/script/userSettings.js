@@ -198,3 +198,38 @@ closeDialogBtn.addEventListener("click", (e) => {
       dialog.close();
 }
 );
+
+// delete account
+
+const deleteForm = document.querySelector('.js-delete-aac');
+
+deleteForm.addEventListener('submit', async(e) =>{
+    e.preventDefault();
+
+    const errorField = document.querySelector('.js-delete-error-field');
+    errorField.textContent = '';
+
+    try {
+
+        const response = await fetch(deleteForm.action, {
+            method: deleteForm.method,
+            body: new FormData(deleteForm)
+        })
+
+        if(!response.ok){
+            throw new Error('Server error');
+        }
+        const data = await response.json();
+
+        if(!data.success){
+            console.log(data.errors);
+            errorField.textContent = data.errors;
+        }  else {
+        window.location.href = '/yap/public/';
+        }
+
+    } catch (e) {
+        console.log(e);
+        errorField.textContent = 'Something went wrong. Please try again.';
+    }
+})
