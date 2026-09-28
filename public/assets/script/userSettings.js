@@ -5,6 +5,22 @@ const profilePictureInput = document.querySelector('#profile-picture-input');
 const profilePicture = document.querySelector('.picture-form__image');
 
 
+
+// to have validation message that persist after refresh
+const pictureMessage = sessionStorage.getItem('profilePictureSaved');
+if (pictureMessage) {
+    const container = document.querySelector('.js-picture-form-error-container');
+
+    const validationMessage = document.createElement('p');
+    validationMessage.classList.add('form__success');
+    validationMessage.textContent = 'Photo saved successfully';
+
+    container.appendChild(validationMessage);
+
+    sessionStorage.removeItem('profilePictureSaved');
+}
+
+//upload profile picture
 profilePictureInput.addEventListener('change', () => {
     const errorField = document.querySelector('.js-picture-form-error-container');
     const file = profilePictureInput.files[0];
@@ -20,6 +36,7 @@ profilePictureInput.addEventListener('change', () => {
     if(!allowedTypes.includes(file.type)) {
         profilePictureInput.value = '';
         const error = document.createElement('p');
+        error.classList.add('form__errors');
         error.textContent = 'Invalid file format.';
         errorField.appendChild(error);
         return;
@@ -27,6 +44,7 @@ profilePictureInput.addEventListener('change', () => {
     if (file.size > 5 * 1024 * 1024) {
         profilePictureInput.value = '';
         const error = document.createElement('p');
+        error.classList.add('form__errors');
         error.textContent = 'File too large, 5MB maximum.';
         errorField.appendChild(error);
         return;
@@ -41,6 +59,7 @@ profilePictureForm.addEventListener('submit', async(e) =>{
 
     if (profilePictureInput.files.length === 0) {
         const error = document.createElement('p');
+        error.classList.add('form__errors');
         error.textContent = 'Please select an image first.';
         errorField.innerHTML = '';
         errorField.appendChild(error);
@@ -66,16 +85,19 @@ profilePictureForm.addEventListener('submit', async(e) =>{
             errorField.innerHTML = '';
             data.errors.forEach((error) => {
                 const errorContainer = document.createElement('p');
+                errorContainer.classList.add('form__errors');
                 errorContainer.textContent = error;
                 errorField.appendChild(errorContainer);
             })
         } else {
+            sessionStorage.setItem('profilePictureSaved', 'true');
             window.location.reload();
         }
 
     } catch (e) {
         console.log(e);
         const error = document.createElement('p');
+        error.classList.add('form__errors');
         error.textContent = 'Something went wrong. Please try again.';
         errorField.appendChild(error);
     }

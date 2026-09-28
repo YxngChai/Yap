@@ -40,7 +40,7 @@ require_once __DIR__ . '/partials/header.php';
                 <span class="picture-form__rules">JPEG/JPG, PNG, and WebP accepted. 5MB max.</span>
                 <button type="submit" class="form__save-btn">Save</button>
             </div>
-            <div class="form__errors js-picture-form-error-container">
+            <div class="js-picture-form-error-container">
             </div>
         </form>
     </section>
