@@ -543,7 +543,10 @@ dialog {
     border-radius: 0;
     border: none;
     margin: 0;
-     transition: none;
+    transition: none;
+    background-color: var(--pale-color);
+    box-shadow: none;
+    padding-top: 0;
   }
   .post-details {
     padding: 30px 0 0 0;

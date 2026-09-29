@@ -3,7 +3,6 @@
 .footer {
   background-color: var(--primary-color);
   padding: 15px;
-  box-shadow: 0 0 8px black;
 }
 
 .footer__nav{

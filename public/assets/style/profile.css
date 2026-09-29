@@ -54,25 +54,25 @@
 
 /* User not found */
 
-.userNotFound, .userNotFound__content{
+.pageNotFound, .pageNotFound__content{
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.userNotFound__content{
+.pageNotFound__content{
   flex-direction: column;
   gap: 15px;
 }
-.userNotFound__oops{
+.pageNotFound__oops{
   font-size: 3em;
   color: var(--primary-color);
   text-shadow: 0 0 8px rgba(180, 179, 179, 0.267);
 }
-.userNotFound__title{
+.pageNotFound__title{
   font-size: 2em;
   color: rgb(35, 35, 35);
 }
-.userNotFound__link{
+.pageNotFound__link{
   margin-top: 10px;
   border: 1px solid black;
   padding: 7px 15px;
@@ -80,7 +80,7 @@
   border-radius: 5px;
   transition: 0.2s ease-in;
 }
-.userNotFound__link:hover{
+.pageNotFound__link:hover{
   transform: scale(1.1);
   box-shadow: 2px 2px 10px rgba(124, 124, 124, 0.124);
 }

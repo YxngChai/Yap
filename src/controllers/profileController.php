@@ -15,7 +15,7 @@ if (isset($_GET['username'])) {
 }
 
 if (!$user) {
-    require __DIR__ . '/../../views/userNotFound.php';
+    require __DIR__ . '/../../views/pageNotFound.php';
     exit;
 
 }
