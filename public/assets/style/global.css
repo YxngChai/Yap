@@ -27,3 +27,8 @@ button {
 [hidden] {
     display: none !important;
 }
+@media screen and (max-width: 500px) {
+  main {
+    padding: 0;
+  }
+}

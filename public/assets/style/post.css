@@ -12,7 +12,7 @@
 }
 
 .post-details {
-  padding: 50px 5px;
+  padding: 50px 15px;
   display: flex;
   justify-content: center;
 }
@@ -44,6 +44,7 @@
   margin: 15px;
   overflow: hidden;
 }
+
 .post__header {
   background-color: var(--light-grey);
   position: relative;
@@ -113,14 +114,12 @@
   width: 100%;
   max-width: 700px;
   margin: 15px 0;
-  transition: 0.2s ease-in-out;
+  transition:background-color 0.2s ease-in-out,
+              transform 0.2s ease-in-out;
 }
 .post__create:focus-within {
   background-color: var(--pale-color);
   transform: scale(1.02);
-    box-shadow:
-    rgba(51, 51, 96, 0.44) 0px 2px 5px -1px,
-    rgba(0, 0, 0, 0.528) 0px 1px 3px -1px;
 }
 
 .post__form {
@@ -273,9 +272,10 @@ dialog {
 }
 .dialog__options {
   display: flex;
-  padding: 10px;
+  padding: 0 10px;
   justify-content: center;
   margin-top: 15px;
+
   gap: 15px;
 }
 .dialog__option {
@@ -526,4 +526,34 @@ dialog {
   width: 40px;
   fill: var(--primary-color);
   margin-bottom: 10px;
+}
+@media screen and (max-width: 500px) {
+  .feed {
+    padding: 0;
+    margin: 0;
+    }
+  .post {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    margin: 0;
+    border-bottom: none;
+  }
+  .post__create{
+    border-radius: 0;
+    border: none;
+    margin: 0;
+     transition: none;
+  }
+  .post-details {
+    padding: 30px 0 0 0;
+  }
+
+  .post__create:focus-within {
+  transform: scale(1);
+  box-shadow: none;
+ }
+ .dialog__edit {
+  padding: 7px;
+ }
 }

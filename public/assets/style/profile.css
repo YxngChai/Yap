@@ -16,8 +16,8 @@
   overflow: hidden;
   border-radius: 0 0 25px 0;
   box-shadow:
-    rgba(0, 0, 0, 0.16) 0px 3px 6px,
-    rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    rgba(0, 0, 0, 0.10) 0px 3px 6px,
+    rgba(0, 0, 0, 0.05) 0px 3px 6px;
 }
 
 .user-header__wallpaper {
@@ -227,4 +227,29 @@
 /* cover image */
 .user-photo-dialog__drop-zone--cover{
   aspect-ratio: 2;
+}
+
+@media screen and (max-width: 500px){
+  .user-header__wallpaper-container {
+  height: 150px;
+  border-radius: 0;
+  }
+  .user-header__profile-container {
+
+    width: 130px;
+    height: 130px;
+
+  }
+  .user-header__infos{
+    margin-bottom: 20px;
+    margin-left: 140px;
+  }
+  .user-header__username {
+    font-size: 1.6em;
+  }
+  .user-header__names {
+    font-size: 1.4em;
+  }
+
+  
 }

@@ -155,3 +155,9 @@ dialog::backdrop {
 .form__warning-btn--dialog{
     margin: 0;
 }
+@media screen and (max-width: 500px) {
+    .settings {
+        padding: 0 15px;
+    }
+    
+}

@@ -5,3 +5,10 @@
   padding: 15px;
   box-shadow: 0 0 8px black;
 }
+
+.footer__nav{
+  display: flex;
+  justify-content: space-around;
+  color: var(--pale-color);
+  font-size: 0.9em;
+}
