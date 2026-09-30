@@ -24,6 +24,10 @@ main {
 button {
   cursor: pointer;
 }
+
+p{
+  white-space: pre-wrap;
+}
 [hidden] {
     display: none !important;
 }

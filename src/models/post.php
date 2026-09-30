@@ -37,7 +37,7 @@ class Post{
         u.username,
         u.profile_picture,
         
-        COUNT(DISTINCT l.post_id) AS like_count,
+        COUNT(DISTINCT l.user_id) AS like_count,
         COUNT(DISTINCT c.id) AS comment_count,
         
         EXISTS (
@@ -79,7 +79,7 @@ class Post{
         u.username,
         u.profile_picture,
         
-        COUNT(DISTINCT l.post_id) AS like_count,
+        COUNT(DISTINCT l.user_id) AS like_count,
         COUNT(DISTINCT c.id) AS comment_count,
         
         EXISTS (
@@ -124,7 +124,7 @@ class Post{
     u.username,
     u.profile_picture,
     
-    COUNT(DISTINCT l.post_id) AS like_count,
+    COUNT(DISTINCT l.user_id) AS like_count,
     COUNT(DISTINCT c.id) AS comment_count,
     
     EXISTS (
