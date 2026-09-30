@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 19, 2026 at 06:49 PM
+-- Generation Time: Sep 30, 2026 at 12:28 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `yap`
 --
+CREATE DATABASE IF NOT EXISTS `yap` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `yap`;
 
 -- --------------------------------------------------------
 
@@ -31,6 +33,7 @@ CREATE TABLE `comments` (
   `id` int(11) NOT NULL,
   `content` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `image_path` varchar(255) DEFAULT NULL,
   `user_id` int(11) NOT NULL,
   `post_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -55,6 +58,7 @@ CREATE TABLE `comments_likes` (
 CREATE TABLE `posts` (
   `id` int(11) NOT NULL,
   `content` text NOT NULL,
+  `image_path` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -87,6 +91,7 @@ CREATE TABLE `users` (
   `password_hash` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `profile_picture` varchar(255) DEFAULT NULL,
+  `cover_picture` varchar(255) DEFAULT NULL,
   `bio` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
