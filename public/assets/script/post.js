@@ -2,6 +2,11 @@ const likeIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
 const likedIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path class="post__like-icon" d="M305 151.1L320 171.8L335 151.1C360 116.5 400.2 96 442.9 96C516.4 96 576 155.6 576 229.1L576 231.7C576 343.9 436.1 474.2 363.1 529.9C350.7 539.3 335.5 544 320 544C304.5 544 289.2 539.4 276.9 529.9C203.9 474.2 64 343.9 64 231.7L64 229.1C64 155.6 123.6 96 197.1 96C239.8 96 280 116.5 305 151.1z"/></svg>';
 const commentIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M267.7 576.9C267.7 576.9 267.7 576.9 267.7 576.9L229.9 603.6C222.6 608.8 213 609.4 205 605.3C197 601.2 192 593 192 584L192 512L160 512C107 512 64 469 64 416L64 192C64 139 107 96 160 96L480 96C533 96 576 139 576 192L576 416C576 469 533 512 480 512L359.6 512L267.7 576.9zM332 472.8C340.1 467.1 349.8 464 359.7 464L480 464C506.5 464 528 442.5 528 416L528 192C528 165.5 506.5 144 480 144L160 144C133.5 144 112 165.5 112 192L112 416C112 442.5 133.5 464 160 464L216 464C226.4 464 235.3 470.6 238.6 479.9C239.5 482.4 240 485.1 240 488L240 537.7C272.7 514.6 303.3 493 331.9 472.8z"/></svg>';
 
+const input = document.querySelector('#postImageInput');
+const previewContainer = document.querySelector('#postImagePreviewContainer');
+const preview = document.querySelector('#postImagePreview');
+const closePreview = document.querySelector('#postImagePreviewCloseBtn');
+
 
 document.querySelectorAll(".js-post-form").forEach((form) => {
   const textArea = form.querySelector(".js-post-textarea");
@@ -37,9 +42,6 @@ document.querySelectorAll("dialog").forEach((dialog) => {
     }
   });
 });
-
-// Comments
-
 
 
 // *********
@@ -117,6 +119,9 @@ createPostForm.addEventListener("submit", async (e) => {
 
     createSection.insertAdjacentHTML("afterend", data.html);
     createPostForm.reset();
+
+    preview.src = '';
+    previewContainer.hidden = true;
     };
 
     } catch (error){
@@ -301,11 +306,6 @@ document.addEventListener('click', (e) => {
 
   //image preview create post
 
-
-const input = document.querySelector('#postImageInput');
-const previewContainer = document.querySelector('#postImagePreviewContainer');
-const preview = document.querySelector('#postImagePreview');
-const closePreview = document.querySelector('#postImagePreviewCloseBtn');
 
 
 if(input && preview && closePreview){
